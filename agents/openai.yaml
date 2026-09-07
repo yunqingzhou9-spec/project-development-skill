@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Development Protocol"
+  short_description: "Repository-centered development and audit governance"
+  default_prompt: "Use $project-development to bootstrap or continue this project from its repository SSOT."
