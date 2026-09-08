@@ -4,8 +4,8 @@
 {
   "id": "TASK-007",
   "short_name": "clear_lightweight_skill",
-  "status": "BLOCKED",
-  "spec": {"path": ".ai/specs/SPEC-006.md", "sha256": "d57d15463f71f23aec19bfa600345afd24c7145af5026a80cd067ce18a1f6c1f"},
+  "status": "DOING",
+  "spec": {"path": ".ai/specs/SPEC-006-v2.md", "sha256": "2d8f44a7c7442776ef8b0d359655f1b6845efe3ca41c3ff9447d67caa7fdb102"},
   "owner": "manager",
   "depends_on": ["TASK-006"],
   "base": "1daff6e007d419e553529b1fd6112e8c7a4459c8",
@@ -13,11 +13,11 @@
   "contributors": ["/root/task_007_clear_lightweight_skill_developer"],
   "test_required": true,
   "test_na_reason": null,
-  "test": "FAIL",
-  "review": "REJECT",
-  "blockers": ["DEC-019's one additional focused rework cycle is exhausted; Human must decide whether to narrow the unbounded absolute-path criterion"],
+  "test": "PENDING",
+  "review": "PENDING",
+  "blockers": [],
   "rework_cycles": 4,
-  "next_action": "Recommend a new Spec version that defines package cleanliness structurally by exact allowlist/source hashes and rejects project-specific paths, runtime IDs and secrets without claiming exhaustive detection of every absolute-path syntax."
+  "next_action": "Reconcile documentation and tests to frozen SPEC-006-v2, produce a new candidate, then use fresh Tester and Reviewer identities."
 }
 ```
 
@@ -43,6 +43,7 @@ Implement SPEC-006 AC-2 through AC-7 using the minimal remediation design accept
 - Fresh DEC-019 Test and Review: PENDING; all earlier candidate verdicts are stale.
 - DEC-019 independent Tester: FAIL; end-to-end builds still accept repeated-separator Windows/UNC forms, network POSIX paths, Unicode absolute paths and concrete prefixes hidden by trailing placeholders.
 - DEC-019 independent Reviewer: REJECT; placeholder-token removal, ASCII-oriented patterns and `file://` handling leave AC-3/AC-7 unsatisfied. All other SPEC-006 areas were satisfactory.
+- All verdicts against SPEC-006 are stale after DEC-020 approved SPEC-006-v2. The new criteria retain exact allowlist/hash enforcement and maintained sensitive-pattern defenses without claiming exhaustive path-language recognition.
 
 ## Handoff / evidence
 
@@ -61,3 +62,4 @@ Implement SPEC-006 AC-2 through AC-7 using the minimal remediation design accept
 - 2026-09-08: Human authorized one additional focused rework cycle under DEC-019. Blocker cleared; scope remains limited to generalized absolute-path rejection and fresh verification.
 - 2026-09-08: Same Developer delivered focused candidate `648ad6671b3538f2452887421e57f386b1e7ce4f`, changing only the packager and its tests; moved to VERIFY with fresh identities required.
 - 2026-09-08: DEC-019's one authorized extra cycle ended with fresh Test FAIL and Review REJECT. Task returned to BLOCKED; no further Worker was dispatched.
+- 2026-09-08: Human approved SPEC-006-v2 under DEC-020. Blocker cleared; task returned to DOING for bounded criteria, documentation and test reconciliation.
