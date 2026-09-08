@@ -9,11 +9,11 @@
 - Working candidate: accepted TASK-007 SPEC-006-v2 candidate `3ff3e5b8239d92f4847dcd37625865975761480d` for working/unreleased package version `2.1.0-dev.1`; later commits contain governance evidence only. All earlier TASK-007 candidates and verdicts are stale.
 - Strictly Accepted Baseline: working/unreleased package version `2.1.0-dev.1` / Git commit `3ff3e5b8239d92f4847dcd37625865975761480d`; Human acceptance recorded in DEC-021. Published release and installed Skill remain version `2.0.4` until separately authorized.
 - Historical documented acceptance: `CHANGELOG.md` entries and tags `v2.0.2`, `v2.0.3`, `v2.0.4`; DEC-009 records the published 2.0.4 release candidate, DEC-010 the accepted validation-environment candidate, DEC-012 the accepted handoff candidate, and current formal acceptance is DEC-017.
-- Active approved Specs: `NONE`; completed `.ai/specs/SPEC-007.md` / SHA-256 `4e9f04950791572dfca380a4e722fcbd31daa3d26f87a41092fb5d0225bfcc77` was approved by DEC-022. Completed `.ai/specs/SPEC-006-v2.md` / SHA-256 `2d8f44a7c7442776ef8b0d359655f1b6845efe3ca41c3ff9447d67caa7fdb102` was approved by DEC-020; `.ai/specs/SPEC-006.md` package-path boundary is superseded. Completed earlier Specs remain indexed in their Task records.
+- Active approved Specs: `.ai/specs/SPEC-008.md` / SHA-256 `0775b8345946b9db9e08fa9c7aebb2c4613c25cea3936451af227dd7fe514876` approved by DEC-023. Completed `.ai/specs/SPEC-007.md` / SHA-256 `4e9f04950791572dfca380a4e722fcbd31daa3d26f87a41092fb5d0225bfcc77` was approved by DEC-022. Completed `.ai/specs/SPEC-006-v2.md` / SHA-256 `2d8f44a7c7442776ef8b0d359655f1b6845efe3ca41c3ff9447d67caa7fdb102` was approved by DEC-020.
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session through TASK-006 and TASK-007 worker results and receipts. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is Codex desktop task `01a0815b-dc59-79c0-9813-d9fa81b8d433` plus current native TASK-006/TASK-007 creation, assignment and result references; delegation/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision remains the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `3ff3e5b8239d92f4847dcd37625865975761480d` accepted by the user's “接受” decision under DEC-021. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED. Installation and publication are not included.
-- Next action: await the Human's next project instruction. The local installed Skill is synchronized to accepted working/unreleased version `2.1.0-dev.1`; push, tag and release remain unauthorized.
+- Next action: execute TASK-009 to move the 2.0.4 backup outside Skill discovery and reconcile stale current-state text. Push, tag and release remain unauthorized.
 
 ## Active work (index; Task files own detailed state)
 
@@ -27,10 +27,11 @@
 | `.ai/tasks/TASK-006.md` — Distribution audit | DONE | Manager `/root` | Three audit results; Test N/A; Reviewer APPROVE; gate CONSISTENT | NONE | NONE |
 | `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | DONE | Manager `/root` | Candidate `3ff3e5b`: Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted | TASK-006 | NONE |
 | `.ai/tasks/TASK-008.md` — Local Skill synchronization | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-007 | NONE |
+| `.ai/tasks/TASK-009.md` — Backup discovery cleanup | DOING | Manager `/root` | FULL workflow; Developer dispatch pending | TASK-008 | Move exact backup and preserve bytes |
 
 ## Blockers and decisions needed
 
-NONE. TASK-008 completed the DEC-022 local-only synchronization; remote publication remains outside scope.
+NONE. DEC-023 authorizes the exact backup move and current-state reconciliation; remote publication remains outside scope.
 
 ## Accepted / completed work
 
