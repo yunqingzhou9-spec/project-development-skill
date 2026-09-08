@@ -1,19 +1,19 @@
 # Project state
 
-- Updated: 2026-09-08T23:39:27+08:00
+- Updated: 2026-09-08T23:52:20+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
 - Coordination: `ACTIVE`; replacement Manager `/root` in Codex task `01a0815b-dc59-79c0-9813-d9fa81b8d433` verified the supplied checkout, installed Skill and native runtime state; the outgoing Manager task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` is idle and no active Worker is observable; updated 2026-09-08T22:13:32+08:00
 - Purpose / boundaries: Maintain the Project Development Protocol Skill without granting implementation, acceptance, installation, or publishing authority beyond explicit user decisions.
-- Working candidate: TASK-007 candidate pending against SPEC-006-v2; prior candidate `648ad6671b3538f2452887421e57f386b1e7ce4f` and all earlier verdicts are stale after criteria revision. Strictly accepted baseline remains TASK-005 candidate `bc70cb75dfa1076765678017cca3a76325f417b6` / version `2.0.4`.
+- Working candidate: TASK-007 SPEC-006-v2 candidate `3ff3e5b8239d92f4847dcd37625865975761480d` for working/unreleased package version `2.1.0-dev.1`; Tester PASS, Reviewer APPROVE and gate CONSISTENT; eligible for Human acceptance but not yet formally accepted. All earlier candidates and verdicts are stale. Strictly accepted baseline remains TASK-005 candidate `bc70cb75dfa1076765678017cca3a76325f417b6` / version `2.0.4`.
 - Strictly Accepted Baseline: version `2.0.4` / Git commit `bc70cb75dfa1076765678017cca3a76325f417b6`; Human acceptance recorded in DEC-017.
 - Historical documented acceptance: `CHANGELOG.md` entries and tags `v2.0.2`, `v2.0.3`, `v2.0.4`; DEC-009 records the published 2.0.4 release candidate, DEC-010 the accepted validation-environment candidate, DEC-012 the accepted handoff candidate, and current formal acceptance is DEC-017.
-- Active approved Specs: `.ai/specs/SPEC-006-v2.md` / SHA-256 `2d8f44a7c7442776ef8b0d359655f1b6845efe3ca41c3ff9447d67caa7fdb102` approved by DEC-020; `.ai/specs/SPEC-006.md` package-path boundary is superseded. Completed `.ai/specs/SPEC-005-v2.md` / SHA-256 `9d90803a4900e56a21c5e6fe281644491e79d217126a5e08595e31f586438395`; earlier completed Specs remain indexed in their Task records.
-- Runtime capabilities / assurance: native task-agent tools are exposed; current collaboration inventory contains only replacement Manager `/root`, and no dispatch was required during takeover, so creation/assignment/result access is `UNKNOWN` for this session. Historical access remains `VERIFIED` by TASK-001 through TASK-005 receipts. Protected acceptance `MISSING`.
-- Environment: `CODEX`; trusted current evidence is Codex desktop task `01a0815b-dc59-79c0-9813-d9fa81b8d433`, native collaboration inventory containing only `/root`, and task inventory showing outgoing Manager task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` idle; current-session creation/assignment/result access `UNKNOWN`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
+- Active approved Specs: `NONE`; completed `.ai/specs/SPEC-006-v2.md` / SHA-256 `2d8f44a7c7442776ef8b0d359655f1b6845efe3ca41c3ff9447d67caa7fdb102` approved by DEC-020; `.ai/specs/SPEC-006.md` package-path boundary is superseded. Completed earlier Specs remain indexed in their Task records.
+- Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session through TASK-006 and TASK-007 worker results and receipts. Protected acceptance `MISSING`.
+- Environment: `CODEX`; trusted current evidence is Codex desktop task `01a0815b-dc59-79c0-9813-d9fa81b8d433` plus current native TASK-006/TASK-007 creation, assignment and result references; delegation/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision remains the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `bc70cb75dfa1076765678017cca3a76325f417b6` accepted by the user's “接受、同步本机并发布” decision; see DEC-017. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED.
-- Next action: reconcile TASK-007 deliverables to SPEC-006-v2, then run fresh independent Test and Review. Do not install, push, tag or release.
+- Next action: Human decides whether to formally accept TASK-007 candidate `3ff3e5b8239d92f4847dcd37625865975761480d`. Installation, push, tag and release remain separately unauthorized.
 
 ## Active work (index; Task files own detailed state)
 
@@ -25,7 +25,7 @@
 | `.ai/tasks/TASK-004.md` | DONE | Manager `/root` | Rework cycle 1: Developer delivered; fresh Tester/forward evaluator PASS; fresh Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-012 | NONE | NONE |
 | `.ai/tasks/TASK-005.md` — `agent_names` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted; installed Skill synchronized; GitHub `main` published | NONE | NONE |
 | `.ai/tasks/TASK-006.md` — Distribution audit | DONE | Manager `/root` | Three audit results; Test N/A; Reviewer APPROVE; gate CONSISTENT | NONE | NONE |
-| `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | DOING | Manager `/root` | SPEC-006-v2 approved; prior candidate/verdicts stale | TASK-006 | Reconcile docs/tests to revised criteria |
+| `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | DONE | Manager `/root` | Candidate `3ff3e5b`: Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-006 | Await Human acceptance |
 
 ## Blockers and decisions needed
 
@@ -44,6 +44,10 @@ TASK-004 rework cycle 1 is DONE and formally accepted under `HUMAN / PROTOCOL` a
 Under DEC-013, the accepted TASK-004 runtime file `references/PROTOCOL.md` was synchronized to the local installed Skill. The installed and repository copies share SHA-256 `b85f8b5dcb118134d6ec279e2cdca41582c8bffbfa8a099d1f098158172be3f1`; the installed Skill passed Skill Creator quick validation and the repository passed 28/28 regression tests. `SKILL.md`, `references/GATE.md` and `scripts/check_completion.py` were already identical and were not changed. DEC-014 subsequently published the accepted TASK-004 state and takeover records to GitHub `main` without changing the version or tag.
 
 TASK-005 candidate `bc70cb75dfa1076765678017cca3a76325f417b6` is DONE and formally accepted under `HUMAN / PROTOCOL` assurance. Independent Tester PASS, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-005.json` are recorded. It changes only future-facing naming guidance and templates; current and historical Task/Agent identities remain unchanged. Under DEC-017, installed `references/PROTOCOL.md`, `templates/TASK.template.md` and `templates/PROJECT_STATE.template.md` match the accepted repository bytes and pass Skill validation; the repository passes 28/28 tests. GitHub `main` was published through commit `7970f4ee3f79db83b2e959e54d506b3857c95781` without changing version `2.0.4` or tag `v2.0.4`.
+
+TASK-006 audit candidate `7bb7b50ad6651f9b86937c6fabd6a91b2de92916` is DONE under `PROTOCOL` assurance with Test N/A, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-006.json`. It confirmed the four reported problems while distinguishing source-archive leakage from the clean installed Skill.
+
+TASK-007 candidate `3ff3e5b8239d92f4847dcd37625865975761480d` is DONE under `PROTOCOL` assurance and is eligible for Human acceptance under SPEC-006-v2. Independent Tester PASS, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-007.json` are recorded. It introduces working/unreleased version `2.1.0-dev.1`, clear identity semantics, a deterministic exact-allowlist package with source-bound manifest, a bilingual beginner quick start and a bounded LIGHTWEIGHT workflow. It is not installed, published or formally accepted.
 
 ## Release
 

@@ -4,20 +4,20 @@
 {
   "id": "TASK-007",
   "short_name": "clear_lightweight_skill",
-  "status": "DOING",
+  "status": "DONE",
   "spec": {"path": ".ai/specs/SPEC-006-v2.md", "sha256": "2d8f44a7c7442776ef8b0d359655f1b6845efe3ca41c3ff9447d67caa7fdb102"},
   "owner": "manager",
   "depends_on": ["TASK-006"],
   "base": "1daff6e007d419e553529b1fd6112e8c7a4459c8",
-  "candidate": {"kind": "git", "commit": "648ad6671b3538f2452887421e57f386b1e7ce4f"},
+  "candidate": {"kind": "git", "commit": "3ff3e5b8239d92f4847dcd37625865975761480d"},
   "contributors": ["/root/task_007_clear_lightweight_skill_developer"],
   "test_required": true,
   "test_na_reason": null,
-  "test": "PENDING",
-  "review": "PENDING",
+  "test": "PASS",
+  "review": "APPROVE",
   "blockers": [],
   "rework_cycles": 4,
-  "next_action": "Reconcile documentation and tests to frozen SPEC-006-v2, produce a new candidate, then use fresh Tester and Reviewer identities."
+  "next_action": "Await Human candidate-specific acceptance; installation and publication require separate explicit authorization."
 }
 ```
 
@@ -44,10 +44,17 @@ Implement SPEC-006 AC-2 through AC-7 using the minimal remediation design accept
 - DEC-019 independent Tester: FAIL; end-to-end builds still accept repeated-separator Windows/UNC forms, network POSIX paths, Unicode absolute paths and concrete prefixes hidden by trailing placeholders.
 - DEC-019 independent Reviewer: REJECT; placeholder-token removal, ASCII-oriented patterns and `file://` handling leave AC-3/AC-7 unsatisfied. All other SPEC-006 areas were satisfactory.
 - All verdicts against SPEC-006 are stale after DEC-020 approved SPEC-006-v2. The new criteria retain exact allowlist/hash enforcement and maintained sensitive-pattern defenses without claiming exhaustive path-language recognition.
+- SPEC-006-v2 Developer self-checks for candidate `3ff3e5b8239d92f4847dcd37625865975761480d`: completion tests 38/38 PASS; package tests 20/20 PASS; quick validation, compilation and diff check PASS; deterministic archive SHA-256 `74920397033b299f77d16a20aa9f649c6fb0b11045bb826ee4a416d282a51c69`, with 13 exact members.
+- Fresh SPEC-006-v2 Test and Review: PENDING.
+- SPEC-006-v2 independent Tester `/root/task_007_clear_lightweight_skill_v2_tester`: PASS; 38/38 completion and 20/20 package tests, exact-source deterministic builds, manifest/blob comparison, adversarial archive cases and maintained-pattern boundaries passed.
+- SPEC-006-v2 independent Reviewer `/root/task_007_clear_lightweight_skill_v2_reviewer`: APPROVE with no P0/P1/P2 findings and no implementation edits. The frozen Spec's trailing blank-line warning is non-blocking and must not be silently edited.
 
 ## Handoff / evidence
 
 - Developer `/root/task_007_clear_lightweight_skill_developer`: native creation/assignment/result in current collaboration tree; DELIVERED candidate `02d381e2c03a0c3df2e59c77e812afb19442c363`; no installation, push, tag or release.
+- The same Developer's final current-Spec result is candidate `3ff3e5b8239d92f4847dcd37625865975761480d` under SPEC-006-v2.
+- Tester `/root/task_007_clear_lightweight_skill_v2_tester`: native creation/assignment/result in current collaboration tree; PASS on the exact candidate and Spec digest; no edits.
+- Reviewer `/root/task_007_clear_lightweight_skill_v2_reviewer`: native creation/assignment/result in current collaboration tree; APPROVE on the exact candidate and Spec digest; no edits.
 
 ## History / next action
 
@@ -63,3 +70,6 @@ Implement SPEC-006 AC-2 through AC-7 using the minimal remediation design accept
 - 2026-09-08: Same Developer delivered focused candidate `648ad6671b3538f2452887421e57f386b1e7ce4f`, changing only the packager and its tests; moved to VERIFY with fresh identities required.
 - 2026-09-08: DEC-019's one authorized extra cycle ended with fresh Test FAIL and Review REJECT. Task returned to BLOCKED; no further Worker was dispatched.
 - 2026-09-08: Human approved SPEC-006-v2 under DEC-020. Blocker cleared; task returned to DOING for bounded criteria, documentation and test reconciliation.
+- 2026-09-08: Same Developer delivered SPEC-006-v2 candidate `3ff3e5b8239d92f4847dcd37625865975761480d`; moved to VERIFY with fresh identities required.
+- 2026-09-08: Fresh SPEC-006-v2 Tester PASS and Reviewer APPROVE; completion gate pending.
+- 2026-09-08: Manager verified native provenance and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-007.json`; marked DONE under PROTOCOL assurance. Formal Human acceptance, installation and publication remain pending.
