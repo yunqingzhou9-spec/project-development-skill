@@ -1,6 +1,6 @@
 # Project state
 
-- Updated: 2026-09-08T14:57:45+08:00
+- Updated: 2026-09-08T15:02:04+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
@@ -13,7 +13,7 @@
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session by TASK-003 Developer reference `/root/task_003_developer`; historical access was also `VERIFIED` by TASK-001 and TASK-002. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is the Codex desktop session, native collaboration inventory and TASK-003 Developer dispatch/result reference; creation/assignment/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54` accepted by the user's “接受” decision; see DEC-012. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED.
-- Next action: await a new Human goal. No installed-Skill synchronization or publication is authorized.
+- Next action: Human performs a real new-window handoff test against the locally synchronized Skill. If the Human confirms it is effective, await separate publication instructions; no push, tag or release is currently authorized.
 
 ## Active work (index; Task files own detailed state)
 
@@ -26,7 +26,7 @@
 
 ## Blockers and decisions needed
 
-NONE. TASK-004 rework candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54` is formally accepted under DEC-012. Installed-Skill synchronization, tagging and publication remain unauthorized.
+NONE. TASK-004 rework candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54` is formally accepted under DEC-012 and synchronized locally under DEC-013. Publication remains unauthorized pending the Human's real-window verification.
 
 ## Accepted / completed work
 
@@ -37,6 +37,8 @@ TASK-002 is DONE under `PROTOCOL` assurance for accepted 2.0.4 candidate `912ec8
 TASK-003 is DONE and formally accepted under `HUMAN / PROTOCOL` assurance for candidate `a47f0ef62ed25eed2b2241e496435531688ccd17`; independent Tester PASS, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-003.json` are recorded. The repository-local `.venv` contains PyYAML 6.0.3, is ignored and untracked, and passes Skill quick validation plus 28/28 completion tests. DEC-010 promotes this candidate as the Strictly Accepted Baseline without authorizing publication or synchronization.
 
 TASK-004 rework cycle 1 is DONE and formally accepted under `HUMAN / PROTOCOL` assurance for candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54`; fresh independent wrong-workspace forward-test PASS, fresh Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-004-rework-1.json` are recorded. The concise candidate uses short Chinese labels and a linear action sequence while retaining all required identity/state fields and safeguards. Prior unaccepted candidate `8bdb522332aa176ab371aa147f7e28949ae03768` and `.ai/evidence/TASK-004.json` remain historical. DEC-012 promotes the concise candidate as the Strictly Accepted Baseline without authorizing installed-Skill synchronization or publication.
+
+Under DEC-013, the accepted TASK-004 runtime file `references/PROTOCOL.md` was synchronized to the local installed Skill. The installed and repository copies share SHA-256 `b85f8b5dcb118134d6ec279e2cdca41582c8bffbfa8a099d1f098158172be3f1`; the installed Skill passed Skill Creator quick validation and the repository passed 28/28 regression tests. `SKILL.md`, `references/GATE.md` and `scripts/check_completion.py` were already identical and were not changed. Publication remains pending the Human's real-window verification and separate authorization.
 
 ## Release
 
