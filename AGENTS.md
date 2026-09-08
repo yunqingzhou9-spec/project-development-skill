@@ -37,6 +37,8 @@ Only one main Manager coordinates the same project scope. For replacement or rec
 
 ## Commands
 
-- Tests: `python3 scripts/test_completion.py`
-- Skill validation: `python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py .`
+- Create the local environment: `python3 -m venv .venv`
+- Install development requirements: `.venv/bin/python -m pip install -r requirements-dev.txt`
+- Tests: `.venv/bin/python scripts/test_completion.py`
+- Skill validation: `.venv/bin/python ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py .`
 - Completion gate: Python 3 plus the installed governing Skill `scripts/check_completion.py`; see its `references/GATE.md` at completion.

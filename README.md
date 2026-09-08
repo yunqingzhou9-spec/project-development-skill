@@ -130,11 +130,13 @@ $project-development 接管项目 <PROJECT_ID>。请以仓库记录为先，从 
 在仓库根目录运行：
 
 ```sh
-python3 scripts/test_completion.py
-python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py .
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements-dev.txt
+.venv/bin/python scripts/test_completion.py
+.venv/bin/python ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py .
 ```
 
-第二个命令使用 Codex 自带的 Skill 校验器。如果当前 Python 环境缺少 PyYAML，应说明 `quick_validate` 尚未完成，并在隔离环境中安装或提供 PyYAML 后再运行；不要为此自动修改项目依赖。
+后两个命令使用同一个仓库本地虚拟环境；`requirements-dev.txt` 提供 Skill 校验器需要的 PyYAML。
 
 ## 许可
 
