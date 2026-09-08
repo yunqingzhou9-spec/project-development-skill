@@ -1,10 +1,10 @@
 # Project state
 
-- Updated: 2026-09-08T15:45:28+08:00
+- Updated: 2026-09-08T15:47:12+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
-- Coordination: `ACTIVE`; Manager `/root` in Codex task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` synchronized accepted TASK-005 locally and is publishing GitHub `main` under DEC-017; updated 2026-09-08T15:45:28+08:00
+- Coordination: `ACTIVE`; Manager `/root` in Codex task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` completed TASK-005 acceptance, local synchronization and GitHub publication under DEC-017; updated 2026-09-08T15:47:12+08:00
 - Purpose / boundaries: Maintain the Project Development Protocol Skill without granting implementation, acceptance, installation, or publishing authority beyond explicit user decisions.
 - Working candidate: accepted TASK-005 rework cycle 1 candidate `bc70cb75dfa1076765678017cca3a76325f417b6`; later commits contain governance and verification evidence only. Old-Spec candidate `97ab2887bbaa292531239cb4ba83866d7ca1160f` is historical and stale.
 - Strictly Accepted Baseline: version `2.0.4` / Git commit `bc70cb75dfa1076765678017cca3a76325f417b6`; Human acceptance recorded in DEC-017.
@@ -13,7 +13,7 @@
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session by TASK-003 Developer reference `/root/task_003_developer`; historical access was also `VERIFIED` by TASK-001 and TASK-002. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is the Codex desktop session, native collaboration inventory and TASK-003 Developer dispatch/result reference; creation/assignment/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `bc70cb75dfa1076765678017cca3a76325f417b6` accepted by the user's “接受、同步本机并发布” decision; see DEC-017. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED.
-- Next action: refresh origin, verify fast-forward safety, then publish current HEAD to GitHub `main` only under DEC-017.
+- Next action: await further Human instructions. TASK-005 is accepted, synchronized locally and published on GitHub `main`; no new version, tag or GitHub Release was created.
 
 ## Active work (index; Task files own detailed state)
 
@@ -23,11 +23,11 @@
 | `.ai/tasks/TASK-002.md` | DONE | Manager `/root` | Developer delivered; Test N/A; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate | NONE | NONE |
 | `.ai/tasks/TASK-003.md` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-010 | NONE | NONE |
 | `.ai/tasks/TASK-004.md` | DONE | Manager `/root` | Rework cycle 1: Developer delivered; fresh Tester/forward evaluator PASS; fresh Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-012 | NONE | NONE |
-| `.ai/tasks/TASK-005.md` — `agent_names` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted; installed Skill synchronized | NONE | Publish GitHub `main` |
+| `.ai/tasks/TASK-005.md` — `agent_names` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted; installed Skill synchronized; GitHub `main` published | NONE | NONE |
 
 ## Blockers and decisions needed
 
-NONE. TASK-005 candidate `bc70cb75dfa1076765678017cca3a76325f417b6` is formally accepted and synchronized to the installed Skill under DEC-017; GitHub `main` publication is authorized and pending.
+NONE. TASK-005 candidate `bc70cb75dfa1076765678017cca3a76325f417b6` is formally accepted, synchronized to the installed Skill and published on GitHub `main` under DEC-017.
 
 ## Accepted / completed work
 
@@ -41,11 +41,11 @@ TASK-004 rework cycle 1 is DONE and formally accepted under `HUMAN / PROTOCOL` a
 
 Under DEC-013, the accepted TASK-004 runtime file `references/PROTOCOL.md` was synchronized to the local installed Skill. The installed and repository copies share SHA-256 `b85f8b5dcb118134d6ec279e2cdca41582c8bffbfa8a099d1f098158172be3f1`; the installed Skill passed Skill Creator quick validation and the repository passed 28/28 regression tests. `SKILL.md`, `references/GATE.md` and `scripts/check_completion.py` were already identical and were not changed. DEC-014 subsequently published the accepted TASK-004 state and takeover records to GitHub `main` without changing the version or tag.
 
-TASK-005 candidate `bc70cb75dfa1076765678017cca3a76325f417b6` is DONE and formally accepted under `HUMAN / PROTOCOL` assurance. Independent Tester PASS, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-005.json` are recorded. It changes only future-facing naming guidance and templates; current and historical Task/Agent identities remain unchanged. Under DEC-017, installed `references/PROTOCOL.md`, `templates/TASK.template.md` and `templates/PROJECT_STATE.template.md` match the accepted repository bytes and pass Skill validation; the repository passes 28/28 tests. GitHub `main` publication remains pending without changing version `2.0.4` or tag `v2.0.4`.
+TASK-005 candidate `bc70cb75dfa1076765678017cca3a76325f417b6` is DONE and formally accepted under `HUMAN / PROTOCOL` assurance. Independent Tester PASS, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-005.json` are recorded. It changes only future-facing naming guidance and templates; current and historical Task/Agent identities remain unchanged. Under DEC-017, installed `references/PROTOCOL.md`, `templates/TASK.template.md` and `templates/PROJECT_STATE.template.md` match the accepted repository bytes and pass Skill validation; the repository passes 28/28 tests. GitHub `main` was published through commit `7970f4ee3f79db83b2e959e54d506b3857c95781` without changing version `2.0.4` or tag `v2.0.4`.
 
 ## Release
 
-Version 2.0.4 is `RELEASED` to GitHub under DEC-009. Annotated tag `v2.0.4` points to accepted candidate `912ec892395572447462ce7e0924ab149735f794`. Under DEC-011, the accepted TASK-003 repository state was published by explicit main-only refspec: remote `main` advanced from `a9d48275ba888e2f0bd89f037383da216fd54d9b` to the accepted state and its governance receipts. Verification after the receipt push found local and remote `main` equal at `0d499190787b07f565576189e30143d83f7de829`; this final state update contains no deliverable change. Under DEC-014, the accepted TASK-004 handoff prompts and completed takeover records were published by explicit main-only refspec: remote `main` advanced from `a32f23fa8c1014924b95779d5c98640bd6c043ca` to `ee55847babf5a6349ff05477e9b3a6950c96459f`; remote-ref verification confirmed the README update was present in the published commit and `v2.0.4` remained unchanged. No new tag, version or GitHub Release was created. Published repository: `https://github.com/yunqingzhou9-spec/project-development-skill`.
+Version 2.0.4 is `RELEASED` to GitHub under DEC-009. Annotated tag `v2.0.4` points to accepted candidate `912ec892395572447462ce7e0924ab149735f794`. Under DEC-011, the accepted TASK-003 repository state was published by explicit main-only refspec: remote `main` advanced from `a9d48275ba888e2f0bd89f037383da216fd54d9b` to the accepted state and its governance receipts. Verification after the receipt push found local and remote `main` equal at `0d499190787b07f565576189e30143d83f7de829`; this final state update contains no deliverable change. Under DEC-014, the accepted TASK-004 handoff prompts and completed takeover records were published by explicit main-only refspec: remote `main` advanced from `a32f23fa8c1014924b95779d5c98640bd6c043ca` to `ee55847babf5a6349ff05477e9b3a6950c96459f`; remote-ref verification confirmed the README update was present in the published commit and `v2.0.4` remained unchanged. Under DEC-017, accepted TASK-005 naming guidance and its governance evidence were published by explicit main-only refspec: remote `main` advanced from `6741a431a43252d77c7b7f5c997620c90fec36f4` to `7970f4ee3f79db83b2e959e54d506b3857c95781`; post-push verification confirmed the README update and unchanged `v2.0.4` target. No new tag, version or GitHub Release was created. Published repository: `https://github.com/yunqingzhou9-spec/project-development-skill`.
 
 ## Takeover reconciliation (2026-09-08T14:00:23+08:00)
 
