@@ -17,7 +17,7 @@
   "review": "APPROVE",
   "blockers": [],
   "rework_cycles": 4,
-  "next_action": "Await Human candidate-specific acceptance; installation and publication require separate explicit authorization."
+  "next_action": "NONE; Human accepted the exact candidate under DEC-021. Installation and publication remain separately unauthorized."
 }
 ```
 
@@ -73,3 +73,4 @@ Implement SPEC-006 AC-2 through AC-7 using the minimal remediation design accept
 - 2026-09-08: Same Developer delivered SPEC-006-v2 candidate `3ff3e5b8239d92f4847dcd37625865975761480d`; moved to VERIFY with fresh identities required.
 - 2026-09-08: Fresh SPEC-006-v2 Tester PASS and Reviewer APPROVE; completion gate pending.
 - 2026-09-08: Manager verified native provenance and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-007.json`; marked DONE under PROTOCOL assurance. Formal Human acceptance, installation and publication remain pending.
+- 2026-09-08: Human formally accepted exact candidate `3ff3e5b8239d92f4847dcd37625865975761480d` under DEC-021. No installation or publication authority was granted.

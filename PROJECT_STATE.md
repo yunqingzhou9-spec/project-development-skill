@@ -1,19 +1,19 @@
 # Project state
 
-- Updated: 2026-09-08T23:52:20+08:00
+- Updated: 2026-09-08T23:54:56+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
 - Coordination: `ACTIVE`; replacement Manager `/root` in Codex task `01a0815b-dc59-79c0-9813-d9fa81b8d433` verified the supplied checkout, installed Skill and native runtime state; the outgoing Manager task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` is idle and no active Worker is observable; updated 2026-09-08T22:13:32+08:00
 - Purpose / boundaries: Maintain the Project Development Protocol Skill without granting implementation, acceptance, installation, or publishing authority beyond explicit user decisions.
-- Working candidate: TASK-007 SPEC-006-v2 candidate `3ff3e5b8239d92f4847dcd37625865975761480d` for working/unreleased package version `2.1.0-dev.1`; Tester PASS, Reviewer APPROVE and gate CONSISTENT; eligible for Human acceptance but not yet formally accepted. All earlier candidates and verdicts are stale. Strictly accepted baseline remains TASK-005 candidate `bc70cb75dfa1076765678017cca3a76325f417b6` / version `2.0.4`.
-- Strictly Accepted Baseline: version `2.0.4` / Git commit `bc70cb75dfa1076765678017cca3a76325f417b6`; Human acceptance recorded in DEC-017.
+- Working candidate: accepted TASK-007 SPEC-006-v2 candidate `3ff3e5b8239d92f4847dcd37625865975761480d` for working/unreleased package version `2.1.0-dev.1`; later commits contain governance evidence only. All earlier TASK-007 candidates and verdicts are stale.
+- Strictly Accepted Baseline: working/unreleased package version `2.1.0-dev.1` / Git commit `3ff3e5b8239d92f4847dcd37625865975761480d`; Human acceptance recorded in DEC-021. Published release and installed Skill remain version `2.0.4` until separately authorized.
 - Historical documented acceptance: `CHANGELOG.md` entries and tags `v2.0.2`, `v2.0.3`, `v2.0.4`; DEC-009 records the published 2.0.4 release candidate, DEC-010 the accepted validation-environment candidate, DEC-012 the accepted handoff candidate, and current formal acceptance is DEC-017.
 - Active approved Specs: `NONE`; completed `.ai/specs/SPEC-006-v2.md` / SHA-256 `2d8f44a7c7442776ef8b0d359655f1b6845efe3ca41c3ff9447d67caa7fdb102` approved by DEC-020; `.ai/specs/SPEC-006.md` package-path boundary is superseded. Completed earlier Specs remain indexed in their Task records.
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session through TASK-006 and TASK-007 worker results and receipts. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is Codex desktop task `01a0815b-dc59-79c0-9813-d9fa81b8d433` plus current native TASK-006/TASK-007 creation, assignment and result references; delegation/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision remains the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
-- Formal acceptance: authority `HUMAN`; candidate `bc70cb75dfa1076765678017cca3a76325f417b6` accepted by the user's “接受、同步本机并发布” decision; see DEC-017. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED.
-- Next action: Human decides whether to formally accept TASK-007 candidate `3ff3e5b8239d92f4847dcd37625865975761480d`. Installation, push, tag and release remain separately unauthorized.
+- Formal acceptance: authority `HUMAN`; candidate `3ff3e5b8239d92f4847dcd37625865975761480d` accepted by the user's “接受” decision under DEC-021. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED. Installation and publication are not included.
+- Next action: await the Human's next project instruction. Installed-Skill synchronization, push, tag and release remain separately unauthorized.
 
 ## Active work (index; Task files own detailed state)
 
@@ -25,7 +25,7 @@
 | `.ai/tasks/TASK-004.md` | DONE | Manager `/root` | Rework cycle 1: Developer delivered; fresh Tester/forward evaluator PASS; fresh Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-012 | NONE | NONE |
 | `.ai/tasks/TASK-005.md` — `agent_names` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted; installed Skill synchronized; GitHub `main` published | NONE | NONE |
 | `.ai/tasks/TASK-006.md` — Distribution audit | DONE | Manager `/root` | Three audit results; Test N/A; Reviewer APPROVE; gate CONSISTENT | NONE | NONE |
-| `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | DONE | Manager `/root` | Candidate `3ff3e5b`: Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-006 | Await Human acceptance |
+| `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | DONE | Manager `/root` | Candidate `3ff3e5b`: Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted | TASK-006 | NONE |
 
 ## Blockers and decisions needed
 
@@ -47,7 +47,7 @@ TASK-005 candidate `bc70cb75dfa1076765678017cca3a76325f417b6` is DONE and formal
 
 TASK-006 audit candidate `7bb7b50ad6651f9b86937c6fabd6a91b2de92916` is DONE under `PROTOCOL` assurance with Test N/A, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-006.json`. It confirmed the four reported problems while distinguishing source-archive leakage from the clean installed Skill.
 
-TASK-007 candidate `3ff3e5b8239d92f4847dcd37625865975761480d` is DONE under `PROTOCOL` assurance and is eligible for Human acceptance under SPEC-006-v2. Independent Tester PASS, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-007.json` are recorded. It introduces working/unreleased version `2.1.0-dev.1`, clear identity semantics, a deterministic exact-allowlist package with source-bound manifest, a bilingual beginner quick start and a bounded LIGHTWEIGHT workflow. It is not installed, published or formally accepted.
+TASK-007 candidate `3ff3e5b8239d92f4847dcd37625865975761480d` is DONE and formally accepted under `HUMAN / PROTOCOL` assurance for SPEC-006-v2. Independent Tester PASS, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-007.json` are recorded. It introduces working/unreleased version `2.1.0-dev.1`, clear identity semantics, a deterministic exact-allowlist package with source-bound manifest, a bilingual beginner quick start and a bounded LIGHTWEIGHT workflow. It has not been installed or published.
 
 ## Release
 
