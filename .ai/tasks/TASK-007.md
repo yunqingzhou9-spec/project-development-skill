@@ -4,7 +4,7 @@
 {
   "id": "TASK-007",
   "short_name": "clear_lightweight_skill",
-  "status": "BLOCKED",
+  "status": "DOING",
   "spec": {"path": ".ai/specs/SPEC-006.md", "sha256": "d57d15463f71f23aec19bfa600345afd24c7145af5026a80cd067ce18a1f6c1f"},
   "owner": "manager",
   "depends_on": ["TASK-006"],
@@ -15,9 +15,9 @@
   "test_na_reason": null,
   "test": "PASS",
   "review": "REJECT",
-  "blockers": ["Default budget of three failed verification cycles is exhausted; Human decision required before further rework"],
+  "blockers": [],
   "rework_cycles": 3,
-  "next_action": "Ask the Human whether to authorize one additional focused rework cycle to generalize placeholder-aware absolute-path rejection, or narrow the package-path acceptance criterion."
+  "next_action": "Use DEC-019's one-time extra cycle to generalize placeholder-aware absolute-path rejection, produce a new candidate, then use fresh Tester and Reviewer identities."
 }
 ```
 
@@ -54,3 +54,4 @@ Implement SPEC-006 AC-2 through AC-7 using the minimal remediation design accept
 - 2026-09-08: Fresh rework Tester FAIL and Reviewer REJECT. Rework cycle 2 opened; candidate `4fabd192ceb17ea38f5b9311e07d879b8ec0f020` and its verdicts are stale for any later candidate.
 - 2026-09-08: Same Developer delivered rework-cycle-2 candidate `4303e2ed3f4161441caef36dcd738241dc117ef7`; moved to VERIFY with fresh identities required.
 - 2026-09-08: Third failed verification cycle reached the configured rework limit. Task moved to BLOCKED pending a Human decision; no further Worker was dispatched.
+- 2026-09-08: Human authorized one additional focused rework cycle under DEC-019. Blocker cleared; scope remains limited to generalized absolute-path rejection and fresh verification.

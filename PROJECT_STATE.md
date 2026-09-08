@@ -1,6 +1,6 @@
 # Project state
 
-- Updated: 2026-09-08T23:17:30+08:00
+- Updated: 2026-09-08T23:22:12+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
@@ -13,7 +13,7 @@
 - Runtime capabilities / assurance: native task-agent tools are exposed; current collaboration inventory contains only replacement Manager `/root`, and no dispatch was required during takeover, so creation/assignment/result access is `UNKNOWN` for this session. Historical access remains `VERIFIED` by TASK-001 through TASK-005 receipts. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is Codex desktop task `01a0815b-dc59-79c0-9813-d9fa81b8d433`, native collaboration inventory containing only `/root`, and task inventory showing outgoing Manager task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` idle; current-session creation/assignment/result access `UNKNOWN`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `bc70cb75dfa1076765678017cca3a76325f417b6` accepted by the user's “接受、同步本机并发布” decision; see DEC-017. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED.
-- Next action: Human decides whether to authorize one extra focused rework cycle for generalized absolute-path rejection or narrow SPEC-006's package-path criterion. Do not dispatch, install, push, tag or release meanwhile.
+- Next action: execute DEC-019's one additional focused TASK-007 rework cycle for generalized absolute-path rejection, then run fresh independent Test and Review. Do not install, push, tag or release.
 
 ## Active work (index; Task files own detailed state)
 
@@ -25,11 +25,11 @@
 | `.ai/tasks/TASK-004.md` | DONE | Manager `/root` | Rework cycle 1: Developer delivered; fresh Tester/forward evaluator PASS; fresh Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-012 | NONE | NONE |
 | `.ai/tasks/TASK-005.md` — `agent_names` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted; installed Skill synchronized; GitHub `main` published | NONE | NONE |
 | `.ai/tasks/TASK-006.md` — Distribution audit | DONE | Manager `/root` | Three audit results; Test N/A; Reviewer APPROVE; gate CONSISTENT | NONE | NONE |
-| `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | BLOCKED | Manager `/root` | Candidate `4303e2ed`: Tester PASS, Reviewer REJECT; 3-cycle limit reached | TASK-006 | Await Human rework/scope decision |
+| `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | DOING | Manager `/root` | DEC-019 authorizes one extra focused cycle after candidate `4303e2ed` rejection | TASK-006 | Generalize path rejection and reverify |
 
 ## Blockers and decisions needed
 
-TASK-007 is BLOCKED after exhausting the default three failed verification cycles. Candidate `4303e2ed3f4161441caef36dcd738241dc117ef7` passes independent testing but package leak detection still accepts some concrete absolute-path families (`/Library`, `/workspace`, `/mnt`, UNC). Human must authorize an additional focused rework cycle or narrow the criterion. TASK-005 baseline remains accepted and unaffected.
+NONE. TASK-007 exceeded the default three-failure budget, but DEC-019 authorizes one additional focused cycle for the remaining absolute-path rejection gap. TASK-005 baseline remains accepted and unaffected.
 
 ## Accepted / completed work
 
