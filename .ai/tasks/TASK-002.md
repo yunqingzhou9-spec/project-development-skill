@@ -51,4 +51,5 @@ Runtime receipts: `.ai/evidence/TASK-002.json`. Native task identities and creat
 - 2026-09-08: Developer delivered candidate `912ec892395572447462ce7e0924ab149735f794`; independent Reviewer APPROVED the exact candidate.
 - 2026-09-08: Version 2.0.3 completion gate returned `STRUCTURAL / CONSISTENT`; Manager verified native provenance and marked TASK-002 DONE under `PROTOCOL` assurance.
 - 2026-09-08: Human accepted exact candidate `912ec892395572447462ce7e0924ab149735f794` and authorized publication. Local installed Skill synchronized to 2.0.4 and validated; GitHub `main` and annotated tag `v2.0.4` published and verified.
+- 2026-09-08: Planned main-window handoff prepared. TASK-002 remains DONE, all assigned workers are complete, candidate/evidence stay valid, and no Task action should be replayed by the replacement Manager.
 - Next: NONE.
