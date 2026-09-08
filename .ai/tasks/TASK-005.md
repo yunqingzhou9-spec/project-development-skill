@@ -17,7 +17,7 @@
   "review": "APPROVE",
   "blockers": [],
   "rework_cycles": 1,
-  "next_action": "Await Human candidate-specific acceptance; installed-Skill synchronization and publication remain unauthorized"
+  "next_action": "Synchronize accepted runtime-facing files to the installed Skill, validate, then fast-forward GitHub main only under DEC-017"
 }
 ```
 
@@ -57,4 +57,5 @@ Manager created TASK-005 from the Human's explicit optimization request. Candida
 - 2026-09-08T15:37:16+08:00 — Manager assigned fresh independent Tester `/root/task_005_tester` and Reviewer `/root/task_005_reviewer` to the exact candidate and frozen v2 Spec. Their current-project Agent names are deliberately not acceptance evidence for the future-facing behavior.
 - Tester returned PASS and Reviewer returned APPROVE with no findings; both remained independent and made no edits.
 - 2026-09-08T15:40:07+08:00 — Structural gate returned CONSISTENT; Manager verified native provenance, exact candidate scope and implementation authority, then moved Task VERIFY → DONE under PROTOCOL assurance.
-- Next: obtain Human acceptance for the exact candidate. Do not synchronize the installed Skill, push, tag, release or change version without separate authorization.
+- 2026-09-08T15:42:56+08:00 — Human formally accepted exact candidate `bc70cb75dfa1076765678017cca3a76325f417b6` and authorized local installed-Skill synchronization plus GitHub publication under DEC-017. Version `2.0.4` and existing tag `v2.0.4` remain unchanged; no GitHub Release is authorized.
+- Next: synchronize the three runtime-facing files present in the installed Skill, validate repository and installed copies, then fast-forward GitHub `main` only.
