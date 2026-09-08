@@ -3,6 +3,7 @@
 ```json
 {
   "id": "TASK-001",
+  "short_name": "<one_to_four_meaningful_words>",
   "status": "READY",
   "spec": {"path": ".ai/specs/SPEC-001.md", "sha256": "<approved file digest>"},
   "owner": "manager",
@@ -30,7 +31,7 @@
 
 ## Handoff / evidence
 
-<Developer/Test/Review report links, native creation/assignment/result references and candidate identity. Small reports live here. Large reports and completion receipts are linked only when needed.>
+<Developer/Test/Review report links, native creation/assignment/result references and candidate identity. Where the host supports caller-selected names, use readable Worker Agent names such as `task_001_snake_game_developer`, `task_001_snake_game_tester` and `task_001_snake_game_reviewer`; native returned identities remain authoritative. Small reports live here. Large reports and completion receipts are linked only when needed.>
 
 ## History / next action
 

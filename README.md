@@ -105,6 +105,10 @@ $project-development 按已经批准的 Spec 开始执行，使用真实子 Agen
 
 日常使用只需要一个主对话。Manager 在后台协调不同 Task 的 Developer、Tester 和 Reviewer；你不需要在多个窗口之间复制结果。
 
+新 Task 会保留稳定的编号 ID，并增加简短的用途名。平台支持自定义名称时，Worker Agent 使用 `task_<序号>_<用途>_<角色>`，例如 `task_005_agent_names_developer`；这样无需打开 Task 文件就能看出工作内容和角色。用途名只是可读标签，平台返回的原生运行身份仍是权威记录。
+
+New Tasks keep their stable numbered IDs and add a short purpose name. When the host supports caller-selected names, Worker Agents use `task_<sequence>_<purpose>_<role>`, for example `task_005_agent_names_reviewer`, so native runtime lists reveal both the work and the role. The readable name is only a label; the native runtime identity returned by the host remains authoritative.
+
 ## 更换主窗口
 
 提示词只是方便操作的入口，不是交接的权威记录。仓库中的 `AGENTS.md`、`PROJECT_STATE.md`、Task 和 Spec，以及平台可核验的原生运行状态，才是恢复和核对的依据；不要复制旧聊天来代替这些记录。

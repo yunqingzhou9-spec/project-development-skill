@@ -19,8 +19,9 @@ Keep Project ID stable across checkout moves and main-window handoffs. If this v
 
 ## Active work (index; Task files own detailed state)
 
-| Task | State | Owner / runtime ID | Run status / native reference | Depends on | Next action |
+| Task / short name | State | Owner / runtime ID | Run status / native reference | Depends on | Next action |
 |---|---|---|---|---|---|
+| `.ai/tasks/TASK-001.md` — `snake_game` | READY | Manager / NONE | Not dispatched | NONE | Assign `task_001_snake_game_developer` |
 
 ## Blockers and decisions needed
 
