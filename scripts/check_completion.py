@@ -91,7 +91,7 @@ def git_commit(root, value, label):
     return value
 
 
-def lightweight_criteria(root, task, target):
+def lightweight_criteria(root, task, target, task_path):
     require(task.get("profile") == "LIGHTWEIGHT", "Invalid workflow profile")
     require(nonempty(task.get("approval_ref")), "LIGHTWEIGHT requires approval evidence reference")
     require(task.get("depends_on") == [], "LIGHTWEIGHT cannot have dependencies")
@@ -113,24 +113,38 @@ def lightweight_criteria(root, task, target):
     require(task.get("scope_sha256") == scope_hash, "LIGHTWEIGHT scope digest mismatch")
     require(target.get("kind") == "git", "LIGHTWEIGHT requires a Git candidate for bounded rollback/diff checks")
     base = git_commit(root, task.get("base"), "LIGHTWEIGHT base")
+    ancestry = subprocess.run(
+        ["git", "-C", str(root), "merge-base", "--is-ancestor", base, target["commit"]],
+        capture_output=True, check=False, timeout=15,
+    )
+    require(ancestry.returncode == 0, "LIGHTWEIGHT base must be an ancestor of the candidate")
     changed = subprocess.run(
-        ["git", "-C", str(root), "diff", "--numstat", base, target["commit"], "--", *deliverables],
-        capture_output=True, text=True, check=False, timeout=15,
+        ["git", "-C", str(root), "diff", "--no-renames", "--numstat", "-z", base, target["commit"]],
+        capture_output=True, check=False, timeout=15,
     )
     require(changed.returncode == 0, "Cannot inspect LIGHTWEIGHT candidate diff")
     seen, line_count = set(), 0
-    for line in changed.stdout.splitlines():
-        added, deleted, path = line.split("\t", 2)
+    allowed_paths = set(deliverables) | {task_path}
+    for record in changed.stdout.split(b"\0"):
+        if not record:
+            continue
+        fields = record.split(b"\t", 2)
+        require(len(fields) == 3, "Cannot parse LIGHTWEIGHT candidate diff")
+        added, deleted = fields[0].decode("ascii", errors="strict"), fields[1].decode("ascii", errors="strict")
+        path = fields[2].decode("utf-8", errors="surrogateescape")
         require(added.isdigit() and deleted.isdigit(), "Generated/binary deliverables require FULL")
+        require(path in allowed_paths, "LIGHTWEIGHT candidate contains undeclared file: " + path)
         seen.add(path)
-        line_count += int(added) + int(deleted)
-    require(seen == set(deliverables), "LIGHTWEIGHT deliverables must exactly match changed scoped files")
+        if path in deliverables:
+            line_count += int(added) + int(deleted)
+    require(seen - {task_path} == set(deliverables), "LIGHTWEIGHT deliverables must exactly match changed scoped files")
     require(line_count <= 200, "LIGHTWEIGHT deliverables exceed 200 changed lines")
     return scope_hash
 
 
 def check(root, task_path, receipt_path, selected):
-    task = metadata(project_file(root, task_path))
+    task_file = project_file(root, task_path)
+    task = metadata(task_file)
     require(task.get("status") in ("VERIFY", "DONE"), "Task must be VERIFY or DONE")
     require(nonempty(task.get("id")), "Missing task ID")
     require(task.get("blockers") == [], "Blockers must be explicitly empty")
@@ -139,7 +153,8 @@ def check(root, task_path, receipt_path, selected):
     profile = task.get("profile", "FULL")
     require(profile in ("FULL", "LIGHTWEIGHT"), "Invalid workflow profile")
     if profile == "LIGHTWEIGHT":
-        criteria_key, criteria_hash = "scope_sha256", lightweight_criteria(root, task, target)
+        relative_task_path = task_file.relative_to(root).as_posix()
+        criteria_key, criteria_hash = "scope_sha256", lightweight_criteria(root, task, target, relative_task_path)
     else:
         spec_ref = task.get("spec")
         require(isinstance(spec_ref, dict), "Missing Spec reference")

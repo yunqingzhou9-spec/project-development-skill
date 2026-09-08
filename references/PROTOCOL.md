@@ -67,7 +67,7 @@ For eligible `LIGHTWEIGHT`, one Task may contain `approval_ref`, the complete ap
 
 Use two meaningful checkpoints rather than a commit for every status change:
 
-1. **Candidate checkpoint:** normally one commit containing the deliverables and completed combined Task handoff. It freezes the candidate reviewed by independent workers.
+1. **Candidate checkpoint:** normally one commit containing only the exact declared deliverables and, optionally, the current combined Task handoff. It freezes the candidate reviewed by independent workers. The completion gate rejects every other changed path in the complete base-to-candidate diff, requires the base to be an ancestor, and excludes only that current Task path from the five-file/200-line deliverable limits.
 2. **Verification checkpoint:** normally one later governance commit containing final verdicts, receipt/state summary and next action.
 
 Commit an intermediate governance state only for handoff, interruption, blocker, conflict, scope revision or writer coordination. Every deliverable change creates a new candidate and makes prior Test/Review verdicts stale. Human authority over formal acceptance, installation and publication is identical in both profiles.

@@ -217,6 +217,23 @@ class CompletionTests(unittest.TestCase):
             item["target"] = copy.deepcopy(self.target)
         return commit
 
+    def advance_lightweight_candidate(self, changes):
+        for path, content in changes.items():
+            target = self.root / path
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(content, encoding="utf-8")
+        subprocess.run(["git", "-C", str(self.root), "add", "--", *changes], check=True)
+        subprocess.run(
+            ["git", "-C", str(self.root), "-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid", "-c", "commit.gpgsign=false", "commit", "-qm", "advance"],
+            check=True,
+        )
+        commit = subprocess.run(["git", "-C", str(self.root), "rev-parse", "HEAD"], check=True, capture_output=True, text=True).stdout.strip()
+        self.target = {"kind": "git", "commit": commit}
+        self.task["candidate"] = self.target
+        for item in self.receipts["results"]:
+            item["target"] = copy.deepcopy(self.target)
+        return commit
+
     def test_lightweight_valid_without_spec_or_tester(self):
         commit = self.make_lightweight()
         result = self.run_gate("git:" + commit)
@@ -239,6 +256,46 @@ class CompletionTests(unittest.TestCase):
 
     def test_lightweight_over_200_lines_blocks(self):
         commit = self.make_lightweight("".join("line %d\n" % number for number in range(201)))
+        with self.assertRaises(gate.GateError):
+            self.run_gate("git:" + commit)
+
+    def test_lightweight_rejects_undeclared_candidate_file(self):
+        self.make_lightweight()
+        commit = self.advance_lightweight_candidate({"hidden.txt": "undeclared\n"})
+        with self.assertRaises(gate.GateError):
+            self.run_gate("git:" + commit)
+
+    def test_lightweight_cannot_hide_sixth_file(self):
+        self.make_lightweight()
+        extras = {"extra-%d.txt" % number: "extra\n" for number in range(1, 6)}
+        commit = self.advance_lightweight_candidate(extras)
+        self.task["scope"]["deliverables"] = ["result.txt"] + sorted(extras)[:4]
+        self.task["scope_sha256"] = gate.canonical_digest(self.task["scope"])
+        for item in self.receipts["results"]:
+            item["scope_sha256"] = self.task["scope_sha256"]
+        with self.assertRaises(gate.GateError):
+            self.run_gate("git:" + commit)
+
+    def test_lightweight_cannot_hide_lines_in_undeclared_file(self):
+        self.make_lightweight()
+        hidden = "".join("hidden %d\n" % number for number in range(250))
+        commit = self.advance_lightweight_candidate({"hidden.txt": hidden})
+        with self.assertRaises(gate.GateError):
+            self.run_gate("git:" + commit)
+
+    def test_lightweight_allows_only_current_task_beside_deliverables(self):
+        self.make_lightweight()
+        commit = self.advance_lightweight_candidate({"task.md": "combined candidate checkpoint\n"})
+        self.assertEqual(self.run_gate("git:" + commit)["profile"], "LIGHTWEIGHT")
+
+    def test_lightweight_base_must_be_ancestor(self):
+        commit = self.make_lightweight()
+        tree = subprocess.run(["git", "-C", str(self.root), "rev-parse", commit + "^{tree}"], check=True, capture_output=True, text=True).stdout.strip()
+        unrelated = subprocess.run(
+            ["git", "-C", str(self.root), "-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid", "-c", "commit.gpgsign=false", "commit-tree", tree],
+            input="unrelated\n", check=True, capture_output=True, text=True,
+        ).stdout.strip()
+        self.task["base"] = unrelated
         with self.assertRaises(gate.GateError):
             self.run_gate("git:" + commit)
 

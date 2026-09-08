@@ -41,7 +41,7 @@ python3 <skill>/scripts/check_completion.py --repo <project> \
   --scope-digest .ai/tasks/TASK-001.md
 ```
 
-The checker recomputes canonical scope JSON, requires every fixed eligibility assertion to be true, limits the enumerated Git diff to five files and 200 added/deleted text lines, and rejects binary/generated candidates. It cannot determine whether risks or deliverables were omitted; the Manager and independent Reviewer must assess completeness and immediately escalate uncertain/ineligible work to `FULL`.
+The checker recomputes canonical scope JSON, requires every fixed eligibility assertion to be true, verifies that the base is an ancestor, and inspects the complete base-to-candidate diff. Every changed path must be an exact declared deliverable except that the current Task file may also be present as the combined handoff. The Task path does not count toward the maximum five deliverable files or 200 added/deleted deliverable text lines. Extra paths and binary/generated candidates are rejected. The checker cannot determine whether risks were omitted; the Manager and independent Reviewer must assess completeness and immediately escalate uncertain/ineligible work to `FULL`.
 
 ## Runtime receipt format
 

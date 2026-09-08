@@ -7,6 +7,7 @@ import tempfile
 import unittest
 import zipfile
 from pathlib import Path
+from unittest import mock
 
 
 SCRIPT = Path(__file__).with_name("package_skill.py")
@@ -50,6 +51,28 @@ class PackageTests(unittest.TestCase):
         self.assertRegex(package.package_version(skill), r"^\d+\.\d+\.\d+-dev\.\d+$")
         first_title = (REPO / "references/PROTOCOL.md").read_text(encoding="utf-8").splitlines()[0]
         self.assertNotRegex(first_title, r"\d+\.\d+\.\d+")
+
+    def test_version_parser_accepts_semver_prerelease_and_block_scalar(self):
+        data = b'---\ndescription: >-\n  human readable text\nmetadata:\n  version: "2.1.0-dev.1"\n---\n# Body\n'
+        self.assertEqual(package.package_version(data), "2.1.0-dev.1")
+
+    def test_version_parser_rejects_missing_wrong_or_duplicate_keys(self):
+        invalid = (
+            b'---\nname: example\n---\nversion: "2.1.0"\n',
+            b'---\nversion: "2.1.0"\nmetadata:\n  name: x\n---\n',
+            b'---\nmetadata:\n  version: "2.1.0"\n  version: "2.1.1"\n---\n',
+            b'---\nmetadata:\n  nested:\n    version: "2.1.0"\n---\n',
+            b'---\nmetadata:\n  version: "2.1.0"\nmetadata:\n  name: duplicate\n---\n',
+        )
+        for data in invalid:
+            with self.subTest(data=data), self.assertRaises(package.PackageError):
+                package.package_version(data)
+
+    def test_version_parser_rejects_invalid_semver(self):
+        for version in ("2.1", "02.1.0", "2.1.0-dev.01", "2.1.0+bad value"):
+            data = ("---\nmetadata:\n  version: \"%s\"\n---\n" % version).encode()
+            with self.subTest(version=version), self.assertRaises(package.PackageError):
+                package.package_version(data)
 
     def test_deterministic_build_and_exact_allowlist(self):
         first, second = self.build("one.zip"), self.build("two.zip")
@@ -112,6 +135,30 @@ class PackageTests(unittest.TestCase):
         leak_commit = self.git("rev-parse", "HEAD")
         with self.assertRaises(package.PackageError):
             package.build(self.root, leak_commit, self.root / "leak.zip")
+
+    def test_rejects_codex_uuidv7_and_local_system_paths(self):
+        leaks = (
+            "task 01a0815b-dc59-79c0-9813-d9fa81b8d433\n",
+            "cache /private/tmp/pdp/archive.zip\n",
+            "account /root/.codex/state\n",
+            "tool /opt/company/bin/tool\n",
+        )
+        for leak in leaks:
+            with self.subTest(leak=leak):
+                with self.assertRaises(package.PackageError):
+                    package.reject_leaks("fixture", leak.encode())
+
+    def test_allows_documented_path_placeholders(self):
+        package.reject_leaks("fixture", b"<ABSOLUTE_LOCAL_REPOSITORY_PATH> /path/to/project <FULL_SOURCE_COMMIT>")
+
+    def test_failed_verification_does_not_replace_existing_archive(self):
+        output = self.root / "atomic.zip"
+        output.write_bytes(b"previous verified artifact")
+        with mock.patch.object(package, "verify", side_effect=package.PackageError("fixture rejection")):
+            with self.assertRaises(package.PackageError):
+                package.build(self.root, self.commit, output)
+        self.assertEqual(output.read_bytes(), b"previous verified artifact")
+        self.assertEqual(list(self.root.glob(".atomic.zip.*.tmp")), [])
 
     def test_requires_full_source_commit(self):
         with self.assertRaises(package.PackageError):

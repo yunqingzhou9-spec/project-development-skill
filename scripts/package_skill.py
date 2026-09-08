@@ -4,9 +4,11 @@
 import argparse
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
+import tempfile
 import zipfile
 from pathlib import Path, PurePosixPath
 
@@ -30,12 +32,17 @@ RUNTIME_FILES = (
     "templates/TASK.template.md",
 )
 ZIP_TIME = (1980, 1, 1, 0, 0, 0)
-VERSION_RE = re.compile(r'^\s*version:\s*["\']([^"\']+)["\']\s*$', re.M)
 FULL_COMMIT_RE = re.compile(r"[0-9a-f]{40}|[0-9a-f]{64}")
+SEMVER_RE = re.compile(
+    r"^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)"
+    r"(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?"
+    r"(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$"
+)
 CONCRETE_LEAKS = (
-    ("absolute home path", re.compile(rb"/(?:Users|home)/[^/\s]+/")),
+    ("absolute home path", re.compile(rb"(?<![A-Za-z0-9_.-])/(?:Users|home)/[^/\s<>]+(?:/[^\s<>]*)?")),
+    ("local system path", re.compile(rb"(?<![A-Za-z0-9_.-])/(?:private/(?:tmp|var)|tmp|root|opt)(?:/[^\s<>]*)?")),
     ("Windows user path", re.compile(rb"[A-Za-z]:\\\\Users\\\\[^\\\s]+\\\\")),
-    ("native runtime UUID", re.compile(rb"\b[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\b", re.I)),
+    ("native runtime UUID", re.compile(rb"\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b", re.I)),
     ("private key", re.compile(rb"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----")),
 )
 
@@ -78,9 +85,57 @@ def source_file(repo, commit, path):
 
 
 def package_version(skill_bytes):
-    match = VERSION_RE.search(skill_bytes.decode("utf-8"))
-    require(match is not None, "SKILL.md must contain quoted metadata.version")
-    return match.group(1)
+    text = skill_bytes.decode("utf-8")
+    lines = text.splitlines()
+    require(lines and lines[0] == "---", "SKILL.md must start with YAML frontmatter")
+    try:
+        end = lines.index("---", 1)
+    except ValueError:
+        raise PackageError("SKILL.md frontmatter is not closed")
+    stack = []
+    version_values = []
+    metadata_count = 0
+    block_scalar_indent = None
+    key_pattern = re.compile(r"^( *)([A-Za-z_][A-Za-z0-9_-]*)\s*:\s*(.*?)\s*$")
+    for line in lines[1:end]:
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
+        leading = len(line) - len(line.lstrip(" "))
+        if block_scalar_indent is not None:
+            if leading > block_scalar_indent:
+                continue
+            block_scalar_indent = None
+        require("\t" not in line, "Tabs are not allowed in SKILL.md frontmatter")
+        match = key_pattern.match(line)
+        require(match is not None, "Unsupported YAML in SKILL.md frontmatter")
+        indent, key, scalar = len(match.group(1)), match.group(2), match.group(3)
+        while stack and stack[-1][0] >= indent:
+            stack.pop()
+        path = [item[1] for item in stack] + [key]
+        if path == ["metadata"]:
+            metadata_count += 1
+        if key == "version":
+            require(path == ["metadata", "version"], "version must be metadata.version in SKILL.md frontmatter")
+            version_values.append(scalar)
+        if not scalar or scalar.startswith("#"):
+            stack.append((indent, key))
+        elif scalar in ("|", "|-", "|+", ">", ">-", ">+"):
+            block_scalar_indent = indent
+    require(metadata_count == 1, "SKILL.md must contain exactly one metadata mapping")
+    require(len(version_values) == 1, "SKILL.md must contain exactly one metadata.version")
+    scalar = version_values[0]
+    quoted = re.fullmatch(r'(["\'])([^"\']+)\1(?:\s+#.*)?', scalar)
+    if quoted:
+        version = quoted.group(2)
+    else:
+        require("#" not in scalar and not re.search(r"\s", scalar), "metadata.version must be one scalar")
+        version = scalar
+    match = SEMVER_RE.fullmatch(version)
+    require(match is not None, "metadata.version must be valid SemVer")
+    prerelease = match.group(4)
+    if prerelease:
+        require(all(not (part.isdigit() and len(part) > 1 and part.startswith("0")) for part in prerelease.split(".")), "SemVer numeric prerelease identifiers cannot have leading zeroes")
+    return version
 
 
 def reject_leaks(path, data):
@@ -125,11 +180,20 @@ def build(repo, source, output):
     manifest = canonical_manifest(version, commit, payload)
     output = Path(output).resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
-    with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
-        archive.writestr(zip_info(ARCHIVE_ROOT + "/" + MANIFEST_PATH), manifest, compresslevel=9)
-        for path in sorted(payload):
-            archive.writestr(zip_info(ARCHIVE_ROOT + "/" + path), payload[path], compresslevel=9)
-    verify(repo, source, output)
+    temporary = tempfile.NamedTemporaryFile(prefix="." + output.name + ".", suffix=".tmp", dir=output.parent, delete=False)
+    temporary_path = Path(temporary.name)
+    temporary.close()
+    try:
+        with zipfile.ZipFile(temporary_path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+            archive.writestr(zip_info(ARCHIVE_ROOT + "/" + MANIFEST_PATH), manifest, compresslevel=9)
+            for path in sorted(payload):
+                archive.writestr(zip_info(ARCHIVE_ROOT + "/" + path), payload[path], compresslevel=9)
+        verify(repo, source, temporary_path)
+        temporary_path.chmod(0o644)
+        os.replace(temporary_path, output)
+    finally:
+        if temporary_path.exists():
+            temporary_path.unlink()
     return {"archive": str(output), "sha256": sha256(output.read_bytes()), "source_commit": commit, "version": version}
 
 
