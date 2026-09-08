@@ -16,7 +16,7 @@
   "review": "APPROVE",
   "blockers": [],
   "rework_cycles": 1,
-  "next_action": "NONE; rework candidate complete under PROTOCOL assurance; formal Human acceptance remains separate"
+  "next_action": "NONE; Human formally accepted the exact rework candidate under DEC-012; synchronization and publication remain unauthorized"
 }
 ```
 
@@ -60,4 +60,5 @@ Manager created TASK-004 from the Human's explicit implementation request. Devel
 - 2026-09-08T14:53:12+08:00 — Manager reassigned the same independent Tester/forward evaluator `/root/task_004_tester` and Reviewer `/root/task_004_reviewer` within TASK-004 to the new candidate; both prior verdicts remain stale.
 - Fresh Tester returned PASS and Reviewer returned APPROVE with no findings for rework candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54`. Prior candidate receipt `.ai/evidence/TASK-004.json` remains historical; current receipt is `.ai/evidence/TASK-004-rework-1.json`.
 - 2026-09-08T14:56:21+08:00 — Structural gate returned CONSISTENT; Manager verified native provenance, exact candidate scope and authority, then moved Task VERIFY → DONE under PROTOCOL assurance.
-- Next: NONE. Formal Human acceptance, installed-Skill synchronization and publication remain separate decisions.
+- 2026-09-08T14:57:45+08:00 — Human formally accepted exact rework candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54`; Manager rechecked unchanged deliverable blobs, frozen Spec digest and `STRUCTURAL / CONSISTENT` gate, then recorded DEC-012 and promoted the Strictly Accepted Baseline. No installed-Skill synchronization or publication was authorized.
+- Next: NONE.
