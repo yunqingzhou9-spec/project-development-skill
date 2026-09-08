@@ -1,10 +1,10 @@
 # Project state
 
-- Updated: 2026-09-08T13:52:09+08:00
+- Updated: 2026-09-08T13:53:03+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
-- Coordination: `HANDOFF_PREPARING`; Manager `/root` in the current Codex task; new dispatch stopped; updated 2026-09-08T13:52:09+08:00
+- Coordination: `READY_FOR_TAKEOVER`; outgoing Manager `/root` has stopped new dispatch and now ceases coordination; updated 2026-09-08T13:53:03+08:00
 - Purpose / boundaries: Maintain the Project Development Protocol Skill without granting implementation, acceptance, installation, or publishing authority beyond explicit user decisions.
 - Working candidate: accepted deliverable candidate `912ec892395572447462ce7e0924ab149735f794`; later commits contain governance and verification evidence only.
 - Strictly Accepted Baseline: version `2.0.4` / Git commit `912ec892395572447462ce7e0924ab149735f794`; Human acceptance recorded in DEC-009.
@@ -13,7 +13,7 @@
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` by TASK-001 and TASK-002 Developer/Tester/Reviewer records; both completed under their recorded governing versions at `PROTOCOL` assurance with separate `STRUCTURAL / CONSISTENT` gate results; protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted evidence is the Codex desktop session and native collaboration task/result provenance; delegation/result access `VERIFIED`; protected acceptance `MISSING`; adaptation decision `NONE`.
 - Formal acceptance: authority `HUMAN`; candidate `912ec892395572447462ce7e0924ab149735f794` accepted by the user's “接受候选并发布” decision; see DEC-009.
-- Next action: finish the planned handoff record, mark coordination `READY_FOR_TAKEOVER`, and cease coordination. Replacement Manager then verifies this snapshot and marks itself `ACTIVE`; there is no pending implementation Task.
+- Next action: replacement Manager verifies this snapshot and actual repository/native state, then marks coordination `ACTIVE`; there is no pending implementation Task, so await a new Human goal.
 
 ## Active work (index; Task files own detailed state)
 
@@ -43,9 +43,11 @@ Version 2.0.4 is `RELEASED` to GitHub under DEC-009. Annotated tag `v2.0.4` poin
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
 - Branch: `main`
 - Repository HEAD before handoff-state commits: `a9d48275ba888e2f0bd89f037383da216fd54d9b`
+- Handoff-preparing commit: `1f9c707fc3e0397c09f3b228261848dd7f41a6da`; the final READY_FOR_TAKEOVER state is the following governance-only commit, whose actual hash the replacement Manager must verify locally.
 - Upstream before handoff-state commits: `origin/main` at `a9d48275ba888e2f0bd89f037383da216fd54d9b`
 - Accepted candidate / release tag: `912ec892395572447462ce7e0924ab149735f794` / `v2.0.4`
 - Dirty or untracked work before handoff preparation: `NONE`
+- Handoff working tree: clean after the HANDOFF_PREPARING commit; only this final READY_FOR_TAKEOVER state update is being committed. The local branch will be two governance commits ahead of `origin/main`; neither commit is authorized for automatic push.
 - Active Worker Agents: `NONE`; `/root/task_002_developer` and `/root/task_002_reviewer` are completed, and earlier recorded workers are completed or no longer live.
 - Active Tasks: `NONE`; TASK-001 and TASK-002 are DONE with no next action.
 - Blockers: `NONE`
