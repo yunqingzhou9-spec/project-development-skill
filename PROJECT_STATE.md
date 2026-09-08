@@ -1,6 +1,6 @@
 # Project state
 
-- Updated: 2026-09-08T22:13:32+08:00
+- Updated: 2026-09-08T22:26:56+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
@@ -9,11 +9,11 @@
 - Working candidate: accepted TASK-005 rework cycle 1 candidate `bc70cb75dfa1076765678017cca3a76325f417b6`; later commits contain governance and verification evidence only. Old-Spec candidate `97ab2887bbaa292531239cb4ba83866d7ca1160f` is historical and stale.
 - Strictly Accepted Baseline: version `2.0.4` / Git commit `bc70cb75dfa1076765678017cca3a76325f417b6`; Human acceptance recorded in DEC-017.
 - Historical documented acceptance: `CHANGELOG.md` entries and tags `v2.0.2`, `v2.0.3`, `v2.0.4`; DEC-009 records the published 2.0.4 release candidate, DEC-010 the accepted validation-environment candidate, DEC-012 the accepted handoff candidate, and current formal acceptance is DEC-017.
-- Active approved Specs: `NONE`; completed `.ai/specs/SPEC-005-v2.md` / SHA-256 `9d90803a4900e56a21c5e6fe281644491e79d217126a5e08595e31f586438395`; `.ai/specs/SPEC-005.md` is superseded by DEC-016. Completed `.ai/specs/SPEC-004.md` / SHA-256 `b7365083d284ce1ec1cc63f3094215e00cfc4c6ed9eaa28ca2cf23e7b7fb9ee6`; completed `.ai/specs/SPEC-003.md` / SHA-256 `1fc359f0227c1f44d49c24a13513168aaf0d7e36757838602616ec5c98245fbd`; completed `.ai/specs/SPEC-002-v2.md` / SHA-256 `d1c2b2c4176297f093dedc5bb090d2374c3475e018dd9614c9f6ce02bcd4f99b`; `.ai/specs/SPEC-002.md` is superseded by DEC-008. Completed `.ai/specs/SPEC-001.md` / SHA-256 `9650653205f6e1141c5774b6819aaa7e3a7cc2c3673ed5c937659aa98867e590`.
+- Active approved Specs: `.ai/specs/SPEC-006.md` / SHA-256 `d57d15463f71f23aec19bfa600345afd24c7145af5026a80cd067ce18a1f6c1f` approved by DEC-018; completed `.ai/specs/SPEC-005-v2.md` / SHA-256 `9d90803a4900e56a21c5e6fe281644491e79d217126a5e08595e31f586438395`; `.ai/specs/SPEC-005.md` is superseded by DEC-016. Earlier completed Specs remain indexed in their Task records.
 - Runtime capabilities / assurance: native task-agent tools are exposed; current collaboration inventory contains only replacement Manager `/root`, and no dispatch was required during takeover, so creation/assignment/result access is `UNKNOWN` for this session. Historical access remains `VERIFIED` by TASK-001 through TASK-005 receipts. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is Codex desktop task `01a0815b-dc59-79c0-9813-d9fa81b8d433`, native collaboration inventory containing only `/root`, and task inventory showing outgoing Manager task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` idle; current-session creation/assignment/result access `UNKNOWN`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `bc70cb75dfa1076765678017cca3a76325f417b6` accepted by the user's “接受、同步本机并发布” decision; see DEC-017. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED.
-- Next action: active replacement Manager awaits the Human's next project instruction. Do not replay completed Tasks or publish local governance commits without separate authorization.
+- Next action: complete TASK-006 audit and independent review, then execute TASK-007 against the frozen SPEC-006. Do not install, push, tag or release without separate authorization.
 
 ## Active work (index; Task files own detailed state)
 
@@ -24,6 +24,8 @@
 | `.ai/tasks/TASK-003.md` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-010 | NONE | NONE |
 | `.ai/tasks/TASK-004.md` | DONE | Manager `/root` | Rework cycle 1: Developer delivered; fresh Tester/forward evaluator PASS; fresh Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-012 | NONE | NONE |
 | `.ai/tasks/TASK-005.md` — `agent_names` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted; installed Skill synchronized; GitHub `main` published | NONE | NONE |
+| `.ai/tasks/TASK-006.md` — Distribution audit | VERIFY | Manager `/root` | Three read-only audit results delivered; Test N/A; Review pending | NONE | Obtain independent Reviewer verdict |
+| `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | READY | Manager `/root` | Not dispatched | TASK-006 | Wait for audited remediation design |
 
 ## Blockers and decisions needed
 
