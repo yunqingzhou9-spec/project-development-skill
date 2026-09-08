@@ -1,0 +1,56 @@
+{
+  "manager_id": "/root",
+  "agents": [
+    {
+      "id": "/root/task_003_developer",
+      "role": "developer",
+      "task_id": "TASK-003",
+      "create_ref": "collaboration.spawn_agent:/root/task_003_developer",
+      "assignment_ref": "TASK-003 Developer assignment at 2026-09-08T14:07:29+08:00"
+    },
+    {
+      "id": "/root/task_003_tester",
+      "role": "tester",
+      "task_id": "TASK-003",
+      "create_ref": "collaboration.spawn_agent:/root/task_003_tester",
+      "assignment_ref": "TASK-003 Tester assignment at 2026-09-08T14:11:11+08:00"
+    },
+    {
+      "id": "/root/task_003_reviewer",
+      "role": "reviewer",
+      "task_id": "TASK-003",
+      "create_ref": "collaboration.spawn_agent:/root/task_003_reviewer",
+      "assignment_ref": "TASK-003 Reviewer assignment at 2026-09-08T14:11:11+08:00"
+    }
+  ],
+  "results": [
+    {
+      "agent_id": "/root/task_003_developer",
+      "task_id": "TASK-003",
+      "spec_sha256": "1fc359f0227c1f44d49c24a13513168aaf0d7e36757838602616ec5c98245fbd",
+      "target": {"kind": "git", "commit": "a47f0ef62ed25eed2b2241e496435531688ccd17"},
+      "verdict": "DELIVERED",
+      "result_ref": "collaboration.wait_agent:final:/root/task_003_developer",
+      "report_ref": ".ai/tasks/TASK-003.md#verification--findings"
+    },
+    {
+      "agent_id": "/root/task_003_tester",
+      "task_id": "TASK-003",
+      "spec_sha256": "1fc359f0227c1f44d49c24a13513168aaf0d7e36757838602616ec5c98245fbd",
+      "target": {"kind": "git", "commit": "a47f0ef62ed25eed2b2241e496435531688ccd17"},
+      "verdict": "PASS",
+      "result_ref": "collaboration.wait_agent:final:/root/task_003_tester",
+      "report_ref": ".ai/tasks/TASK-003.md#verification--findings"
+    },
+    {
+      "agent_id": "/root/task_003_reviewer",
+      "task_id": "TASK-003",
+      "spec_sha256": "1fc359f0227c1f44d49c24a13513168aaf0d7e36757838602616ec5c98245fbd",
+      "target": {"kind": "git", "commit": "a47f0ef62ed25eed2b2241e496435531688ccd17"},
+      "verdict": "APPROVE",
+      "result_ref": "collaboration.wait_agent:final:/root/task_003_reviewer",
+      "report_ref": ".ai/tasks/TASK-003.md#verification--findings",
+      "no_implementation_edits": true
+    }
+  ]
+}
