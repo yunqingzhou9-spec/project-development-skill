@@ -8,7 +8,7 @@ If the skill is unavailable, report it; do not invent its rules or claim indepen
 
 ## Project
 
-- Project ID / name: `<stable ID> / <human-facing name>`
+- Project ID / name: `<reuse authoritative or user-provided ID; otherwise Skill-generated readable unique ID> / <human-facing name>`
 - Repository identity / scope: `<remote or NONE> / <relative scope path>`
 - Current local checkout: `<host-specific path; may change>`
 - Purpose / scope / exclusions: <fill>

@@ -1,7 +1,7 @@
 # Project state
 
 - Updated: <ISO time with timezone>
-- Project ID / name: <stable unique ID> / <human-facing name>
+- Project ID / name: <same stable ID as AGENTS; reuse authoritative or user-provided ID, otherwise Skill-generated readable unique ID> / <human-facing name>
 - Repository identity / scope path: <remote or NONE> / <relative path such as . or apps/snake>
 - Local checkout: <current host path; not the stable identity>
 - Coordination: <ACTIVE / HANDOFF_PREPARING / READY_FOR_TAKEOVER / RECOVERY; Manager/session reference; updated time>
