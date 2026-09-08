@@ -1,0 +1,56 @@
+{
+  "manager_id": "01a0815b-dc59-79c0-9813-d9fa81b8d433",
+  "agents": [
+    {
+      "id": "/root/task_008_local_skill_sync_developer",
+      "role": "developer",
+      "task_id": "TASK-008",
+      "create_ref": "native collaboration spawn result for /root/task_008_local_skill_sync_developer",
+      "assignment_ref": "TASK-008 exact-source local synchronization assignment under SPEC-007"
+    },
+    {
+      "id": "/root/task_008_local_skill_sync_tester",
+      "role": "tester",
+      "task_id": "TASK-008",
+      "create_ref": "native collaboration spawn result for /root/task_008_local_skill_sync_tester",
+      "assignment_ref": "fresh independent installed-state Test assignment under SPEC-007"
+    },
+    {
+      "id": "/root/task_008_local_skill_sync_reviewer",
+      "role": "reviewer",
+      "task_id": "TASK-008",
+      "create_ref": "native collaboration spawn result for /root/task_008_local_skill_sync_reviewer",
+      "assignment_ref": "fresh independent installed-state Review assignment under SPEC-007"
+    }
+  ],
+  "results": [
+    {
+      "agent_id": "/root/task_008_local_skill_sync_developer",
+      "task_id": "TASK-008",
+      "spec_sha256": "4e9f04950791572dfca380a4e722fcbd31daa3d26f87a41092fb5d0225bfcc77",
+      "target": {"kind": "git", "commit": "3ff3e5b8239d92f4847dcd37625865975761480d"},
+      "verdict": "DELIVERED",
+      "result_ref": "native final result from TASK-008 Developer",
+      "report_ref": ".ai/tasks/TASK-008.md#verification--findings"
+    },
+    {
+      "agent_id": "/root/task_008_local_skill_sync_tester",
+      "task_id": "TASK-008",
+      "spec_sha256": "4e9f04950791572dfca380a4e722fcbd31daa3d26f87a41092fb5d0225bfcc77",
+      "target": {"kind": "git", "commit": "3ff3e5b8239d92f4847dcd37625865975761480d"},
+      "verdict": "PASS",
+      "result_ref": "native final result from fresh TASK-008 Tester",
+      "report_ref": ".ai/tasks/TASK-008.md#verification--findings"
+    },
+    {
+      "agent_id": "/root/task_008_local_skill_sync_reviewer",
+      "task_id": "TASK-008",
+      "spec_sha256": "4e9f04950791572dfca380a4e722fcbd31daa3d26f87a41092fb5d0225bfcc77",
+      "target": {"kind": "git", "commit": "3ff3e5b8239d92f4847dcd37625865975761480d"},
+      "verdict": "APPROVE",
+      "result_ref": "native final result from fresh TASK-008 Reviewer",
+      "report_ref": ".ai/tasks/TASK-008.md#verification--findings",
+      "no_implementation_edits": true
+    }
+  ]
+}

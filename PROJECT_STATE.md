@@ -1,6 +1,6 @@
 # Project state
 
-- Updated: 2026-09-09T00:00:00+08:00
+- Updated: 2026-09-09T00:15:49+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
@@ -9,11 +9,11 @@
 - Working candidate: accepted TASK-007 SPEC-006-v2 candidate `3ff3e5b8239d92f4847dcd37625865975761480d` for working/unreleased package version `2.1.0-dev.1`; later commits contain governance evidence only. All earlier TASK-007 candidates and verdicts are stale.
 - Strictly Accepted Baseline: working/unreleased package version `2.1.0-dev.1` / Git commit `3ff3e5b8239d92f4847dcd37625865975761480d`; Human acceptance recorded in DEC-021. Published release and installed Skill remain version `2.0.4` until separately authorized.
 - Historical documented acceptance: `CHANGELOG.md` entries and tags `v2.0.2`, `v2.0.3`, `v2.0.4`; DEC-009 records the published 2.0.4 release candidate, DEC-010 the accepted validation-environment candidate, DEC-012 the accepted handoff candidate, and current formal acceptance is DEC-017.
-- Active approved Specs: `.ai/specs/SPEC-007.md` / SHA-256 `4e9f04950791572dfca380a4e722fcbd31daa3d26f87a41092fb5d0225bfcc77` approved by DEC-022. Completed `.ai/specs/SPEC-006-v2.md` / SHA-256 `2d8f44a7c7442776ef8b0d359655f1b6845efe3ca41c3ff9447d67caa7fdb102` was approved by DEC-020; `.ai/specs/SPEC-006.md` package-path boundary is superseded. Completed earlier Specs remain indexed in their Task records.
+- Active approved Specs: `NONE`; completed `.ai/specs/SPEC-007.md` / SHA-256 `4e9f04950791572dfca380a4e722fcbd31daa3d26f87a41092fb5d0225bfcc77` was approved by DEC-022. Completed `.ai/specs/SPEC-006-v2.md` / SHA-256 `2d8f44a7c7442776ef8b0d359655f1b6845efe3ca41c3ff9447d67caa7fdb102` was approved by DEC-020; `.ai/specs/SPEC-006.md` package-path boundary is superseded. Completed earlier Specs remain indexed in their Task records.
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session through TASK-006 and TASK-007 worker results and receipts. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is Codex desktop task `01a0815b-dc59-79c0-9813-d9fa81b8d433` plus current native TASK-006/TASK-007 creation, assignment and result references; delegation/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision remains the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `3ff3e5b8239d92f4847dcd37625865975761480d` accepted by the user's “接受” decision under DEC-021. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED. Installation and publication are not included.
-- Next action: execute TASK-008 to synchronize and independently verify the accepted candidate in the local installed Skill. Push, tag and release remain unauthorized.
+- Next action: await the Human's next project instruction. The local installed Skill is synchronized to accepted working/unreleased version `2.1.0-dev.1`; push, tag and release remain unauthorized.
 
 ## Active work (index; Task files own detailed state)
 
@@ -26,11 +26,11 @@
 | `.ai/tasks/TASK-005.md` — `agent_names` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted; installed Skill synchronized; GitHub `main` published | NONE | NONE |
 | `.ai/tasks/TASK-006.md` — Distribution audit | DONE | Manager `/root` | Three audit results; Test N/A; Reviewer APPROVE; gate CONSISTENT | NONE | NONE |
 | `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | DONE | Manager `/root` | Candidate `3ff3e5b`: Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted | TASK-006 | NONE |
-| `.ai/tasks/TASK-008.md` — Local Skill synchronization | VERIFY | Manager `/root` | Developer synchronized accepted archive; independent Test and Review pending | TASK-007 | Verify installed state and no-publication boundary |
+| `.ai/tasks/TASK-008.md` — Local Skill synchronization | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-007 | NONE |
 
 ## Blockers and decisions needed
 
-NONE. DEC-022 authorizes local synchronization and verification only; remote publication remains outside scope.
+NONE. TASK-008 completed the DEC-022 local-only synchronization; remote publication remains outside scope.
 
 ## Accepted / completed work
 
@@ -48,7 +48,9 @@ TASK-005 candidate `bc70cb75dfa1076765678017cca3a76325f417b6` is DONE and formal
 
 TASK-006 audit candidate `7bb7b50ad6651f9b86937c6fabd6a91b2de92916` is DONE under `PROTOCOL` assurance with Test N/A, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-006.json`. It confirmed the four reported problems while distinguishing source-archive leakage from the clean installed Skill.
 
-TASK-007 candidate `3ff3e5b8239d92f4847dcd37625865975761480d` is DONE and formally accepted under `HUMAN / PROTOCOL` assurance for SPEC-006-v2. Independent Tester PASS, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-007.json` are recorded. It introduces working/unreleased version `2.1.0-dev.1`, clear identity semantics, a deterministic exact-allowlist package with source-bound manifest, a bilingual beginner quick start and a bounded LIGHTWEIGHT workflow. It has not been installed or published.
+TASK-007 candidate `3ff3e5b8239d92f4847dcd37625865975761480d` is DONE and formally accepted under `HUMAN / PROTOCOL` assurance for SPEC-006-v2. Independent Tester PASS, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-007.json` are recorded. It introduces working/unreleased version `2.1.0-dev.1`, clear identity semantics, a deterministic exact-allowlist package with source-bound manifest, a bilingual beginner quick start and a bounded LIGHTWEIGHT workflow. It was synchronized locally under TASK-008 and remains unpublished.
+
+TASK-008 is DONE under `PROTOCOL` assurance. The local installed Skill now exactly matches the verified archive from accepted candidate `3ff3e5b8239d92f4847dcd37625865975761480d`: working/unreleased version `2.1.0-dev.1`, archive SHA-256 `74920397033b299f77d16a20aa9f649c6fb0b11045bb826ee4a416d282a51c69`, 12 allowlisted runtime files plus `MANIFEST.json`. The previous 2.0.4 installation remains recoverable at `/Users/duolaamengmac/.codex/skills/project-development.backup-20260909T000444+0800-2.0.4-4547`. Independent Tester PASS, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-008.json` are recorded. No push, tag or release was performed.
 
 ## Release
 
