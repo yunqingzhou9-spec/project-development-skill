@@ -9,6 +9,18 @@ import subprocess
 from pathlib import Path
 
 
+LIGHTWEIGHT_SCOPE_KEYS = {"outcome", "acceptance", "deliverables", "verification", "eligibility"}
+LIGHTWEIGHT_ELIGIBILITY_KEYS = {
+    "single_outcome",
+    "no_dependencies_or_integration",
+    "ordinary_git_rollback",
+    "targeted_verification_known",
+    "independent_implementer_and_reviewer",
+    "risk_categories_absent",
+    "no_conflict_or_unresolved_choice",
+}
+
+
 class GateError(ValueError):
     pass
 
@@ -24,6 +36,10 @@ def nonempty(value):
 
 def digest(data):
     return hashlib.sha256(data).hexdigest()
+
+
+def canonical_digest(value):
+    return digest(json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8"))
 
 
 def project_file(root, name):
@@ -65,20 +81,74 @@ def candidate(root, selected):
     return result
 
 
+def git_commit(root, value, label):
+    require(isinstance(value, str) and re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", value) is not None, label + " must be a full Git commit ID")
+    result = subprocess.run(
+        ["git", "-C", str(root), "cat-file", "-t", value],
+        capture_output=True, text=True, check=False, timeout=15,
+    )
+    require(result.returncode == 0 and result.stdout.strip() == "commit", label + " is not an existing commit")
+    return value
+
+
+def lightweight_criteria(root, task, target):
+    require(task.get("profile") == "LIGHTWEIGHT", "Invalid workflow profile")
+    require(nonempty(task.get("approval_ref")), "LIGHTWEIGHT requires approval evidence reference")
+    require(task.get("depends_on") == [], "LIGHTWEIGHT cannot have dependencies")
+    scope = task.get("scope")
+    require(isinstance(scope, dict) and set(scope) == LIGHTWEIGHT_SCOPE_KEYS, "Invalid LIGHTWEIGHT scope")
+    require(nonempty(scope.get("outcome")), "LIGHTWEIGHT requires one outcome")
+    acceptance = scope.get("acceptance")
+    require(isinstance(acceptance, list) and acceptance and all(nonempty(item) for item in acceptance), "LIGHTWEIGHT requires observable acceptance")
+    deliverables = scope.get("deliverables")
+    require(isinstance(deliverables, list) and 0 < len(deliverables) <= 5, "LIGHTWEIGHT requires one to five deliverable files")
+    require(len(deliverables) == len(set(deliverables)), "Duplicate LIGHTWEIGHT deliverable")
+    for path in deliverables:
+        require(nonempty(path) and not Path(path).is_absolute() and ".." not in Path(path).parts, "Invalid LIGHTWEIGHT deliverable path")
+    require(nonempty(scope.get("verification")), "LIGHTWEIGHT requires targeted verification")
+    eligibility = scope.get("eligibility")
+    require(isinstance(eligibility, dict) and set(eligibility) == LIGHTWEIGHT_ELIGIBILITY_KEYS, "Invalid LIGHTWEIGHT eligibility assertions")
+    require(all(value is True for value in eligibility.values()), "Every LIGHTWEIGHT eligibility assertion must be true")
+    scope_hash = canonical_digest(scope)
+    require(task.get("scope_sha256") == scope_hash, "LIGHTWEIGHT scope digest mismatch")
+    require(target.get("kind") == "git", "LIGHTWEIGHT requires a Git candidate for bounded rollback/diff checks")
+    base = git_commit(root, task.get("base"), "LIGHTWEIGHT base")
+    changed = subprocess.run(
+        ["git", "-C", str(root), "diff", "--numstat", base, target["commit"], "--", *deliverables],
+        capture_output=True, text=True, check=False, timeout=15,
+    )
+    require(changed.returncode == 0, "Cannot inspect LIGHTWEIGHT candidate diff")
+    seen, line_count = set(), 0
+    for line in changed.stdout.splitlines():
+        added, deleted, path = line.split("\t", 2)
+        require(added.isdigit() and deleted.isdigit(), "Generated/binary deliverables require FULL")
+        seen.add(path)
+        line_count += int(added) + int(deleted)
+    require(seen == set(deliverables), "LIGHTWEIGHT deliverables must exactly match changed scoped files")
+    require(line_count <= 200, "LIGHTWEIGHT deliverables exceed 200 changed lines")
+    return scope_hash
+
+
 def check(root, task_path, receipt_path, selected):
     task = metadata(project_file(root, task_path))
     require(task.get("status") in ("VERIFY", "DONE"), "Task must be VERIFY or DONE")
     require(nonempty(task.get("id")), "Missing task ID")
     require(task.get("blockers") == [], "Blockers must be explicitly empty")
-    spec_ref = task.get("spec")
-    require(isinstance(spec_ref, dict), "Missing Spec reference")
-    spec_path = project_file(root, spec_ref.get("path"))
-    spec_hash = digest(spec_path.read_bytes())
-    require(spec_hash == spec_ref.get("sha256"), "Approved Spec bytes changed")
-    spec = metadata(spec_path)
-    require(spec.get("status") == "APPROVED" and nonempty(spec.get("approval_ref")), "Missing approved Spec / approval evidence reference")
     target = candidate(root, selected)
     require(task.get("candidate") == target, "Task is not for the selected final candidate")
+    profile = task.get("profile", "FULL")
+    require(profile in ("FULL", "LIGHTWEIGHT"), "Invalid workflow profile")
+    if profile == "LIGHTWEIGHT":
+        criteria_key, criteria_hash = "scope_sha256", lightweight_criteria(root, task, target)
+    else:
+        spec_ref = task.get("spec")
+        require(isinstance(spec_ref, dict), "Missing Spec reference")
+        spec_path = project_file(root, spec_ref.get("path"))
+        criteria_hash = digest(spec_path.read_bytes())
+        require(criteria_hash == spec_ref.get("sha256"), "Approved Spec bytes changed")
+        spec = metadata(spec_path)
+        require(spec.get("status") == "APPROVED" and nonempty(spec.get("approval_ref")), "Missing approved Spec / approval evidence reference")
+        criteria_key = "spec_sha256"
     require(type(task.get("test_required")) is bool, "Explicit test profile required")
     if task["test_required"]:
         require(task.get("test") == "PASS", "Required testing has not passed")
@@ -112,7 +182,7 @@ def check(root, task_path, receipt_path, selected):
         agent_id = item.get("agent_id")
         require(nonempty(agent_id) and agent_id in agents, "Result has no matching created agent")
         role = agents[agent_id]["role"]
-        require(item.get("task_id") == task["id"] and item.get("spec_sha256") == spec_hash, "Result Task / Spec mismatch")
+        require(item.get("task_id") == task["id"] and item.get(criteria_key) == criteria_hash, "Result Task / criteria mismatch")
         require(item.get("target") == target, "Stale result: different candidate")
         require(nonempty(item.get("result_ref")) and nonempty(item.get("report_ref")), "Missing native result / report reference")
         require(item["result_ref"] not in result_refs, "Native result reused across records")
@@ -125,16 +195,29 @@ def check(root, task_path, receipt_path, selected):
         roles_seen.add(role)
     needed = {"developer", "reviewer"} | ({"tester"} if task["test_required"] else set())
     require(needed <= roles_seen, "Missing required role result")
-    return {"task_id": task["id"], "candidate": target}
+    return {"task_id": task["id"], "profile": profile, "criteria_sha256": criteria_hash, "candidate": target}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", required=True)
-    parser.add_argument("--task", required=True)
-    parser.add_argument("--receipts", required=True)
-    parser.add_argument("--candidate", required=True)
+    parser.add_argument("--task")
+    parser.add_argument("--receipts")
+    parser.add_argument("--candidate")
+    parser.add_argument("--scope-digest", metavar="TASK")
     args = parser.parse_args()
+    if args.scope_digest:
+        try:
+            root = Path(args.repo).resolve(strict=True)
+            scope = metadata(project_file(root, args.scope_digest)).get("scope")
+            require(isinstance(scope, dict), "Task has no inline scope")
+            print(canonical_digest(scope))
+            return 0
+        except (ValueError, OSError, TypeError, KeyError, json.JSONDecodeError) as exc:
+            print(json.dumps({"result": "BLOCKED", "reason": str(exc)}, ensure_ascii=False, indent=2))
+            return 1
+    if not (args.task and args.receipts and args.candidate):
+        parser.error("--task, --receipts and --candidate are required unless --scope-digest is used")
     output = {"assurance": "STRUCTURAL", "runtime_authenticated": False, "enforced": False}
     try:
         root = Path(args.repo).resolve(strict=True)

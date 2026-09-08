@@ -1,5 +1,25 @@
 # Project Development Skill
 
+## 60 秒开始 / 60-second quick start
+
+你只需说明想要的结果，不必先学习角色、状态或证据术语：
+
+```text
+$project-development 给这个项目添加 CSV 导出，并验证它可用。
+```
+
+Skill 会检查仓库、只澄清重要分歧，并自动选择流程：客观上小而低风险的单项改动使用 `LIGHTWEIGHT`；任何不满足或不确定的情况使用 `FULL`。它会安排真实 Developer 和独立 Reviewer，运行合适验证，再把准确候选版本交给你决定是否接受。安装和发布始终是另外的 Human 决定。
+
+Just describe the outcome; you do not need to learn the roles, states, or evidence terms first:
+
+```text
+$project-development Add CSV export to this project and verify it works.
+```
+
+The Skill inspects the repository, asks only about consequential ambiguity, and selects the workflow: an objectively small, low-risk single change may use `LIGHTWEIGHT`; anything ineligible or uncertain uses `FULL`. It assigns a real Developer and independent Reviewer, runs suitable checks, and presents the exact candidate for your acceptance. Installation and publication always remain separate Human decisions.
+
+`LIGHTWEIGHT` is limited to one independent outcome with no dependencies or integration, at most five enumerated files and 200 changed text lines, ordinary Git rollback, known targeted verification, independent implementation/review, no consequential unknowns, and no security, privacy, permissions, production, external-effect, billing/legal, compatibility, dependency, migration, destructive, release/install/publish, protected-acceptance, or conflict risk. Crossing any boundary escalates to `FULL`; it never relaxes candidate binding, independent Review, or Human authority.
+
 # 中文
 
 > **让 AI 不只是会写代码，而是能像一支受管理的软件团队一样完成项目。**
@@ -79,6 +99,27 @@ project-development-skill/
 └── templates/                # 最小项目治理模板
 ```
 
+## 版本与发行身份
+
+`SKILL.md` frontmatter 中的 `metadata.version` 是唯一权威的软件包版本。本仓库当前可使用开发版号；开发版号不表示已经发布。Working version、Human 已接受的 immutable baseline、source commit、历史 Git tag/GitHub Release、生成的安装包，以及本机 installed copy 是六个不同身份，必须分别核对，不能因数字相同而互相推断。
+
+`SKILL.md` frontmatter `metadata.version` is the only authoritative package version. A development version is not a release claim. The working version, Human-accepted immutable baseline, source commit, historical Git tag/release, generated archive, and installed copy are six separate identities and must be verified independently.
+
+## 构建干净安装包 / Build a clean installable archive
+
+构建与校验都必须指定完整 source commit。命令只读取该 commit 的精确 runtime allowlist，加入 canonical manifest，并拒绝治理文件、额外/危险成员、符号链接、哈希或版本/commit 不一致，以及具体本机路径、runtime UUID 和私钥标记。输出在 `dist/`，不会加入 Git。
+
+Both commands require the full source commit. The builder reads only the exact runtime allowlist from that commit, adds a canonical manifest, and rejects governance files, extra/unsafe members, symlinks, hash/version/commit mismatches, concrete local paths, runtime UUIDs, and private-key markers. `dist/` is ignored by Git.
+
+```sh
+python3 scripts/package_skill.py build --repo . \
+  --source <FULL_SOURCE_COMMIT> --output dist/project-development.zip
+python3 scripts/package_skill.py verify --repo . \
+  --source <FULL_SOURCE_COMMIT> --archive dist/project-development.zip
+```
+
+The archive itself records the Skill name, package version, full source commit, and sorted SHA-256 for every runtime file in `project-development/MANIFEST.json`. GitHub-generated source archives are repository snapshots, not these clean installable artifacts.
+
 ## 安装
 
 在 Codex 中调用 `$skill-installer`，并提供仓库地址：
@@ -148,6 +189,7 @@ $project-development 接管上述项目。不要假定当前工作区是目标�
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements-dev.txt
 .venv/bin/python scripts/test_completion.py
+.venv/bin/python scripts/test_package.py
 .venv/bin/python ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py .
 ```
 

@@ -1,6 +1,19 @@
-# Project development protocol — 2.0.4
+# Project development protocol
 
 Read the relevant section, not the entire file on every action. These are workflow rules, not a permission grant or a claim that any host supports delegation.
+
+## Identity vocabulary
+
+`SKILL.md` frontmatter `metadata.version` is the sole authoritative package version. A development/prerelease identifier is a working/unreleased package version, not a release claim. Keep these identities separate:
+
+- **Working version:** package version in the current source candidate.
+- **Strictly Accepted Baseline:** immutable candidate most recently accepted by the configured formal authority.
+- **Source commit:** full Git commit from which files or a distribution artifact were read.
+- **Git tag / release:** historical publication pointers; a matching number does not make later commits released.
+- **Distribution artifact:** generated allowlisted archive whose manifest binds package version, source commit and file hashes.
+- **Installed copy:** separate filesystem state; compare its manifest/files before claiming it matches any source or artifact.
+
+Never infer one identity from another. Preserve historical tags and releases; publication, installation and accepted-baseline promotion each require their own authority and evidence.
 
 ## Setup
 
@@ -36,6 +49,28 @@ Developer self-tests remain useful but are not the independent Test verdict. Rev
 - Split by independently verifiable outcome, dependency or ownership boundary, not by each command or role. A Task moves through roles; ordinary rework stays in it. Record dependencies only when present.
 - During decomposition, the Manager gives every new Task a stable numbered ID and dynamically chooses a concise human-readable purpose from that Task's actual content or outcome. Display them together, for example `TASK-001 — Layout adjustment`, and record the matching lower-snake-case `short_name`, such as `layout_adjustment`. These examples are not fixed names: another outcome might become `TASK-002 — Player movement` / `player_movement` or `TASK-003 — Collision detection` / `collision_detection`. The numbered ID remains the machine-facing Task identity; the descriptive purpose and slug are non-authoritative usability labels shown beside it in the active-work index and human-facing guidance. Use one to four meaningful words, avoiding generic labels such as `work`, `task` or `update` when a clearer outcome is known. This rule is prospective; do not rename current or historical Tasks, files, runtime identities, receipts or evidence.
 - Verification profile is set before implementation: ordinary functional work requires Tester and Reviewer; pure documentation can omit runtime testing with a concrete reason; high-risk behavior requires both and integrated acceptance. Reviewer remains independent even for lightweight work. Do not relax required checks after failure without an authorized policy/scope decision.
+
+### Workflow profiles
+
+`FULL` is the default and preserves the Spec, Task, verification and integration process in this document. Select `LIGHTWEIGHT` only when every condition below is known true before implementation and remains true through completion:
+
+1. One approved outcome, one scope and one Task; no dependency, cross-Task integration or concurrent-writer need.
+2. At most five enumerated deliverable files and at most 200 added/deleted non-generated lines against one full Git base commit.
+3. Ordinary Git rollback is sufficient, and a known targeted verification command exists.
+4. A real implementer and a fresh independent Reviewer are available.
+5. There is no security, privacy, secret, permission, production-infrastructure, external-side-effect, billing, legal/compliance, public API/schema compatibility, dependency/toolchain, migration, destructive-action, release/install/publish, protected-acceptance or conflict risk.
+6. No consequential product or technical choice remains unresolved.
+
+Any false, exceeded or uncertain condition selects or immediately escalates to `FULL`. Also escalate on scope revision, unexpected coupling, failed assumptions, non-ordinary rollback, verifier independence loss or a need for release/install/publish. Preserve the old lightweight record, create and approve a frozen Spec, update the Task to `FULL`, and invalidate prior candidate verdicts as needed; never silently widen scope.
+
+For eligible `LIGHTWEIGHT`, one Task may contain `approval_ref`, the complete approved `scope` object and its canonical SHA-256 digest instead of a separate Spec or DECISIONS entry. Canonical scope bytes are UTF-8 JSON with sorted keys and separators `,` and `:`; use `scripts/check_completion.py --scope-digest <task>` to calculate the digest before freezing it. The scope enumerates outcome, acceptance, deliverables, targeted verification and the fixed eligibility assertions from the Task template. A separate Tester is optional while eligibility remains true; record `test_required:false`, `test:"N/A"` and a concrete reason when omitted. A fresh independent Reviewer is always required. The existing preselected documentation-only Test N/A rule for `FULL` remains unchanged.
+
+Use two meaningful checkpoints rather than a commit for every status change:
+
+1. **Candidate checkpoint:** normally one commit containing the deliverables and completed combined Task handoff. It freezes the candidate reviewed by independent workers.
+2. **Verification checkpoint:** normally one later governance commit containing final verdicts, receipt/state summary and next action.
+
+Commit an intermediate governance state only for handoff, interruption, blocker, conflict, scope revision or writer coordination. Every deliverable change creates a new candidate and makes prior Test/Review verdicts stale. Human authority over formal acceptance, installation and publication is identical in both profiles.
 
 ## Execution
 
@@ -77,7 +112,7 @@ Default rework budget: 3 failed verification cycles per Task; an explicit projec
 ### Evidence and recovery
 
 - Evaluate Static, Unit, Integration, Scenario and Acceptance as applicable; N/A needs a reason. Classify failures as introduced, pre-existing, environment-limited or unverified. Existing failures only cease blocking when the approved criteria/policy supports that conclusion, not because they are old.
-- Handoff is Task ID + Spec digest + base/candidate + report references + next action. Reports include commands, observed results, environment limits and unresolved issues. Keep small reports inside the Task; link large outputs. No repeated transcript copying.
+- Handoff is Task ID + criteria digest (Spec or eligible inline scope) + base/candidate + report references + next action. Reports include commands, observed results, environment limits and unresolved issues. Keep small reports inside the Task; link large outputs. No repeated transcript copying.
 - For Git, use a full commit ID that includes all deliverable changes; do not describe dirty work as covered by that commit. Report-only/governance commits may follow it, but no later deliverable change inherits approval. For non-Git outputs, use explicit file paths and SHA-256 hashes, including all deliverables; retain accepted bytes in versioned snapshot paths so old baselines remain reproducible. Review context must include relevant base/diff and inputs, not merely a hash list.
 - Persist state before ending. On resume, inspect actual run status, working files and candidate before launching replacement work; do not blindly replay an assignment. Reconnect to live workers where supported; otherwise record interrupted work and create a fresh worker only after avoiding duplicate writers.
 - Main context contains active index, decisions and short references. Archive/index completed detail without deleting evidence. A replacement main conversation uses AGENTS and state; no permanent-window or uninterrupted-background guarantee is implied.

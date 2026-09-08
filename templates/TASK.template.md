@@ -4,6 +4,7 @@
 {
   "id": "TASK-001",
   "short_name": "<matching lower-snake-case slug, e.g. layout_adjustment>",
+  "profile": "FULL",
   "status": "READY",
   "spec": {"path": ".ai/specs/SPEC-001.md", "sha256": "<approved file digest>"},
   "owner": "manager",
@@ -36,3 +37,5 @@
 ## History / next action
 
 <Meaningful transitions, rework, remaining blockers and exact next action. Manager owns state updates; preserve old evidence when a candidate changes.>
+
+`FULL` is the default. Use `TASK-LIGHTWEIGHT.template.md` only after every objective eligibility condition passes; any false or uncertain condition stays `FULL`.

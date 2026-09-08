@@ -50,7 +50,9 @@ class CompletionTests(unittest.TestCase):
             self.run_gate()
 
     def test_valid_file_candidate(self):
-        self.assertEqual(self.run_gate()["candidate"], self.target)
+        result = self.run_gate()
+        self.assertEqual(result["candidate"], self.target)
+        self.assertEqual(result["profile"], "FULL")
 
     def test_missing_test_role(self):
         self.receipts["results"].pop(1)
@@ -171,6 +173,84 @@ class CompletionTests(unittest.TestCase):
         for item in self.receipts["results"]:
             item["target"] = self.target
         self.assertEqual(self.run_gate("git:" + commit)["candidate"], self.target)
+
+    def make_lightweight(self, lines="small change\n"):
+        def git(*args):
+            return subprocess.run(["git", "-C", str(self.root), *args], check=True, capture_output=True, text=True).stdout.strip()
+        git("init", "-q")
+        git("add", "result.txt")
+        git("-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid", "-c", "commit.gpgsign=false", "commit", "-qm", "base")
+        base = git("rev-parse", "HEAD")
+        (self.root / "result.txt").write_text(lines, encoding="utf-8")
+        git("add", "result.txt")
+        git("-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid", "-c", "commit.gpgsign=false", "commit", "-qm", "candidate")
+        commit = git("rev-parse", "HEAD")
+        scope = {
+            "outcome": "Change one fixture output",
+            "acceptance": ["result.txt contains the requested output"],
+            "deliverables": ["result.txt"],
+            "verification": "check result.txt",
+            "eligibility": {
+                "single_outcome": True,
+                "no_dependencies_or_integration": True,
+                "ordinary_git_rollback": True,
+                "targeted_verification_known": True,
+                "independent_implementer_and_reviewer": True,
+                "risk_categories_absent": True,
+                "no_conflict_or_unresolved_choice": True,
+            },
+        }
+        self.target = {"kind": "git", "commit": commit}
+        self.task = {
+            "id": "TASK-1", "profile": "LIGHTWEIGHT", "status": "VERIFY",
+            "approval_ref": "fixture-only:user-request-1", "scope": scope,
+            "scope_sha256": gate.canonical_digest(scope), "depends_on": [], "base": base,
+            "candidate": self.target, "contributors": ["fixture-dev"],
+            "test_required": False, "test_na_reason": "Eligible low-risk targeted check", "test": "N/A",
+            "review": "APPROVE", "blockers": [],
+        }
+        self.receipts["agents"].pop(1)
+        self.receipts["results"].pop(1)
+        for item in self.receipts["results"]:
+            item.pop("spec_sha256", None)
+            item["scope_sha256"] = self.task["scope_sha256"]
+            item["target"] = copy.deepcopy(self.target)
+        return commit
+
+    def test_lightweight_valid_without_spec_or_tester(self):
+        commit = self.make_lightweight()
+        result = self.run_gate("git:" + commit)
+        self.assertEqual(result["profile"], "LIGHTWEIGHT")
+
+    def test_lightweight_scope_digest_change_blocks(self):
+        commit = self.make_lightweight()
+        self.task["scope"]["outcome"] = "Widened outcome"
+        with self.assertRaises(gate.GateError):
+            self.run_gate("git:" + commit)
+
+    def test_lightweight_false_eligibility_blocks(self):
+        commit = self.make_lightweight()
+        self.task["scope"]["eligibility"]["risk_categories_absent"] = False
+        self.task["scope_sha256"] = gate.canonical_digest(self.task["scope"])
+        for item in self.receipts["results"]:
+            item["scope_sha256"] = self.task["scope_sha256"]
+        with self.assertRaises(gate.GateError):
+            self.run_gate("git:" + commit)
+
+    def test_lightweight_over_200_lines_blocks(self):
+        commit = self.make_lightweight("".join("line %d\n" % number for number in range(201)))
+        with self.assertRaises(gate.GateError):
+            self.run_gate("git:" + commit)
+
+    def test_scope_digest_cli(self):
+        self.make_lightweight()
+        self.persist()
+        result = subprocess.run(
+            [sys.executable, str(SCRIPT), "--repo", str(self.root), "--scope-digest", "task.md"],
+            capture_output=True, text=True,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.strip(), self.task["scope_sha256"])
 
     def test_cli_never_claims_authenticity_and_does_not_write(self):
         self.persist()

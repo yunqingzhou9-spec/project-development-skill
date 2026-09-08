@@ -1,5 +1,12 @@
 # Changelog
 
+## [Unreleased]
+
+- Clarify package, source, accepted-baseline, tag, artifact and installed-copy identities; the working package version is sourced only from `SKILL.md` metadata.
+- Add a deterministic allowlisted archive builder/verifier with a canonical source-bound manifest and leak/safety checks.
+- Add a bilingual beginner quick start and an objectively bounded LIGHTWEIGHT workflow while preserving FULL safeguards and Human authority.
+- Extend completion checks, templates and regression coverage for inline scope digests and lightweight eligibility.
+
 ## [2.0.4] - 2026-09-08
 
 - 在 README 开头增加完整的中英双语 Skill 介绍、协作流程和标语。
