@@ -20,14 +20,14 @@ If the skill is unavailable, report it; do not invent its rules or claim indepen
 
 ## Team
 
-Chief of Staff clarifies; Human approves; Manager dispatches and updates shared state. Developer implements; independent Tester verifies behavior; independent Reviewer checks correctness. Read only your role in the installed version 2.0.2 protocol for SPEC-001. Fresh workers across Tasks; one active Task per worker. Never treat roleplay or self-authored identities as independent evidence.
+Chief of Staff clarifies; Human approves; Manager dispatches and updates shared state. Developer implements; independent Tester verifies behavior when required; independent Reviewer checks correctness. Read only your role in the governing protocol version recorded by the active Task and Spec. Fresh workers across Tasks; one active Task per worker. Never treat roleplay or self-authored identities as independent evidence.
 
 Only one main Manager coordinates the same project scope. For replacement or recovery, follow the Skill's main-window handoff protocol and verify `PDP-SKILL` before dispatching.
 
 ## Project settings
 
-- Governing protocol for SPEC-001: installed `$project-development` version `2.0.2`; proposed rules in the working tree do not govern their own acceptance.
-- Verification: protocol-sensitive work requires independent Tester and Reviewer; final combined candidate must satisfy SPEC-001.
+- Governing protocol: use the Strictly Accepted Baseline recorded in `PROJECT_STATE.md`; proposed rules in a working candidate do not govern their own acceptance.
+- Verification: functional work requires independent Tester and Reviewer; pure documentation may use reasoned Test N/A but still requires independent Reviewer; high-risk work requires both.
 - Rework: at most 3 failed verification cycles per Task.
 - Runtime / receipt access / assurance: Codex task-agent tools are exposed; creation and result provenance remain `UNKNOWN` until first actual dispatch. Protected acceptance is `MISSING`. Maximum claim is `PROTOCOL` plus separately reported `STRUCTURAL` checks.
 - Preferred host: Codex; apply the version 2.0.2 environment gate.
@@ -39,4 +39,4 @@ Only one main Manager coordinates the same project scope. For replacement or rec
 
 - Tests: `python3 scripts/test_completion.py`
 - Skill validation: `python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py .`
-- Completion gate: Python 3 plus installed version 2.0.2 Skill `scripts/check_completion.py`; see its `references/GATE.md` at completion.
+- Completion gate: Python 3 plus the installed governing Skill `scripts/check_completion.py`; see its `references/GATE.md` at completion.
