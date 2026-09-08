@@ -38,7 +38,7 @@ Developer self-checks for candidate `8bdb522332aa176ab371aa147f7e28949ae03768`:
 
 ## Handoff / evidence
 
-Manager created TASK-004 from the Human's explicit implementation request. Developer creation/assignment/result native reference: `/root/task_004_developer`. The Developer was interrupted once by new Human input, left only the two scoped deliverable edits, then resumed under the same Task identity and returned candidate `8bdb522332aa176ab371aa147f7e28949ae03768`.
+Manager created TASK-004 from the Human's explicit implementation request. Developer creation/assignment/result native reference: `/root/task_004_developer`. The Developer was interrupted once by new Human input, left only the two scoped deliverable edits, then resumed under the same Task identity and returned candidate `8bdb522332aa176ab371aa147f7e28949ae03768`. Independent verification assignments: Tester/forward evaluator `/root/task_004_tester`; Reviewer `/root/task_004_reviewer`.
 
 ## History / next action
 
@@ -46,4 +46,5 @@ Manager created TASK-004 from the Human's explicit implementation request. Devel
 - 2026-09-08T14:32:47+08:00 — Manager assigned fresh Developer `/root/task_004_developer`; Task moved READY → DOING.
 - Developer was interrupted by new Human input; Manager inspected the two scoped uncommitted edits, confirmed no other writer, and resumed the same Task identity rather than duplicating the assignment.
 - 2026-09-08T14:37:51+08:00 — Developer delivered immutable candidate `8bdb522332aa176ab371aa147f7e28949ae03768`; Manager confirmed the commit, clean worktree and frozen Spec digest, then moved Task DOING → VERIFY.
-- Next: assign fresh independent Tester and Reviewer to the exact candidate.
+- 2026-09-08T14:38:56+08:00 — Manager assigned fresh independent Tester/forward evaluator `/root/task_004_tester` and Reviewer `/root/task_004_reviewer` to the exact candidate.
+- Next: await independent verdicts.

@@ -1,6 +1,6 @@
 # Project state
 
-- Updated: 2026-09-08T14:37:51+08:00
+- Updated: 2026-09-08T14:38:56+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
@@ -13,7 +13,7 @@
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session by TASK-003 Developer reference `/root/task_003_developer`; historical access was also `VERIFIED` by TASK-001 and TASK-002. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is the Codex desktop session, native collaboration inventory and TASK-003 Developer dispatch/result reference; creation/assignment/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `a47f0ef62ed25eed2b2241e496435531688ccd17` accepted by the user's “OK，那我接受这次候选” decision; see DEC-010. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED.
-- Next action: assign fresh independent Tester and Reviewer to TASK-004 candidate `8bdb522332aa176ab371aa147f7e28949ae03768`.
+- Next action: await independent Tester/forward evaluator `/root/task_004_tester` and Reviewer `/root/task_004_reviewer` verdicts for TASK-004 candidate `8bdb522332aa176ab371aa147f7e28949ae03768`.
 
 ## Active work (index; Task files own detailed state)
 
@@ -22,7 +22,7 @@
 | `.ai/tasks/TASK-001.md` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate | NONE | NONE |
 | `.ai/tasks/TASK-002.md` | DONE | Manager `/root` | Developer delivered; Test N/A; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate | NONE | NONE |
 | `.ai/tasks/TASK-003.md` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-010 | NONE | NONE |
-| `.ai/tasks/TASK-004.md` | VERIFY | Manager `/root` | Developer `/root/task_004_developer` delivered candidate `8bdb522332aa176ab371aa147f7e28949ae03768` after one same-identity resume | NONE | Independent Test and Review |
+| `.ai/tasks/TASK-004.md` | VERIFY | Manager `/root` | Tester/forward evaluator `/root/task_004_tester` and Reviewer `/root/task_004_reviewer` assigned to candidate `8bdb522332aa176ab371aa147f7e28949ae03768` | NONE | Await independent verdicts |
 
 ## Blockers and decisions needed
 
