@@ -16,7 +16,7 @@
   "review": "APPROVE",
   "blockers": [],
   "rework_cycles": 0,
-  "next_action": "Await Human candidate-specific acceptance before local synchronization, tagging or GitHub publication"
+  "next_action": "NONE; Human accepted the exact candidate, local synchronization and GitHub publication completed under DEC-009"
 }
 ```
 
@@ -50,4 +50,5 @@ Runtime receipts: `.ai/evidence/TASK-002.json`. Native task identities and creat
 - 2026-09-08: User replaced the introduction before implementation. DEC-008 superseded SPEC-002 with frozen SPEC-002-v2; no candidate or verification from the prior Spec remains valid.
 - 2026-09-08: Developer delivered candidate `912ec892395572447462ce7e0924ab149735f794`; independent Reviewer APPROVED the exact candidate.
 - 2026-09-08: Version 2.0.3 completion gate returned `STRUCTURAL / CONSISTENT`; Manager verified native provenance and marked TASK-002 DONE under `PROTOCOL` assurance.
-- Next: await Human acceptance of the exact candidate. DONE and prior publication authorization do not themselves promote the baseline, synchronize the installed Skill, create tag `v2.0.4` or publish GitHub.
+- 2026-09-08: Human accepted exact candidate `912ec892395572447462ce7e0924ab149735f794` and authorized publication. Local installed Skill synchronized to 2.0.4 and validated; GitHub `main` and annotated tag `v2.0.4` published and verified.
+- Next: NONE.
