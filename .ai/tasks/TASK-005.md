@@ -17,7 +17,7 @@
   "review": "APPROVE",
   "blockers": [],
   "rework_cycles": 1,
-  "next_action": "NONE; candidate accepted, installed Skill synchronized and GitHub main published under DEC-017"
+  "next_action": "NONE; replacement Manager verifies planned takeover state and awaits the Human's next project instruction"
 }
 ```
 
@@ -60,4 +60,5 @@ Manager created TASK-005 from the Human's explicit optimization request. Candida
 - 2026-09-08T15:42:56+08:00 — Human formally accepted exact candidate `bc70cb75dfa1076765678017cca3a76325f417b6` and authorized local installed-Skill synchronization plus GitHub publication under DEC-017. Version `2.0.4` and existing tag `v2.0.4` remain unchanged; no GitHub Release is authorized.
 - 2026-09-08T15:45:28+08:00 — Manager synchronized the three accepted runtime-facing files present in the installed Skill. Repository/installed SHA-256 pairs match: `references/PROTOCOL.md` `28630c3ef368161f6d01efe0cd8ceb42794f9ce3e6e2a642c238b85eefe6f322`, `templates/TASK.template.md` `26b460042e92c62e6414c26fdcc7aba4feb4508afee5369d286c8227abe39fca`, and `templates/PROJECT_STATE.template.md` `10ee4c47df3946ac8d1af3b74da9ec9099d459b7b6ecd8ff1df00e8bae0374e4`. Installed Skill validation passed and repository tests passed 28/28. Repository `README.md` is not part of the installed bundle.
 - 2026-09-08T15:47:12+08:00 — Pre-push fetch confirmed no divergence; explicit `HEAD:refs/heads/main` publication advanced GitHub `main` from `6741a431a43252d77c7b7f5c997620c90fec36f4` to `7970f4ee3f79db83b2e959e54d506b3857c95781`. Remote verification confirmed the dynamic naming README guidance and unchanged `v2.0.4` target `912ec892395572447462ce7e0924ab149735f794`.
-- Next: NONE.
+- 2026-09-08T15:51:51+08:00 — Planned main-window handoff prepared. Native inventory confirms all TASK-005 Workers completed; no active Task, approved Spec, dirty work or blocker remains. Repository identity, branch, accepted candidate, installed Skill synchronization and remote state are recorded in `PROJECT_STATE.md`.
+- Next: NONE; replacement Manager verifies takeover state and awaits the Human's next project instruction without replaying TASK-005.
