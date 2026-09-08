@@ -16,7 +16,7 @@
   "review": "APPROVE",
   "blockers": [],
   "rework_cycles": 0,
-  "next_action": "NONE; Task complete under PROTOCOL assurance; formal Human acceptance of the candidate remains separate"
+  "next_action": "NONE; Human formally accepted the exact candidate under DEC-010; no publication or synchronization was authorized"
 }
 ```
 
@@ -52,4 +52,5 @@ Manager created TASK-003 from the Human's explicit implementation instruction. D
 - Independent Tester returned PASS for candidate `a47f0ef62ed25eed2b2241e496435531688ccd17`; independent Reviewer returned APPROVE with no findings for the same candidate.
 - Initial structural gate attempt was BLOCKED because the Task encoded `candidate` as a string instead of the required Git candidate object; Manager corrected only this governance metadata. Candidate content and verdicts remain unchanged.
 - 2026-09-08T14:14:20+08:00 — Structural gate returned CONSISTENT; Manager verified native provenance, complete candidate scope and actual implementation authority, then moved Task VERIFY → DONE under PROTOCOL assurance.
-- Next: NONE. Formal Human acceptance, baseline promotion and publication remain separate decisions.
+- 2026-09-08T14:19:29+08:00 — Human formally accepted exact candidate `a47f0ef62ed25eed2b2241e496435531688ccd17`; Manager rechecked unchanged deliverable blobs, frozen Spec digest and `STRUCTURAL / CONSISTENT` gate, then recorded DEC-010 and promoted the Strictly Accepted Baseline. No push, tag, release or installed-Skill synchronization was authorized.
+- Next: NONE.
