@@ -8,7 +8,7 @@ If the skill is unavailable, report it; do not invent its rules or claim indepen
 
 ## Project
 
-- Project ID / name: `<stable ID> / <human-facing name>`
+- Project ID / name: `<reuse authoritative existing ID; else explicit user ID; else Skill-generated readable unique ID> / <human-facing name>`
 - Repository identity / scope: `<remote or NONE> / <relative scope path>`
 - Current local checkout: `<host-specific path; may change>`
 - Purpose / scope / exclusions: <fill>
@@ -23,6 +23,8 @@ If the skill is unavailable, report it; do not invent its rules or claim indepen
 Chief of Staff clarifies; Human approves; Manager dispatches and updates shared state. Developer implements; independent Tester verifies behavior; independent Reviewer checks correctness. Read only your role in the skill protocol. Fresh workers across Tasks; one active Task per worker. Never treat roleplay or self-authored identities as independent evidence.
 
 Only one main Manager coordinates the same project scope. For replacement or recovery, follow the skill's main-window handoff protocol and verify the Project ID before dispatching.
+
+Record the same Project ID here and in `PROJECT_STATE.md`. Keep it stable across checkout moves and main-window handoffs. If authoritative records, a user-provided ID or the selected project conflict, stop and ask the user to resolve the conflict; do not guess or regenerate it.
 
 ## Project settings
 

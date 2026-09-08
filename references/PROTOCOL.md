@@ -1,4 +1,4 @@
-# Project development protocol — 2.0.2
+# Project development protocol — 2.0.3
 
 Read the relevant section, not the entire file on every action. These are workflow rules, not a permission grant or a claim that any host supports delegation.
 
@@ -6,7 +6,7 @@ Read the relevant section, not the entire file on every action. These are workfl
 
 1. Inspect the project's existing instructions, Git state and governance. Reuse existing sources instead of creating a competing hierarchy. Do not modify business code during governance-only setup.
 2. Default to the five templates: AGENTS, PROJECT_STATE, DECISIONS, SPEC and TASK. Instantiate only needed documents; directories may be created with their first file. Replace template placeholders. Unknown facts stay `UNVERIFIED`; do not invent commands, approvals, accepted revisions or agent identities.
-   Assign one stable Project ID during first setup, reusing an established project key when available or generating a readable unique value such as `SNAKE-GAME-7F3A2C`. It identifies the project; it is not a credential. Record the human-facing name, repository identity, project scope path and current local checkout separately. Project ID remains stable when the project moves; checkout paths may change.
+   Assign one stable Project ID during first setup using this precedence: reuse an authoritative existing project ID; otherwise use an ID explicitly provided by the user; otherwise generate a readable unique value such as `SNAKE-GAME-7F3A2C`. It identifies the project; it is not a credential. Record the same ID in both AGENTS and PROJECT_STATE, and record the human-facing name, repository identity, project scope path and current local checkout separately. Keep the ID stable when the project moves or its main conversation changes; checkout paths may change. If authoritative records, a user-provided ID or the selected project disagree, record `CONFLICT`, stop setup or recovery and ask the user to resolve it. Do not guess, silently choose one or generate a replacement.
 3. AGENTS routes to the state, decisions and this skill's role/protocol rules. State indexes active Tasks and current blockers. Each Task owns its detailed state and handoff. Manager is the sole coordinator updating these shared records; workers return evidence and avoid concurrent edits to shared governance.
 4. Preserve v1 `DECISION_LOG.md`, `KNOWN_ISSUES.md`, `ROADMAP.md`, `milestones/`, `audits/`, `archive/` and handoffs if present. Map them from AGENTS; do not rename or delete history for cosmetic consistency. Make the old `CURRENT_TASK.md` an optional compatibility pointer to the active-task index, not a second authoritative status record.
 5. Separate truth by kind: human authorization and active decisions define intent; source/runtime evidence establishes implemented behavior; Task records establish workflow; state is a summary. When they conflict, record `CONFLICT` and investigate. Neither a stale summary nor unapproved code changes intent or proves acceptance.
@@ -82,7 +82,7 @@ Default rework budget: 3 failed verification cycles per Task; an explicit projec
 
 ### Main-window handoff and recovery
 
-Changing the main conversation does not create a new Spec or Task. The user selects the intended project/workspace when opening the replacement conversation and, when several projects exist, names its Project ID. The Manager must match that ID to project state and verify repository identity and scope before changing anything. A name or folder label alone is insufficient. On mismatch, stop and ask the user to open or identify the intended project; do not search unrelated projects or guess.
+Changing the main conversation does not create a new Spec or Task. Prompt wording and copied chat are not authoritative handoff state; repository records and verifiable native runtime evidence are. The user selects the intended project/workspace when opening the replacement conversation and, when several projects exist, names its stable Project ID. The Manager must match that ID to both AGENTS and PROJECT_STATE and verify repository identity and scope before changing anything. A name or folder label alone is insufficient. On a missing or conflicting ID, stop and ask the user to resolve or identify the intended project; do not search unrelated projects, guess or generate a replacement during handoff.
 
 #### Planned handoff
 

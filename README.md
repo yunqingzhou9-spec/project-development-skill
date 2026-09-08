@@ -59,13 +59,23 @@ $project-development 按已经批准的 Spec 开始执行，使用真实子 Agen
 
 ## 更换主窗口
 
-先让旧窗口把状态写回仓库并标记可接管。然后在 Codex 中打开或选择同一个仓库，在新窗口明确指定项目的 `Project ID`：
+提示词只是方便操作的入口，不是交接的权威记录。仓库中的 `AGENTS.md`、`PROJECT_STATE.md`、Task 和 Spec，以及平台可核验的原生运行状态，才是恢复和核对的依据；不要复制旧聊天来代替这些记录。
+
+计划更换窗口时，可以把下面这段直接发给旧窗口：
 
 ```text
-$project-development 接管项目 <PROJECT_ID>。请从 AGENTS.md 和 PROJECT_STATE.md 恢复，核对仓库、工作区和活动任务后继续；不要依赖或复制旧聊天。
+$project-development 准备把当前项目交接到新的主窗口。请停止派发新任务，检查所有活动 Agent，把 Project ID、仓库/工作区、分支、候选 commit、未提交变更、活动 Agent、阻塞项和准确的下一步写回仓库中的状态与 Task 记录；确认信息一致后将 coordination 标记为 READY_FOR_TAKEOVER，并停止继续协调。最后只需简洁回复是否已可接管，以及 Project ID 和下一步。
 ```
 
-同时进行多个项目时，应分别打开对应的仓库或工作区，并使用各自稳定的 `Project ID`。如果项目身份与当前仓库不匹配，Skill 应停止并请你确认，不能猜测。
+旧窗口确认可接管后，在 Codex 中打开或选择同一个仓库，把下面这段发给新窗口，并把 `<PROJECT_ID>` 替换成仓库已记录的稳定 ID：
+
+```text
+$project-development 接管项目 <PROJECT_ID>。请以仓库记录为先，从 AGENTS.md、PROJECT_STATE.md、活动 Task 及其 Approved Spec 恢复；核对 Project ID、仓库身份与范围、实际工作区、分支、commit、未提交变更和原生活动 Agent 状态，解决记录与现场差异后再继续。不要依赖或复制旧聊天，也不要重复派发仍可能运行的任务。
+```
+
+首次设置时，Project ID 按固定顺序确定：先复用项目已有的权威 ID；若没有，则使用用户明确提供的 ID；两者都没有时，Skill 生成一个易读且唯一的 ID。它必须同时记录在 `AGENTS.md` 和 `PROJECT_STATE.md`，在目录移动和主窗口交接后保持不变。如果两处记录、用户指定值或当前项目之间出现冲突，Skill 应停止并请你确认，不能猜测或重新生成。
+
+同时进行多个项目时，应分别打开对应的仓库或工作区，并使用各自稳定的 `Project ID`。
 
 ## 验证
 

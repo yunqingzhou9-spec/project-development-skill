@@ -1,7 +1,7 @@
 # Project state
 
 - Updated: <ISO time with timezone>
-- Project ID / name: <stable unique ID> / <human-facing name>
+- Project ID / name: <same stable ID recorded in AGENTS.md: reuse authoritative existing ID; else explicit user ID; else Skill-generated readable unique ID> / <human-facing name>
 - Repository identity / scope path: <remote or NONE> / <relative path such as . or apps/snake>
 - Local checkout: <current host path; not the stable identity>
 - Coordination: <ACTIVE / HANDOFF_PREPARING / READY_FOR_TAKEOVER / RECOVERY; Manager/session reference; updated time>
@@ -14,6 +14,8 @@
 - Environment: <CODEX / CHATGPT_WORK / OTHER / UNKNOWN; trusted host evidence; delegation/result access and protected acceptance VERIFIED / MISSING / UNKNOWN; scoped adaptation decision or NONE>
 - Formal acceptance: <authority HUMAN by default; PENDING or actual candidate-specific human/service evidence; distinct from Task DONE>
 - Next action: <one concrete next coordination action>
+
+Keep Project ID stable across checkout moves and main-window handoffs. If this value conflicts with AGENTS, a user-provided ID or the selected project, record `CONFLICT`, stop and request resolution; do not guess or regenerate it.
 
 ## Active work (index; Task files own detailed state)
 

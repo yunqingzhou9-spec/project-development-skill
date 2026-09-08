@@ -3,7 +3,7 @@ name: project-development
 description: >-
   Bootstrap or operate lightweight repository-centered project governance from one conversation: clarify and approve specs, coordinate task agents, preserve project state, and verify delivery evidence. Use for multi-task software, data, automation, and AI projects or when explicitly requested. Not a substitute for domain engineering, runtime delegation tools, or a protected release system.
 metadata:
-  version: "2.0.2"
+  version: "2.0.3"
 ---
 
 # Project Development
