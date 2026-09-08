@@ -1,19 +1,19 @@
 # Project state
 
-- Updated: 2026-09-08T15:51:51+08:00
+- Updated: 2026-09-08T22:13:32+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
-- Coordination: `READY_FOR_TAKEOVER`; Manager `/root` in Codex task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` verified the repository, installed Skill and completed native Workers and will cease coordination after returning the populated replacement prompt; updated 2026-09-08T15:51:51+08:00
+- Coordination: `ACTIVE`; replacement Manager `/root` in Codex task `01a0815b-dc59-79c0-9813-d9fa81b8d433` verified the supplied checkout, installed Skill and native runtime state; the outgoing Manager task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` is idle and no active Worker is observable; updated 2026-09-08T22:13:32+08:00
 - Purpose / boundaries: Maintain the Project Development Protocol Skill without granting implementation, acceptance, installation, or publishing authority beyond explicit user decisions.
 - Working candidate: accepted TASK-005 rework cycle 1 candidate `bc70cb75dfa1076765678017cca3a76325f417b6`; later commits contain governance and verification evidence only. Old-Spec candidate `97ab2887bbaa292531239cb4ba83866d7ca1160f` is historical and stale.
 - Strictly Accepted Baseline: version `2.0.4` / Git commit `bc70cb75dfa1076765678017cca3a76325f417b6`; Human acceptance recorded in DEC-017.
 - Historical documented acceptance: `CHANGELOG.md` entries and tags `v2.0.2`, `v2.0.3`, `v2.0.4`; DEC-009 records the published 2.0.4 release candidate, DEC-010 the accepted validation-environment candidate, DEC-012 the accepted handoff candidate, and current formal acceptance is DEC-017.
 - Active approved Specs: `NONE`; completed `.ai/specs/SPEC-005-v2.md` / SHA-256 `9d90803a4900e56a21c5e6fe281644491e79d217126a5e08595e31f586438395`; `.ai/specs/SPEC-005.md` is superseded by DEC-016. Completed `.ai/specs/SPEC-004.md` / SHA-256 `b7365083d284ce1ec1cc63f3094215e00cfc4c6ed9eaa28ca2cf23e7b7fb9ee6`; completed `.ai/specs/SPEC-003.md` / SHA-256 `1fc359f0227c1f44d49c24a13513168aaf0d7e36757838602616ec5c98245fbd`; completed `.ai/specs/SPEC-002-v2.md` / SHA-256 `d1c2b2c4176297f093dedc5bb090d2374c3475e018dd9614c9f6ce02bcd4f99b`; `.ai/specs/SPEC-002.md` is superseded by DEC-008. Completed `.ai/specs/SPEC-001.md` / SHA-256 `9650653205f6e1141c5774b6819aaa7e3a7cc2c3673ed5c937659aa98867e590`.
-- Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session by TASK-003 Developer reference `/root/task_003_developer`; historical access was also `VERIFIED` by TASK-001 and TASK-002. Protected acceptance `MISSING`.
-- Environment: `CODEX`; trusted current evidence is the Codex desktop session, native collaboration inventory and TASK-003 Developer dispatch/result reference; creation/assignment/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
+- Runtime capabilities / assurance: native task-agent tools are exposed; current collaboration inventory contains only replacement Manager `/root`, and no dispatch was required during takeover, so creation/assignment/result access is `UNKNOWN` for this session. Historical access remains `VERIFIED` by TASK-001 through TASK-005 receipts. Protected acceptance `MISSING`.
+- Environment: `CODEX`; trusted current evidence is Codex desktop task `01a0815b-dc59-79c0-9813-d9fa81b8d433`, native collaboration inventory containing only `/root`, and task inventory showing outgoing Manager task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` idle; current-session creation/assignment/result access `UNKNOWN`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `bc70cb75dfa1076765678017cca3a76325f417b6` accepted by the user's “接受、同步本机并发布” decision; see DEC-017. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED.
-- Next action: replacement Manager inspects the supplied absolute checkout, verifies this handoff snapshot and native state, marks coordination `ACTIVE`, then awaits the Human's next project instruction. Do not replay completed Tasks or publish the two local handoff-state commits without separate authorization.
+- Next action: active replacement Manager awaits the Human's next project instruction. Do not replay completed Tasks or publish local governance commits without separate authorization.
 
 ## Active work (index; Task files own detailed state)
 
@@ -100,3 +100,12 @@ Version 2.0.4 is `RELEASED` to GitHub under DEC-009. Annotated tag `v2.0.4` poin
 - Active Tasks / approved Specs: `NONE`; TASK-001 through TASK-005 are DONE. SPEC-005-v2 is completed and accepted under DEC-017.
 - Blockers: `NONE`.
 - Exact next action: replacement Manager starts from the supplied absolute checkout, verifies Project ID, remote, branch, actual HEAD, clean worktree, accepted candidate, installed Skill hashes and native Worker state, then marks coordination `ACTIVE` and awaits the Human's next project instruction. Do not replay completed Tasks or push the local handoff-state commits without separate authorization.
+
+## Takeover reconciliation (2026-09-08T22:13:32+08:00)
+
+- Result: `PASS`; replacement Manager located the supplied absolute checkout and matched Project ID `PDP-SKILL`, repository URL, stable version `2.0.4` and branch `main` to `AGENTS.md` and this state.
+- Repository evidence before this state update: HEAD `9aa2a57de6a124deeb4c00d0e450613dfce7cdba`, clean working tree, `origin/main` tracking ref `d9ad8e4a3d878787a07703927e270fba700ebc35`, local branch ahead by exactly two governance-only handoff commits. No fetch or publication was performed.
+- Candidate evidence: strictly accepted candidate `bc70cb75dfa1076765678017cca3a76325f417b6` exists and is an ancestor of HEAD. No active Task or approved Spec is recorded; TASK-001 through TASK-005 remain DONE and were not redispatched.
+- Installed Skill evidence: all 11 installed bundle files are byte-identical to the repository checkout, and Skill Creator quick validation reports `Skill is valid!` using the approved repository-local environment.
+- Native runtime evidence: current collaboration inventory contains only replacement Manager `/root`; Codex task inventory shows this replacement task active and outgoing Manager task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` idle. No active Worker is observable.
+- Blockers: `NONE`. Coordination is `ACTIVE`; next action is to await the Human's next project instruction without push, tag or release.
