@@ -1,6 +1,6 @@
 # Project state
 
-- Updated: 2026-09-08T15:36:27+08:00
+- Updated: 2026-09-08T15:37:16+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
@@ -13,7 +13,7 @@
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session by TASK-003 Developer reference `/root/task_003_developer`; historical access was also `VERIFIED` by TASK-001 and TASK-002. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is the Codex desktop session, native collaboration inventory and TASK-003 Developer dispatch/result reference; creation/assignment/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54` accepted by the user's “接受” decision; see DEC-012. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED.
-- Next action: assign fresh independent Tester and Reviewer to exact TASK-005 candidate `bc70cb75dfa1076765678017cca3a76325f417b6`; verify future-project behavior without renaming current Agents.
+- Next action: await independent Tester `/root/task_005_tester` and Reviewer `/root/task_005_reviewer` results for exact TASK-005 candidate `bc70cb75dfa1076765678017cca3a76325f417b6`.
 
 ## Active work (index; Task files own detailed state)
 
@@ -23,7 +23,7 @@
 | `.ai/tasks/TASK-002.md` | DONE | Manager `/root` | Developer delivered; Test N/A; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate | NONE | NONE |
 | `.ai/tasks/TASK-003.md` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-010 | NONE | NONE |
 | `.ai/tasks/TASK-004.md` | DONE | Manager `/root` | Rework cycle 1: Developer delivered; fresh Tester/forward evaluator PASS; fresh Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-012 | NONE | NONE |
-| `.ai/tasks/TASK-005.md` — `agent_names` | VERIFY | `/root/task_005_agent_names_developer` | Candidate `bc70cb75…` delivered; Test/Review PENDING | NONE | Assign fresh Tester and Reviewer |
+| `.ai/tasks/TASK-005.md` — `agent_names` | VERIFY | Manager `/root` | Candidate `bc70cb75…`; Tester `/root/task_005_tester` and Reviewer `/root/task_005_reviewer` running | NONE | Await verdicts |
 
 ## Blockers and decisions needed
 
