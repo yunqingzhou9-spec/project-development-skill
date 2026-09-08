@@ -26,7 +26,7 @@
 | `.ai/tasks/TASK-005.md` — `agent_names` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted; installed Skill synchronized; GitHub `main` published | NONE | NONE |
 | `.ai/tasks/TASK-006.md` — Distribution audit | DONE | Manager `/root` | Three audit results; Test N/A; Reviewer APPROVE; gate CONSISTENT | NONE | NONE |
 | `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | DONE | Manager `/root` | Candidate `3ff3e5b`: Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted | TASK-006 | NONE |
-| `.ai/tasks/TASK-008.md` — Local Skill synchronization | DOING | Manager `/root` | FULL workflow; Developer dispatch pending | TASK-007 | Build, back up and install the accepted archive |
+| `.ai/tasks/TASK-008.md` — Local Skill synchronization | VERIFY | Manager `/root` | Developer synchronized accepted archive; independent Test and Review pending | TASK-007 | Verify installed state and no-publication boundary |
 
 ## Blockers and decisions needed
 
