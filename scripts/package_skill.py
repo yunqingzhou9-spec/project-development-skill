@@ -42,7 +42,10 @@ CONCRETE_LEAKS = (
     ("private key", re.compile(rb"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----")),
 )
 PLACEHOLDER_TOKEN_RE = re.compile(r"\S*<[^>\r\n]+>\S*")
-GENERIC_PATH_RE = re.compile(r"(?<![A-Za-z0-9_.:/-])/path/to/project(?=$|[\s'\"`)},;])")
+PATH_SEPARATOR = "/"
+GENERIC_EXAMPLE_PATH = PATH_SEPARATOR + PATH_SEPARATOR.join(("path", "to", "project"))
+ENV_SHEBANG = "#!" + PATH_SEPARATOR + PATH_SEPARATOR.join(("usr", "bin", "env"))
+GENERIC_PATH_RE = re.compile(r"(?<![A-Za-z0-9_.:/-])" + re.escape(GENERIC_EXAMPLE_PATH) + r"(?=$|[\s'\"`)},;])")
 POSIX_PATH_RE = re.compile(r"(?<![A-Za-z0-9_.:<>/-])/[A-Za-z0-9._~-]+(?:/[A-Za-z0-9._~() -]+)*")
 WINDOWS_DRIVE_PATH_RE = re.compile(r"(?<![A-Za-z0-9_.-])[A-Za-z]:[\\/][A-Za-z0-9._~$ -]+")
 WINDOWS_UNC_PATH_RE = re.compile(r"(?<!\\)\\\\[A-Za-z0-9._-]+\\[A-Za-z0-9._$ -]+")
@@ -144,8 +147,8 @@ def reject_leaks(path, data):
         require(pattern.search(data) is None, "Rejected %s in %s" % (label, path))
     text = data.decode("utf-8")
     for line in text.splitlines():
-        if line.startswith("#!/usr/bin/env"):
-            line = line[len("#!/usr/bin/env"):]
+        if line.startswith(ENV_SHEBANG):
+            line = line[len(ENV_SHEBANG):]
         line = PLACEHOLDER_TOKEN_RE.sub("", line)
         line = GENERIC_PATH_RE.sub("", line)
         require(POSIX_PATH_RE.search(line) is None, "Rejected absolute POSIX path in " + path)

@@ -173,6 +173,9 @@ class PackageTests(unittest.TestCase):
         package.reject_leaks("fixture", b"<ABSOLUTE_LOCAL_REPOSITORY_PATH> <WINDOWS_USER_HOME> /path/to/project C:\\Users\\<USERNAME> <FULL_SOURCE_COMMIT>")
         package.reject_leaks("fixture", b"https://example.com/Library/Application/Support ssh://host/workspace/alice git://server/mnt/c/Users/alice")
 
+    def test_packager_runtime_text_does_not_self_reject(self):
+        package.reject_leaks("scripts/package_skill.py", SCRIPT.read_bytes())
+
     def test_rejects_windows_mount_and_var_paths_during_build(self):
         leaks = (
             "home C:\\Users\\alice\n",
