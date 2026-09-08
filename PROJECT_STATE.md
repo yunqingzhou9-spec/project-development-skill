@@ -1,6 +1,6 @@
 # Project state
 
-- Updated: 2026-09-08T14:10:09+08:00
+- Updated: 2026-09-08T14:11:11+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
@@ -13,7 +13,7 @@
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session by TASK-003 Developer reference `/root/task_003_developer`; historical access was also `VERIFIED` by TASK-001 and TASK-002. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is the Codex desktop session, native collaboration inventory and TASK-003 Developer dispatch/result reference; creation/assignment/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `912ec892395572447462ce7e0924ab149735f794` accepted by the user's “接受候选并发布” decision; see DEC-009.
-- Next action: obtain independent Tester and Reviewer verdicts for TASK-003 candidate `a47f0ef62ed25eed2b2241e496435531688ccd17`.
+- Next action: await independent Tester `/root/task_003_tester` and Reviewer `/root/task_003_reviewer` verdicts for TASK-003 candidate `a47f0ef62ed25eed2b2241e496435531688ccd17`.
 
 ## Active work (index; Task files own detailed state)
 
@@ -21,7 +21,7 @@
 |---|---|---|---|---|---|
 | `.ai/tasks/TASK-001.md` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate | NONE | NONE |
 | `.ai/tasks/TASK-002.md` | DONE | Manager `/root` | Developer delivered; Test N/A; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate | NONE | NONE |
-| `.ai/tasks/TASK-003.md` | VERIFY | Manager `/root` | Developer `/root/task_003_developer` delivered candidate `a47f0ef62ed25eed2b2241e496435531688ccd17` | NONE | Independent Test and Review |
+| `.ai/tasks/TASK-003.md` | VERIFY | Manager `/root` | Tester `/root/task_003_tester` and Reviewer `/root/task_003_reviewer` assigned to candidate `a47f0ef62ed25eed2b2241e496435531688ccd17` | NONE | Await independent verdicts |
 
 ## Blockers and decisions needed
 

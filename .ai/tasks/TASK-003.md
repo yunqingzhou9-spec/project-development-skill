@@ -38,11 +38,12 @@ Developer self-checks for candidate `a47f0ef62ed25eed2b2241e496435531688ccd17`:
 
 ## Handoff / evidence
 
-Manager created TASK-003 from the Human's explicit implementation instruction. Developer creation/assignment/result native reference: `/root/task_003_developer`. Developer returned candidate `a47f0ef62ed25eed2b2241e496435531688ccd17` with changed paths `.gitignore`, `requirements-dev.txt`, `AGENTS.md` and `README.md`; Manager confirmed the repository HEAD and clean worktree.
+Manager created TASK-003 from the Human's explicit implementation instruction. Developer creation/assignment/result native reference: `/root/task_003_developer`. Developer returned candidate `a47f0ef62ed25eed2b2241e496435531688ccd17` with changed paths `.gitignore`, `requirements-dev.txt`, `AGENTS.md` and `README.md`; Manager confirmed the repository HEAD and clean worktree. Independent verification assignments: Tester `/root/task_003_tester`; Reviewer `/root/task_003_reviewer`.
 
 ## History / next action
 
 - 2026-09-08T14:06:18+08:00 — Manager recorded SPEC-003 as APPROVED from the Human's “按你的建议执行” instruction and created this Task at READY.
 - 2026-09-08T14:07:29+08:00 — Manager assigned fresh Developer `/root/task_003_developer`; Task moved READY → DOING.
 - 2026-09-08T14:10:09+08:00 — Developer result received for immutable candidate `a47f0ef62ed25eed2b2241e496435531688ccd17`; Manager confirmed the candidate and moved Task DOING → VERIFY.
-- Next: assign fresh independent Tester and Reviewer to the exact candidate.
+- 2026-09-08T14:11:11+08:00 — Manager assigned fresh independent Tester `/root/task_003_tester` and Reviewer `/root/task_003_reviewer` to the exact candidate.
+- Next: await independent verdicts.
