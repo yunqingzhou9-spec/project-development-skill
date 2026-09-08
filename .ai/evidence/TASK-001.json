@@ -1,0 +1,56 @@
+{
+  "manager_id": "/root",
+  "agents": [
+    {
+      "id": "/root/task_001_developer",
+      "role": "developer",
+      "task_id": "TASK-001",
+      "create_ref": "native collaboration.spawn_agent result for /root/task_001_developer",
+      "assignment_ref": "native task assignment in the current Codex Manager task"
+    },
+    {
+      "id": "/root/task_001_tester",
+      "role": "tester",
+      "task_id": "TASK-001",
+      "create_ref": "native collaboration.spawn_agent result for /root/task_001_tester",
+      "assignment_ref": "native task assignment in the current Codex Manager task"
+    },
+    {
+      "id": "/root/task_001_reviewer",
+      "role": "reviewer",
+      "task_id": "TASK-001",
+      "create_ref": "native collaboration.spawn_agent result for /root/task_001_reviewer",
+      "assignment_ref": "native task assignment in the current Codex Manager task"
+    }
+  ],
+  "results": [
+    {
+      "agent_id": "/root/task_001_developer",
+      "task_id": "TASK-001",
+      "spec_sha256": "9650653205f6e1141c5774b6819aaa7e3a7cc2c3673ed5c937659aa98867e590",
+      "target": {"kind": "git", "commit": "ddb1a3bb8d03d407f6dccbb028f7d2bd906e0828"},
+      "verdict": "DELIVERED",
+      "result_ref": "native FINAL_ANSWER from /root/task_001_developer in current Codex Manager task",
+      "report_ref": ".ai/tasks/TASK-001.md#verification--findings"
+    },
+    {
+      "agent_id": "/root/task_001_tester",
+      "task_id": "TASK-001",
+      "spec_sha256": "9650653205f6e1141c5774b6819aaa7e3a7cc2c3673ed5c937659aa98867e590",
+      "target": {"kind": "git", "commit": "ddb1a3bb8d03d407f6dccbb028f7d2bd906e0828"},
+      "verdict": "PASS",
+      "result_ref": "native FINAL_ANSWER from /root/task_001_tester in current Codex Manager task",
+      "report_ref": ".ai/tasks/TASK-001.md#verification--findings"
+    },
+    {
+      "agent_id": "/root/task_001_reviewer",
+      "task_id": "TASK-001",
+      "spec_sha256": "9650653205f6e1141c5774b6819aaa7e3a7cc2c3673ed5c937659aa98867e590",
+      "target": {"kind": "git", "commit": "ddb1a3bb8d03d407f6dccbb028f7d2bd906e0828"},
+      "verdict": "APPROVE",
+      "result_ref": "native FINAL_ANSWER from /root/task_001_reviewer in current Codex Manager task",
+      "report_ref": ".ai/tasks/TASK-001.md#verification--findings",
+      "no_implementation_edits": true
+    }
+  ]
+}
