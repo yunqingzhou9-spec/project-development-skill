@@ -1,0 +1,56 @@
+{
+  "manager_id": "01a0815b-dc59-79c0-9813-d9fa81b8d433",
+  "agents": [
+    {
+      "id": "/root/task_009_backup_discovery_cleanup_developer",
+      "role": "developer",
+      "task_id": "TASK-009",
+      "create_ref": "native collaboration spawn result for /root/task_009_backup_discovery_cleanup_developer",
+      "assignment_ref": "TASK-009 exact backup move assignment under SPEC-008"
+    },
+    {
+      "id": "/root/task_009_backup_discovery_cleanup_tester",
+      "role": "tester",
+      "task_id": "TASK-009",
+      "create_ref": "native collaboration spawn result for /root/task_009_backup_discovery_cleanup_tester",
+      "assignment_ref": "fresh independent Test assignment corrected to Git-resolved candidate 4d6940c852a251db5779b259b73f9f23e5c1554d"
+    },
+    {
+      "id": "/root/task_009_backup_discovery_cleanup_reviewer",
+      "role": "reviewer",
+      "task_id": "TASK-009",
+      "create_ref": "native collaboration spawn result for /root/task_009_backup_discovery_cleanup_reviewer",
+      "assignment_ref": "fresh independent Review assignment corrected to Git-resolved candidate 4d6940c852a251db5779b259b73f9f23e5c1554d"
+    }
+  ],
+  "results": [
+    {
+      "agent_id": "/root/task_009_backup_discovery_cleanup_developer",
+      "task_id": "TASK-009",
+      "spec_sha256": "0775b8345946b9db9e08fa9c7aebb2c4613c25cea3936451af227dd7fe514876",
+      "target": {"kind": "git", "commit": "4d6940c852a251db5779b259b73f9f23e5c1554d"},
+      "verdict": "DELIVERED",
+      "result_ref": "native final result from TASK-009 Developer",
+      "report_ref": ".ai/tasks/TASK-009.md#verification--findings"
+    },
+    {
+      "agent_id": "/root/task_009_backup_discovery_cleanup_tester",
+      "task_id": "TASK-009",
+      "spec_sha256": "0775b8345946b9db9e08fa9c7aebb2c4613c25cea3936451af227dd7fe514876",
+      "target": {"kind": "git", "commit": "4d6940c852a251db5779b259b73f9f23e5c1554d"},
+      "verdict": "PASS",
+      "result_ref": "native final result from corrected-candidate TASK-009 Tester",
+      "report_ref": ".ai/tasks/TASK-009.md#verification--findings"
+    },
+    {
+      "agent_id": "/root/task_009_backup_discovery_cleanup_reviewer",
+      "task_id": "TASK-009",
+      "spec_sha256": "0775b8345946b9db9e08fa9c7aebb2c4613c25cea3936451af227dd7fe514876",
+      "target": {"kind": "git", "commit": "4d6940c852a251db5779b259b73f9f23e5c1554d"},
+      "verdict": "APPROVE",
+      "result_ref": "native final result from corrected-candidate TASK-009 Reviewer",
+      "report_ref": ".ai/tasks/TASK-009.md#verification--findings",
+      "no_implementation_edits": true
+    }
+  ]
+}
