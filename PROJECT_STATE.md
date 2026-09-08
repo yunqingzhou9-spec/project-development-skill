@@ -1,19 +1,19 @@
 # Project state
 
-- Updated: 2026-09-08T15:13:52+08:00
+- Updated: 2026-09-08T15:20:21+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
-- Coordination: `ACTIVE`; replacement Manager `/root` in Codex task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` verified the supplied absolute checkout, repository identity, branch, HEAD, clean worktree, accepted candidate, installed Skill synchronization and native runtime state; updated 2026-09-08T15:07:49+08:00
+- Coordination: `ACTIVE`; Manager `/root` in Codex task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` is coordinating approved TASK-005; updated 2026-09-08T15:20:21+08:00
 - Purpose / boundaries: Maintain the Project Development Protocol Skill without granting implementation, acceptance, installation, or publishing authority beyond explicit user decisions.
-- Working candidate: accepted TASK-004 rework candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54`; later commits contain governance and verification evidence only. Unaccepted candidate `8bdb522332aa176ab371aa147f7e28949ae03768` remains historical.
+- Working candidate: TASK-005 implementation pending from base `6741a431a43252d77c7b7f5c997620c90fec36f4`; current accepted baseline remains TASK-004 candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54`.
 - Strictly Accepted Baseline: version `2.0.4` / Git commit `b82bb16e5ee382b1c1867c245f20e148a3bd5d54`; Human acceptance recorded in DEC-012.
 - Historical documented acceptance: `CHANGELOG.md` entries and tags `v2.0.2`, `v2.0.3`, `v2.0.4`; DEC-009 records the published 2.0.4 release candidate, DEC-010 the accepted validation-environment candidate, and current formal acceptance is DEC-012.
-- Active approved Specs: `NONE`; completed `.ai/specs/SPEC-004.md` / SHA-256 `b7365083d284ce1ec1cc63f3094215e00cfc4c6ed9eaa28ca2cf23e7b7fb9ee6`; completed `.ai/specs/SPEC-003.md` / SHA-256 `1fc359f0227c1f44d49c24a13513168aaf0d7e36757838602616ec5c98245fbd`; completed `.ai/specs/SPEC-002-v2.md` / SHA-256 `d1c2b2c4176297f093dedc5bb090d2374c3475e018dd9614c9f6ce02bcd4f99b`; `.ai/specs/SPEC-002.md` is superseded by DEC-008. Completed `.ai/specs/SPEC-001.md` / SHA-256 `9650653205f6e1141c5774b6819aaa7e3a7cc2c3673ed5c937659aa98867e590`.
+- Active approved Specs: `.ai/specs/SPEC-005.md` / SHA-256 `9c670d37e7a462a586c9d4e34b5abeb33b8d90344ef92f375fc13fd4cb3c518d`; completed `.ai/specs/SPEC-004.md` / SHA-256 `b7365083d284ce1ec1cc63f3094215e00cfc4c6ed9eaa28ca2cf23e7b7fb9ee6`; completed `.ai/specs/SPEC-003.md` / SHA-256 `1fc359f0227c1f44d49c24a13513168aaf0d7e36757838602616ec5c98245fbd`; completed `.ai/specs/SPEC-002-v2.md` / SHA-256 `d1c2b2c4176297f093dedc5bb090d2374c3475e018dd9614c9f6ce02bcd4f99b`; `.ai/specs/SPEC-002.md` is superseded by DEC-008. Completed `.ai/specs/SPEC-001.md` / SHA-256 `9650653205f6e1141c5774b6819aaa7e3a7cc2c3673ed5c937659aa98867e590`.
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session by TASK-003 Developer reference `/root/task_003_developer`; historical access was also `VERIFIED` by TASK-001 and TASK-002. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is the Codex desktop session, native collaboration inventory and TASK-003 Developer dispatch/result reference; creation/assignment/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54` accepted by the user's “接受” decision; see DEC-012. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED.
-- Next action: await further Human instructions. The accepted TASK-004 state is published on GitHub `main`; no new tag, version or GitHub Release is authorized.
+- Next action: assign fresh TASK-005 Developer `task_005_agent_names_developer` against the frozen Spec and base.
 
 ## Active work (index; Task files own detailed state)
 
@@ -23,10 +23,11 @@
 | `.ai/tasks/TASK-002.md` | DONE | Manager `/root` | Developer delivered; Test N/A; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate | NONE | NONE |
 | `.ai/tasks/TASK-003.md` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-010 | NONE | NONE |
 | `.ai/tasks/TASK-004.md` | DONE | Manager `/root` | Rework cycle 1: Developer delivered; fresh Tester/forward evaluator PASS; fresh Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-012 | NONE | NONE |
+| `.ai/tasks/TASK-005.md` — `agent_names` | READY | Manager `/root` | Not dispatched | NONE | Assign Developer `task_005_agent_names_developer` |
 
 ## Blockers and decisions needed
 
-NONE. TASK-004 rework candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54` is formally accepted under DEC-012 and synchronized locally under DEC-013. Publication remains unauthorized pending the Human's real-window verification.
+NONE. TASK-004 rework candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54` is formally accepted, synchronized locally and published on GitHub `main` under DEC-012 through DEC-014. TASK-005 is approved and ready for dispatch.
 
 ## Accepted / completed work
 
@@ -38,7 +39,7 @@ TASK-003 is DONE and formally accepted under `HUMAN / PROTOCOL` assurance for ca
 
 TASK-004 rework cycle 1 is DONE and formally accepted under `HUMAN / PROTOCOL` assurance for candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54`; fresh independent wrong-workspace forward-test PASS, fresh Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-004-rework-1.json` are recorded. The concise candidate uses short Chinese labels and a linear action sequence while retaining all required identity/state fields and safeguards. Prior unaccepted candidate `8bdb522332aa176ab371aa147f7e28949ae03768` and `.ai/evidence/TASK-004.json` remain historical. DEC-012 promotes the concise candidate as the Strictly Accepted Baseline without authorizing installed-Skill synchronization or publication.
 
-Under DEC-013, the accepted TASK-004 runtime file `references/PROTOCOL.md` was synchronized to the local installed Skill. The installed and repository copies share SHA-256 `b85f8b5dcb118134d6ec279e2cdca41582c8bffbfa8a099d1f098158172be3f1`; the installed Skill passed Skill Creator quick validation and the repository passed 28/28 regression tests. `SKILL.md`, `references/GATE.md` and `scripts/check_completion.py` were already identical and were not changed. Publication remains pending the Human's real-window verification and separate authorization.
+Under DEC-013, the accepted TASK-004 runtime file `references/PROTOCOL.md` was synchronized to the local installed Skill. The installed and repository copies share SHA-256 `b85f8b5dcb118134d6ec279e2cdca41582c8bffbfa8a099d1f098158172be3f1`; the installed Skill passed Skill Creator quick validation and the repository passed 28/28 regression tests. `SKILL.md`, `references/GATE.md` and `scripts/check_completion.py` were already identical and were not changed. DEC-014 subsequently published the accepted TASK-004 state and takeover records to GitHub `main` without changing the version or tag.
 
 ## Release
 
