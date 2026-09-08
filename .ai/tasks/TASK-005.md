@@ -4,20 +4,20 @@
 {
   "id": "TASK-005",
   "short_name": "agent_names",
-  "status": "READY",
+  "status": "DOING",
   "spec": {"path": ".ai/specs/SPEC-005.md", "sha256": "9c670d37e7a462a586c9d4e34b5abeb33b8d90344ef92f375fc13fd4cb3c518d"},
   "owner": "manager",
   "depends_on": [],
   "base": "6741a431a43252d77c7b7f5c997620c90fec36f4",
   "candidate": null,
-  "contributors": [],
+  "contributors": ["/root/task_005_agent_names_developer"],
   "test_required": true,
   "test_na_reason": null,
   "test": "PENDING",
   "review": "PENDING",
   "blockers": [],
   "rework_cycles": 0,
-  "next_action": "Assign fresh Developer task_005_agent_names_developer"
+  "next_action": "Await Developer task_005_agent_names_developer candidate and self-check evidence"
 }
 ```
 
@@ -38,4 +38,5 @@ Manager created TASK-005 from the Human's explicit optimization request. Runtime
 ## History / next action
 
 - 2026-09-08T15:20:21+08:00 — Human requested descriptive Task/Agent naming beyond the numeric sequence; Manager recorded SPEC-005 as APPROVED and created TASK-005 at READY under DEC-015.
-- Next: assign fresh Developer `task_005_agent_names_developer` against the frozen Spec and base.
+- 2026-09-08T15:22:23+08:00 — Manager created and assigned fresh Developer `/root/task_005_agent_names_developer`; native creation returned the same descriptive identity and Task moved READY → DOING.
+- Next: await the Developer's immutable candidate and self-check evidence.
