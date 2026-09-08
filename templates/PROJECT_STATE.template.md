@@ -21,7 +21,9 @@ Keep Project ID stable across checkout moves and main-window handoffs. If this v
 
 | Task / short name | State | Owner / runtime ID | Run status / native reference | Depends on | Next action |
 |---|---|---|---|---|---|
-| `.ai/tasks/TASK-001.md` — `snake_game` | READY | Manager / NONE | Not dispatched | NONE | Assign `task_001_snake_game_developer` |
+| `.ai/tasks/TASK-001.md` — Layout adjustment | READY | Manager / NONE | Not dispatched | NONE | Assign `task_001_layout_adjustment_developer` |
+
+The row is illustrative, not a fixed name. For every future Task, replace `Layout adjustment` with the concise human-readable outcome chosen during decomposition and derive the matching slug used by all of that Task's Workers (for example, `Player movement` → `player_movement`).
 
 ## Blockers and decisions needed
 

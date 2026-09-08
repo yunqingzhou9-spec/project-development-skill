@@ -105,9 +105,9 @@ $project-development 按已经批准的 Spec 开始执行，使用真实子 Agen
 
 日常使用只需要一个主对话。Manager 在后台协调不同 Task 的 Developer、Tester 和 Reviewer；你不需要在多个窗口之间复制结果。
 
-新 Task 会保留稳定的编号 ID，并增加简短的用途名。平台支持自定义名称时，Worker Agent 使用 `task_<序号>_<用途>_<角色>`，例如 `task_005_agent_names_developer`；这样无需打开 Task 文件就能看出工作内容和角色。用途名只是可读标签，平台返回的原生运行身份仍是权威记录。
+在未来使用更新后 Skill 的项目中，Manager 会在拆分每个新 Task 时根据实际内容或结果动态选择简短名称，并与稳定编号一起显示，例如 `TASK-001 — Layout adjustment`，同时记录匹配的 `layout_adjustment`。这只是示例，不是固定名称；其他 Task 可按实际结果命名为 `Player movement` / `player_movement` 或 `Collision detection` / `collision_detection`。平台支持自定义名称时，同一 Task 的所有 Worker 都复用其编号和用途 slug，再附加角色，例如 `task_001_layout_adjustment_developer`、`task_001_layout_adjustment_tester` 和 `task_001_layout_adjustment_reviewer`。用途名只是可读标签，平台返回的原生运行身份仍是权威记录；不会回头重命名当前或历史 Task、Agent 或证据。
 
-New Tasks keep their stable numbered IDs and add a short purpose name. When the host supports caller-selected names, Worker Agents use `task_<sequence>_<purpose>_<role>`, for example `task_005_agent_names_reviewer`, so native runtime lists reveal both the work and the role. The readable name is only a label; the native runtime identity returned by the host remains authoritative.
+In future projects using the updated Skill, the Manager dynamically chooses a concise name from each new Task's actual content or outcome during decomposition and displays it with the stable number, for example `TASK-001 — Layout adjustment`, while recording the matching `layout_adjustment` slug. That is an example, not a prescribed name: other outcomes might be `Player movement` / `player_movement` or `Collision detection` / `collision_detection`. When the host supports caller-selected names, every Worker for that Task reuses its number and purpose slug before the role, such as `task_001_layout_adjustment_developer`, `task_001_layout_adjustment_tester` and `task_001_layout_adjustment_reviewer`. The readable name is only a label; the native runtime identity returned by the host remains authoritative. Current and historical Tasks, Agents and evidence are never retrospectively renamed.
 
 ## 更换主窗口
 

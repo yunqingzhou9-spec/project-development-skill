@@ -1,9 +1,9 @@
-# TASK-001 — <outcome>
+# TASK-001 — <concise outcome, e.g. Layout adjustment>
 
 ```json
 {
   "id": "TASK-001",
-  "short_name": "<one_to_four_meaningful_words>",
+  "short_name": "<matching lower-snake-case slug, e.g. layout_adjustment>",
   "status": "READY",
   "spec": {"path": ".ai/specs/SPEC-001.md", "sha256": "<approved file digest>"},
   "owner": "manager",
@@ -17,7 +17,7 @@
   "review": "PENDING",
   "blockers": [],
   "rework_cycles": 0,
-  "next_action": "Assign Developer after checking approval and runtime capability"
+  "next_action": "Assign task_001_<short_name>_developer after checking approval and runtime capability"
 }
 ```
 
@@ -31,7 +31,7 @@
 
 ## Handoff / evidence
 
-<Developer/Test/Review report links, native creation/assignment/result references and candidate identity. Where the host supports caller-selected names, use readable Worker Agent names such as `task_001_snake_game_developer`, `task_001_snake_game_tester` and `task_001_snake_game_reviewer`; native returned identities remain authoritative. Small reports live here. Large reports and completion receipts are linked only when needed.>
+<Developer/Test/Review report links, native creation/assignment/result references and candidate identity. The title and slug above are dynamically chosen from this Task's outcome; `Layout adjustment` / `layout_adjustment` is only an example. Where the host supports caller-selected names, reuse the same slug in names such as `task_001_layout_adjustment_developer`, `task_001_layout_adjustment_tester` and `task_001_layout_adjustment_reviewer`; native returned identities remain authoritative. Small reports live here. Large reports and completion receipts are linked only when needed.>
 
 ## History / next action
 
