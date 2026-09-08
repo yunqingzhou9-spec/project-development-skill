@@ -158,6 +158,11 @@ class PackageTests(unittest.TestCase):
             "home C:\\Users\\alice\n",
             "project C:\\Users\\alice\\source\\project\n",
             "project D:/Users/alice/source/project\n",
+            "library /Library/Application Support/Alice/project\n",
+            "workspace /workspace/alice/private\n",
+            "wsl /mnt/c/Users/alice/project\n",
+            "drive E:\\Projects\\alice\\private\n",
+            "unc \\\\server\\Users\\alice\\project\n",
         )
         for leak in leaks:
             with self.subTest(leak=leak):
@@ -166,12 +171,18 @@ class PackageTests(unittest.TestCase):
 
     def test_allows_documented_path_placeholders(self):
         package.reject_leaks("fixture", b"<ABSOLUTE_LOCAL_REPOSITORY_PATH> <WINDOWS_USER_HOME> /path/to/project C:\\Users\\<USERNAME> <FULL_SOURCE_COMMIT>")
+        package.reject_leaks("fixture", b"https://example.com/Library/Application/Support ssh://host/workspace/alice git://server/mnt/c/Users/alice")
 
     def test_rejects_windows_mount_and_var_paths_during_build(self):
         leaks = (
             "home C:\\Users\\alice\n",
             "cache /var/folders/yr/session/output\n",
             "mount /Volumes/Workspace/project\n",
+            "library /Library/Application Support/Alice/project\n",
+            "workspace /workspace/alice/private\n",
+            "wsl /mnt/c/Users/alice/project\n",
+            "drive E:\\Projects\\alice\\private\n",
+            "unc \\\\server\\Users\\alice\\project\n",
         )
         for number, leak in enumerate(leaks):
             (self.root / "LICENSE").write_text(leak, encoding="utf-8")

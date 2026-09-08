@@ -38,12 +38,14 @@ SEMVER_RE = re.compile(
     r"(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$"
 )
 CONCRETE_LEAKS = (
-    ("absolute home path", re.compile(rb"(?<![A-Za-z0-9_.-])/(?:Users|home)/[^/\s<>]+(?:/[^\s<>]*)?")),
-    ("local system path", re.compile(rb"(?<![A-Za-z0-9_.-])/(?:private/(?:tmp|var)|var/folders|Volumes(?:/[^/\s<>]+)?|tmp|root|opt)(?:/[^\s<>]*)?")),
-    ("Windows user path", re.compile(rb"(?<![A-Za-z0-9_.-])[A-Za-z]:(?:\\|/)Users(?:\\|/)[^\\/\s<>]+(?:(?:\\|/)[^\s<>]*)?", re.I)),
     ("native runtime UUID", re.compile(rb"\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b", re.I)),
     ("private key", re.compile(rb"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----")),
 )
+PLACEHOLDER_TOKEN_RE = re.compile(r"\S*<[^>\r\n]+>\S*")
+GENERIC_PATH_RE = re.compile(r"(?<![A-Za-z0-9_.:/-])/path/to/project(?=$|[\s'\"`)},;])")
+POSIX_PATH_RE = re.compile(r"(?<![A-Za-z0-9_.:<>/-])/[A-Za-z0-9._~-]+(?:/[A-Za-z0-9._~() -]+)*")
+WINDOWS_DRIVE_PATH_RE = re.compile(r"(?<![A-Za-z0-9_.-])[A-Za-z]:[\\/][A-Za-z0-9._~$ -]+")
+WINDOWS_UNC_PATH_RE = re.compile(r"(?<!\\)\\\\[A-Za-z0-9._-]+\\[A-Za-z0-9._$ -]+")
 
 
 class PackageError(ValueError):
@@ -140,6 +142,15 @@ def package_version(skill_bytes):
 def reject_leaks(path, data):
     for label, pattern in CONCRETE_LEAKS:
         require(pattern.search(data) is None, "Rejected %s in %s" % (label, path))
+    text = data.decode("utf-8")
+    for line in text.splitlines():
+        if line.startswith("#!/usr/bin/env"):
+            line = line[len("#!/usr/bin/env"):]
+        line = PLACEHOLDER_TOKEN_RE.sub("", line)
+        line = GENERIC_PATH_RE.sub("", line)
+        require(POSIX_PATH_RE.search(line) is None, "Rejected absolute POSIX path in " + path)
+        require(WINDOWS_DRIVE_PATH_RE.search(line) is None, "Rejected absolute Windows drive path in " + path)
+        require(WINDOWS_UNC_PATH_RE.search(line) is None, "Rejected absolute Windows UNC path in " + path)
 
 
 def source_payload(repo, commit):
