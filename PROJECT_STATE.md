@@ -1,6 +1,6 @@
 # Project state
 
-- Updated: 2026-09-08T15:07:49+08:00
+- Updated: 2026-09-08T15:13:52+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
@@ -13,7 +13,7 @@
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session by TASK-003 Developer reference `/root/task_003_developer`; historical access was also `VERIFIED` by TASK-001 and TASK-002. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is the Codex desktop session, native collaboration inventory and TASK-003 Developer dispatch/result reference; creation/assignment/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54` accepted by the user's “接受” decision; see DEC-012. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED.
-- Next action: await separate Human publication instructions. No push, tag or release is authorized.
+- Next action: await further Human instructions. The accepted TASK-004 state is published on GitHub `main`; no new tag, version or GitHub Release is authorized.
 
 ## Active work (index; Task files own detailed state)
 
@@ -42,7 +42,7 @@ Under DEC-013, the accepted TASK-004 runtime file `references/PROTOCOL.md` was s
 
 ## Release
 
-Version 2.0.4 is `RELEASED` to GitHub under DEC-009. Annotated tag `v2.0.4` points to accepted candidate `912ec892395572447462ce7e0924ab149735f794`. Under DEC-011, the accepted TASK-003 repository state was published by explicit main-only refspec: remote `main` advanced from `a9d48275ba888e2f0bd89f037383da216fd54d9b` to the accepted state and its governance receipts. Verification after the receipt push found local and remote `main` equal at `0d499190787b07f565576189e30143d83f7de829`; this final state update contains no deliverable change. Remote `v2.0.4` remained unchanged, and no new tag or GitHub Release was created. Published repository: `https://github.com/yunqingzhou9-spec/project-development-skill`.
+Version 2.0.4 is `RELEASED` to GitHub under DEC-009. Annotated tag `v2.0.4` points to accepted candidate `912ec892395572447462ce7e0924ab149735f794`. Under DEC-011, the accepted TASK-003 repository state was published by explicit main-only refspec: remote `main` advanced from `a9d48275ba888e2f0bd89f037383da216fd54d9b` to the accepted state and its governance receipts. Verification after the receipt push found local and remote `main` equal at `0d499190787b07f565576189e30143d83f7de829`; this final state update contains no deliverable change. Under DEC-014, the accepted TASK-004 handoff prompts and completed takeover records were published by explicit main-only refspec: remote `main` advanced from `a32f23fa8c1014924b95779d5c98640bd6c043ca` to `ee55847babf5a6349ff05477e9b3a6950c96459f`; remote-ref verification confirmed the README update was present in the published commit and `v2.0.4` remained unchanged. No new tag, version or GitHub Release was created. Published repository: `https://github.com/yunqingzhou9-spec/project-development-skill`.
 
 ## Takeover reconciliation (2026-09-08T14:00:23+08:00)
 
