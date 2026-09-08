@@ -4,7 +4,7 @@
 {
   "id": "TASK-002",
   "status": "READY",
-  "spec": {"path": ".ai/specs/SPEC-002.md", "sha256": "c938f13705101b3c650737df77b73e22fc16870ac7b9aef421372d930aba5926"},
+  "spec": {"path": ".ai/specs/SPEC-002-v2.md", "sha256": "d1c2b2c4176297f093dedc5bb090d2374c3475e018dd9614c9f6ce02bcd4f99b"},
   "owner": "manager",
   "depends_on": [],
   "base": "1e5723eac776a245f8669abb45a1bc8dec319e46",
@@ -22,7 +22,7 @@
 
 ## Scope and acceptance
 
-Implement SPEC-002 AC-1 through AC-7. This is a pure documentation/metadata Task: independent runtime testing is N/A for the recorded reason, but Developer non-regression checks and an independent Reviewer are required. Version 2.0.3 governs this Task. Synchronization and GitHub publication are authorized only after candidate-specific Human acceptance.
+Implement SPEC-002-v2 AC-1 through AC-7. This is a pure documentation/metadata Task: independent runtime testing is N/A for the recorded reason, but Developer non-regression checks and an independent Reviewer are required. Version 2.0.3 governs this Task. Synchronization and GitHub publication are authorized only after candidate-specific Human acceptance.
 
 ## Verification / findings
 
@@ -35,5 +35,5 @@ Base: `1e5723eac776a245f8669abb45a1bc8dec319e46`. Candidate and runtime receipts
 ## History / next action
 
 - 2026-09-08: Created from the user's directly approved SPEC-002 under version 2.0.3.
-- Next: dispatch Developer with fresh context.
-
+- 2026-09-08: User replaced the introduction before implementation. DEC-008 superseded SPEC-002 with frozen SPEC-002-v2; no candidate or verification from the prior Spec remains valid.
+- Next: resume the assigned Developer using SPEC-002-v2 only.
