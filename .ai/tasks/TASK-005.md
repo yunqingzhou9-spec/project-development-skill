@@ -4,7 +4,7 @@
 {
   "id": "TASK-005",
   "short_name": "agent_names",
-  "status": "VERIFY",
+  "status": "DONE",
   "spec": {"path": ".ai/specs/SPEC-005-v2.md", "sha256": "9d90803a4900e56a21c5e6fe281644491e79d217126a5e08595e31f586438395"},
   "owner": "manager",
   "depends_on": [],
@@ -13,11 +13,11 @@
   "contributors": ["/root/task_005_agent_names_developer"],
   "test_required": true,
   "test_na_reason": null,
-  "test": "PENDING",
-  "review": "PENDING",
+  "test": "PASS",
+  "review": "APPROVE",
   "blockers": [],
   "rework_cycles": 1,
-  "next_action": "Await independent Tester /root/task_005_tester and Reviewer /root/task_005_reviewer results for exact candidate"
+  "next_action": "Await Human candidate-specific acceptance; installed-Skill synchronization and publication remain unauthorized"
 }
 ```
 
@@ -39,10 +39,13 @@ Developer self-checks for SPEC-005-v2 candidate `bc70cb75dfa1076765678017cca3a76
 - Historical TASK-001 through TASK-004 and `.ai/evidence/` are unchanged from the approved base.
 - Completion tests passed 28/28; Skill quick validation and static scope checks passed.
 - Current Agent names were not used as implementation or acceptance evidence.
+- Independent Tester `/root/task_005_tester`: PASS for AC-1 through AC-8 on exact candidate `bc70cb75dfa1076765678017cca3a76325f417b6`. Confirmed dynamic per-Task naming with distinct layout, movement and collision mappings; future-project-only scope; stable IDs and native identity authority; exact four-file scope; unchanged historical Task/evidence blobs; 28/28 tests; Skill validation; and no repository edits.
+- Independent Reviewer `/root/task_005_reviewer`: APPROVE with no P0/P1/P2 findings on the exact candidate and Spec digest. Confirmed the Task name is chosen dynamically during decomposition, the same semantic slug flows across Worker roles, examples are not fixed values, compatibility and fallback are preserved, and current/historical identities are not renamed. Reviewer made no edits.
+- Completion gate: installed version 2.0.4 checker returned `STRUCTURAL / CONSISTENT` for exact candidate `bc70cb75dfa1076765678017cca3a76325f417b6`. The checker reports `runtime_authenticated:false` and `enforced:false`; Manager separately inspected native creation, assignment and result records and marks Task completion at `PROTOCOL` assurance.
 
 ## Handoff / evidence
 
-Manager created TASK-005 from the Human's explicit optimization request. Runtime references will be recorded after dispatch.
+Manager created TASK-005 from the Human's explicit optimization request. Candidate-bound runtime receipt: `.ai/evidence/TASK-005.json`. Native creation, assignment and result records were inspected through the current Codex collaboration tools; the receipt is a compact index and does not claim protected authentication.
 
 ## History / next action
 
@@ -52,4 +55,6 @@ Manager created TASK-005 from the Human's explicit optimization request. Runtime
 - 2026-09-08T15:33:21+08:00 — Human clarified that the change must govern Manager naming in future projects using the Skill and must not target current-conversation Task/Agent names. Manager froze SPEC-005-v2, superseded SPEC-005, marked the old candidate result stale and opened rework cycle 1.
 - 2026-09-08T15:36:27+08:00 — Same Developer delivered SPEC-005-v2 candidate `bc70cb75dfa1076765678017cca3a76325f417b6`; Manager confirmed exact four-file scope, clean worktree and frozen Spec digest, then moved Task DOING → VERIFY.
 - 2026-09-08T15:37:16+08:00 — Manager assigned fresh independent Tester `/root/task_005_tester` and Reviewer `/root/task_005_reviewer` to the exact candidate and frozen v2 Spec. Their current-project Agent names are deliberately not acceptance evidence for the future-facing behavior.
-- Next: await independent Test and Review results.
+- Tester returned PASS and Reviewer returned APPROVE with no findings; both remained independent and made no edits.
+- 2026-09-08T15:40:07+08:00 — Structural gate returned CONSISTENT; Manager verified native provenance, exact candidate scope and implementation authority, then moved Task VERIFY → DONE under PROTOCOL assurance.
+- Next: obtain Human acceptance for the exact candidate. Do not synchronize the installed Skill, push, tag, release or change version without separate authorization.

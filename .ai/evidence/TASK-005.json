@@ -1,0 +1,56 @@
+{
+  "manager_id": "/root",
+  "agents": [
+    {
+      "id": "/root/task_005_agent_names_developer",
+      "role": "developer",
+      "task_id": "TASK-005",
+      "create_ref": "collaboration.spawn_agent:/root/task_005_agent_names_developer",
+      "assignment_ref": "SPEC-005-v2 rework assignment via collaboration.followup_task after 2026-09-08T15:33:21+08:00"
+    },
+    {
+      "id": "/root/task_005_tester",
+      "role": "tester",
+      "task_id": "TASK-005",
+      "create_ref": "collaboration.spawn_agent:/root/task_005_tester",
+      "assignment_ref": "TASK-005 independent Test assignment at 2026-09-08T15:37:16+08:00"
+    },
+    {
+      "id": "/root/task_005_reviewer",
+      "role": "reviewer",
+      "task_id": "TASK-005",
+      "create_ref": "collaboration.spawn_agent:/root/task_005_reviewer",
+      "assignment_ref": "TASK-005 independent Review assignment at 2026-09-08T15:37:16+08:00"
+    }
+  ],
+  "results": [
+    {
+      "agent_id": "/root/task_005_agent_names_developer",
+      "task_id": "TASK-005",
+      "spec_sha256": "9d90803a4900e56a21c5e6fe281644491e79d217126a5e08595e31f586438395",
+      "target": {"kind": "git", "commit": "bc70cb75dfa1076765678017cca3a76325f417b6"},
+      "verdict": "DELIVERED",
+      "result_ref": "collaboration.wait_agent:final:/root/task_005_agent_names_developer:rework-1",
+      "report_ref": ".ai/tasks/TASK-005.md#verification--findings"
+    },
+    {
+      "agent_id": "/root/task_005_tester",
+      "task_id": "TASK-005",
+      "spec_sha256": "9d90803a4900e56a21c5e6fe281644491e79d217126a5e08595e31f586438395",
+      "target": {"kind": "git", "commit": "bc70cb75dfa1076765678017cca3a76325f417b6"},
+      "verdict": "PASS",
+      "result_ref": "collaboration.wait_agent:final:/root/task_005_tester",
+      "report_ref": ".ai/tasks/TASK-005.md#verification--findings"
+    },
+    {
+      "agent_id": "/root/task_005_reviewer",
+      "task_id": "TASK-005",
+      "spec_sha256": "9d90803a4900e56a21c5e6fe281644491e79d217126a5e08595e31f586438395",
+      "target": {"kind": "git", "commit": "bc70cb75dfa1076765678017cca3a76325f417b6"},
+      "verdict": "APPROVE",
+      "result_ref": "collaboration.wait_agent:final:/root/task_005_reviewer",
+      "report_ref": ".ai/tasks/TASK-005.md#verification--findings",
+      "no_implementation_edits": true
+    }
+  ]
+}
