@@ -4,20 +4,20 @@
 {
   "id": "TASK-007",
   "short_name": "clear_lightweight_skill",
-  "status": "DOING",
+  "status": "BLOCKED",
   "spec": {"path": ".ai/specs/SPEC-006.md", "sha256": "d57d15463f71f23aec19bfa600345afd24c7145af5026a80cd067ce18a1f6c1f"},
   "owner": "manager",
   "depends_on": ["TASK-006"],
   "base": "1daff6e007d419e553529b1fd6112e8c7a4459c8",
-  "candidate": {"kind": "git", "commit": "4303e2ed3f4161441caef36dcd738241dc117ef7"},
+  "candidate": {"kind": "git", "commit": "648ad6671b3538f2452887421e57f386b1e7ce4f"},
   "contributors": ["/root/task_007_clear_lightweight_skill_developer"],
   "test_required": true,
   "test_na_reason": null,
-  "test": "PASS",
+  "test": "FAIL",
   "review": "REJECT",
-  "blockers": [],
-  "rework_cycles": 3,
-  "next_action": "Use DEC-019's one-time extra cycle to generalize placeholder-aware absolute-path rejection, produce a new candidate, then use fresh Tester and Reviewer identities."
+  "blockers": ["DEC-019's one additional focused rework cycle is exhausted; Human must decide whether to narrow the unbounded absolute-path criterion"],
+  "rework_cycles": 4,
+  "next_action": "Recommend a new Spec version that defines package cleanliness structurally by exact allowlist/source hashes and rejects project-specific paths, runtime IDs and secrets without claiming exhaustive detection of every absolute-path syntax."
 }
 ```
 
@@ -39,6 +39,10 @@ Implement SPEC-006 AC-2 through AC-7 using the minimal remediation design accept
 - Fresh rework-cycle-2 Test and Review: PENDING; all earlier verdicts are stale.
 - Rework-cycle-2 independent Tester: PASS on candidate `4303e2ed3f4161441caef36dcd738241dc117ef7`; 38 completion and 17 package tests, quick validation, compilation, diff check, deterministic archive and adversarial checks all passed.
 - Rework-cycle-2 independent Reviewer: REJECT; package scanning still accepts concrete `/Library`, `/workspace`, `/mnt` and UNC absolute paths. All other AC areas were satisfactory and prior findings were fixed.
+- DEC-019 Developer self-checks for candidate `648ad6671b3538f2452887421e57f386b1e7ce4f`: completion tests 38/38 PASS; package tests 18/18 PASS; quick validation, compilation and diff check PASS; two deterministic archives shared SHA-256 `60c9fbb02a12b3477e39774a0d3fb594f19a64a29fdce1cbbecf398edad669c9` and contained 13 members.
+- Fresh DEC-019 Test and Review: PENDING; all earlier candidate verdicts are stale.
+- DEC-019 independent Tester: FAIL; end-to-end builds still accept repeated-separator Windows/UNC forms, network POSIX paths, Unicode absolute paths and concrete prefixes hidden by trailing placeholders.
+- DEC-019 independent Reviewer: REJECT; placeholder-token removal, ASCII-oriented patterns and `file://` handling leave AC-3/AC-7 unsatisfied. All other SPEC-006 areas were satisfactory.
 
 ## Handoff / evidence
 
@@ -55,3 +59,5 @@ Implement SPEC-006 AC-2 through AC-7 using the minimal remediation design accept
 - 2026-09-08: Same Developer delivered rework-cycle-2 candidate `4303e2ed3f4161441caef36dcd738241dc117ef7`; moved to VERIFY with fresh identities required.
 - 2026-09-08: Third failed verification cycle reached the configured rework limit. Task moved to BLOCKED pending a Human decision; no further Worker was dispatched.
 - 2026-09-08: Human authorized one additional focused rework cycle under DEC-019. Blocker cleared; scope remains limited to generalized absolute-path rejection and fresh verification.
+- 2026-09-08: Same Developer delivered focused candidate `648ad6671b3538f2452887421e57f386b1e7ce4f`, changing only the packager and its tests; moved to VERIFY with fresh identities required.
+- 2026-09-08: DEC-019's one authorized extra cycle ended with fresh Test FAIL and Review REJECT. Task returned to BLOCKED; no further Worker was dispatched.
