@@ -17,7 +17,7 @@
   "review": "APPROVE",
   "blockers": [],
   "rework_cycles": 1,
-  "next_action": "Synchronize accepted runtime-facing files to the installed Skill, validate, then fast-forward GitHub main only under DEC-017"
+  "next_action": "Refresh origin, verify fast-forward safety, then publish GitHub main only under DEC-017"
 }
 ```
 
@@ -58,4 +58,5 @@ Manager created TASK-005 from the Human's explicit optimization request. Candida
 - Tester returned PASS and Reviewer returned APPROVE with no findings; both remained independent and made no edits.
 - 2026-09-08T15:40:07+08:00 — Structural gate returned CONSISTENT; Manager verified native provenance, exact candidate scope and implementation authority, then moved Task VERIFY → DONE under PROTOCOL assurance.
 - 2026-09-08T15:42:56+08:00 — Human formally accepted exact candidate `bc70cb75dfa1076765678017cca3a76325f417b6` and authorized local installed-Skill synchronization plus GitHub publication under DEC-017. Version `2.0.4` and existing tag `v2.0.4` remain unchanged; no GitHub Release is authorized.
-- Next: synchronize the three runtime-facing files present in the installed Skill, validate repository and installed copies, then fast-forward GitHub `main` only.
+- 2026-09-08T15:45:28+08:00 — Manager synchronized the three accepted runtime-facing files present in the installed Skill. Repository/installed SHA-256 pairs match: `references/PROTOCOL.md` `28630c3ef368161f6d01efe0cd8ceb42794f9ce3e6e2a642c238b85eefe6f322`, `templates/TASK.template.md` `26b460042e92c62e6414c26fdcc7aba4feb4508afee5369d286c8227abe39fca`, and `templates/PROJECT_STATE.template.md` `10ee4c47df3946ac8d1af3b74da9ec9099d459b7b6ecd8ff1df00e8bae0374e4`. Installed Skill validation passed and repository tests passed 28/28. Repository `README.md` is not part of the installed bundle.
+- Next: refresh origin, verify fast-forward safety, then push current HEAD to GitHub `main` only.
