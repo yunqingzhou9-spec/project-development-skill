@@ -9,7 +9,7 @@
 - Working candidate: <commit/snapshot; disclose dirty or incomplete work>
 - Strictly Accepted Baseline: UNESTABLISHED
 - Historical documented acceptance: <reference or NONE>
-- Active approved Specs: <path + digest>
+- Active criteria: <FULL frozen Spec path + digest, or LIGHTWEIGHT Task inline scope digest>
 - Runtime capabilities / assurance: <observed result references; PROTOCOL / STRUCTURAL / ENFORCED, or UNKNOWN>
 - Environment: <CODEX / CHATGPT_WORK / OTHER / UNKNOWN; trusted host evidence; delegation/result access and protected acceptance VERIFIED / MISSING / UNKNOWN; scoped adaptation decision or NONE>
 - Formal acceptance: <authority HUMAN by default; PENDING or actual candidate-specific human/service evidence; distinct from Task DONE>

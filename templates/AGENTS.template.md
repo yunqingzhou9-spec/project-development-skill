@@ -2,7 +2,7 @@
 
 ## Start here
 
-Use `$project-development`. Read `PROJECT_STATE.md`, then only your Task, its approved Spec and relevant links. This project authorizes task-scoped subagent delegation for approved execution, subject to host permissions. Discussion/setup alone does not authorize implementation.
+Use `$project-development`. Read `PROJECT_STATE.md`, then only your Task, its frozen approved Spec for `FULL` or inline approved scope for `LIGHTWEIGHT`, and relevant links. This project authorizes task-scoped subagent delegation for approved execution, subject to host permissions. Discussion/setup alone does not authorize implementation.
 
 If the skill is unavailable, report it; do not invent its rules or claim independent acceptance. A project-local copy may be linked here when the host cannot discover installed skills.
 
@@ -20,7 +20,7 @@ If the skill is unavailable, report it; do not invent its rules or claim indepen
 
 ## Team
 
-Chief of Staff clarifies; Human approves; Manager dispatches and updates shared state. Developer implements; independent Tester verifies behavior; independent Reviewer checks correctness. Read only your role in the skill protocol. Fresh workers across Tasks; one active Task per worker. Never treat roleplay or self-authored identities as independent evidence.
+Chief of Staff clarifies; Human approves; Manager dispatches and updates shared state. Developer implements and runs targeted verification. `FULL` functional work also uses an independent Tester; eligible `LIGHTWEIGHT` may preselect Tester N/A. A fresh independent Reviewer always checks correctness. Read only your role in the skill protocol. Fresh workers across Tasks; one active Task per worker. Never treat roleplay or self-authored identities as independent evidence.
 
 Only one main Manager coordinates the same project scope. For replacement or recovery, follow the skill's main-window handoff protocol and verify the Project ID before dispatching.
 
@@ -28,7 +28,7 @@ Record the same Project ID here and in `PROJECT_STATE.md`. Keep it stable across
 
 ## Project settings
 
-- Verification: functional work = test + review; pure docs = review + reasoned test N/A; high risk = both + integration acceptance.
+- Verification: `FULL` functional work = independent test + review; `FULL` pure docs = review + reasoned test N/A; eligible `LIGHTWEIGHT` = Developer targeted verification + fresh independent review, with Tester optionally preselected N/A; high risk = FULL test + review + integration acceptance.
 - Rework: at most 3 failed verification cycles per Task.
 - Runtime / receipt access / assurance: <observed tools; unknown until checked>
 - Preferred hosts: Codex / ChatGPT Work; run the skill's environment gate. Other/unknown host adaptation requires an explicit scoped user decision.

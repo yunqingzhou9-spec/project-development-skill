@@ -28,12 +28,13 @@ The Skill inspects the repository, asks only about consequential ambiguity, and 
 
 `project-development` 就是为了解决这些问题。
 
-它在一个主窗口中保留常驻的 **Chief of Staff + Manager**：前者帮助 Human 澄清目标、范围和验收标准，后者把批准后的 Spec 拆成 Tasks，并按需创建独立的 Developer、Tester、Reviewer 等 Worker Agents，自动组织实现、测试、审查和返工。
+它在一个主窗口中保留常驻的 **Chief of Staff + Manager**：前者帮助 Human 澄清目标、范围和验收标准，后者将 `FULL` 的批准 Spec 或 `LIGHTWEIGHT` Task 内批准范围组织成工作，并按流程创建独立 Worker Agents，自动组织实现、验证、审查和返工。
 
 ```sql
 Idea
 → Clarify the goal
-→ Approve the Spec
+→ Approve the criteria
+→ Select FULL or LIGHTWEIGHT
 → Break it into Tasks
 → Create the right Worker Agents
 → Implement
@@ -55,12 +56,13 @@ The hard part of AI-assisted development is often no longer code generation. It 
 
 `project-development` is designed to solve that problem.
 
-It keeps a persistent **Chief of Staff + Manager** in one primary session: the Chief of Staff helps the Human clarify goals, scope, trade-offs, and acceptance criteria; the Manager turns the approved Spec into Tasks and dynamically creates independent Developer, Tester, Reviewer, and other Worker Agents to execute, verify, review, and rework the project.
+It keeps a persistent **Chief of Staff + Manager** in one primary session: the Chief of Staff helps the Human clarify goals, scope, trade-offs, and acceptance criteria; the Manager coordinates a frozen approved Spec for `FULL` or inline approved Task scope for `LIGHTWEIGHT`, then creates the independent workers required to execute, verify, review, and rework it.
 
 ```sql
 Idea
 → Clarify the goal
-→ Approve the Spec
+→ Approve the criteria
+→ Select FULL or LIGHTWEIGHT
 → Break it into Tasks
 → Create the right Worker Agents
 → Implement
@@ -75,9 +77,9 @@ Idea
 ## 它解决什么
 
 - Human 决定目标、范围和关键取舍。
-- Chief of Staff 将讨论整理成可审批的 Spec。
-- Manager 按 Approved Spec 拆分和协调任务。
-- Developer、Tester、Reviewer 使用独立运行身份工作。
+- Chief of Staff 将讨论整理成可审批的 `FULL` Spec 或 `LIGHTWEIGHT` Task 内范围。
+- Manager 按 `FULL` 的 Approved Spec 或 `LIGHTWEIGHT` 的 Task 内批准范围协调任务。
+- Developer 和 Reviewer 使用独立运行身份；`FULL` 功能工作还需要独立 Tester。
 - 项目状态、候选版本和证据保存在仓库中，而不是依赖聊天记忆。
 - 完成检查绑定 Git commit 或文件哈希，避免旧测试或旧审查被用于新候选版本。
 
@@ -138,13 +140,13 @@ $skill-installer 请从 https://github.com/yunqingzhou9-spec/project-development
 $project-development 请和我澄清目标，形成 Spec；在我批准前不要实现。
 ```
 
-目标已经明确并希望开始执行：
+目标已经明确并希望按 `FULL` 开始执行：
 
 ```text
 $project-development 按已经批准的 Spec 开始执行，使用真实子 Agent，并把状态和证据写回仓库。
 ```
 
-日常使用只需要一个主对话。Manager 在后台协调不同 Task 的 Developer、Tester 和 Reviewer；你不需要在多个窗口之间复制结果。
+日常使用只需要一个主对话。Manager 在后台协调每个 Task 所需的 Developer、Tester 和 Reviewer；你不需要在多个窗口之间复制结果。
 
 在未来使用更新后 Skill 的项目中，Manager 会在拆分每个新 Task 时根据实际内容或结果动态选择简短名称，并与稳定编号一起显示，例如 `TASK-001 — Layout adjustment`，同时记录匹配的 `layout_adjustment`。这只是示例，不是固定名称；其他 Task 可按实际结果命名为 `Player movement` / `player_movement` 或 `Collision detection` / `collision_detection`。平台支持自定义名称时，同一 Task 的所有 Worker 都复用其编号和用途 slug，再附加角色，例如 `task_001_layout_adjustment_developer`、`task_001_layout_adjustment_tester` 和 `task_001_layout_adjustment_reviewer`。用途名只是可读标签，平台返回的原生运行身份仍是权威记录；不会回头重命名当前或历史 Task、Agent 或证据。
 
@@ -174,7 +176,7 @@ GitHub/远程 URL：<GITHUB_OR_REMOTE_URL>
 阻塞项：<BLOCKERS>
 下一步：<NEXT_ACTION>
 
-$project-development 接管上述项目。不要假定当前工作区是目标仓库。先检查上述绝对路径指向的 checkout。路径不存在或无法访问时，停止并请 Human 处理。再从该 checkout 读取 AGENTS.md、PROJECT_STATE.md、活动 Task 及 Approved Spec。用上述信息核对仓库身份、范围和现场状态。以仓库记录和可核验的原生运行状态为准。信息缺失或冲突时，停止并请 Human 处理。先核实活动 Agent，再继续派发。不要复制或依赖旧聊天。不要重复派发可能仍在运行的任务。按已核对的下一步继续项目。
+$project-development 接管上述项目。不要假定当前工作区是目标仓库。先检查上述绝对路径指向的 checkout。路径不存在或无法访问时，停止并请 Human 处理。再从该 checkout 读取 AGENTS.md、PROJECT_STATE.md、活动 Task，以及 `FULL` Task 的 frozen Approved Spec 或 `LIGHTWEIGHT` Task 的 inline approved scope。用上述信息核对仓库身份、范围和现场状态。以仓库记录和可核验的原生运行状态为准。信息缺失或冲突时，停止并请 Human 处理。先核实活动 Agent，再继续派发。不要复制或依赖旧聊天。不要重复派发可能仍在运行的任务。按已核对的下一步继续项目。
 ```
 
 首次设置时，Project ID 按固定顺序确定：先复用项目已有的权威 ID；若没有，则使用用户明确提供的 ID；两者都没有时，Skill 生成一个易读且唯一的 ID。它必须同时记录在 `AGENTS.md` 和 `PROJECT_STATE.md`，在目录移动和主窗口交接后保持不变。如果两处记录、用户指定值或当前项目之间出现冲突，Skill 应停止并请你确认，不能猜测或重新生成。

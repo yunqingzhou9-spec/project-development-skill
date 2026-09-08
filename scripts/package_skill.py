@@ -28,7 +28,6 @@ RUNTIME_FILES = (
     "templates/DECISIONS.template.md",
     "templates/PROJECT_STATE.template.md",
     "templates/SPEC.template.md",
-    "templates/TASK-LIGHTWEIGHT.template.md",
     "templates/TASK.template.md",
 )
 ZIP_TIME = (1980, 1, 1, 0, 0, 0)
@@ -40,8 +39,8 @@ SEMVER_RE = re.compile(
 )
 CONCRETE_LEAKS = (
     ("absolute home path", re.compile(rb"(?<![A-Za-z0-9_.-])/(?:Users|home)/[^/\s<>]+(?:/[^\s<>]*)?")),
-    ("local system path", re.compile(rb"(?<![A-Za-z0-9_.-])/(?:private/(?:tmp|var)|tmp|root|opt)(?:/[^\s<>]*)?")),
-    ("Windows user path", re.compile(rb"[A-Za-z]:\\\\Users\\\\[^\\\s]+\\\\")),
+    ("local system path", re.compile(rb"(?<![A-Za-z0-9_.-])/(?:private/(?:tmp|var)|var/folders|Volumes(?:/[^/\s<>]+)?|tmp|root|opt)(?:/[^\s<>]*)?")),
+    ("Windows user path", re.compile(rb"(?<![A-Za-z0-9_.-])[A-Za-z]:(?:\\|/)Users(?:\\|/)[^\\/\s<>]+(?:(?:\\|/)[^\s<>]*)?", re.I)),
     ("native runtime UUID", re.compile(rb"\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b", re.I)),
     ("private key", re.compile(rb"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----")),
 )

@@ -18,7 +18,7 @@ Tell me the outcome in ordinary language, for example: `$project-development Add
 
 ## Entry
 
-Read project `AGENTS.md`, its state-file pointer, then only the assigned Task, approved Spec and relevant files. Reuse existing paths. Never load all tasks, reports or chat history by default.
+Read project `AGENTS.md`, its state-file pointer, then only the assigned Task, its frozen approved Spec for `FULL` or inline approved scope for `LIGHTWEIGHT`, and relevant files. Reuse existing paths. Never load all tasks, reports or chat history by default.
 
 Choose the mode from the user's request; do not ask them to select a role:
 
@@ -26,7 +26,7 @@ Choose the mode from the user's request; do not ask them to select a role:
 - **Discuss / define:** act as Chief of Staff. Record a concise Spec for `FULL`, or the approved scope inside one Task for eligible `LIGHTWEIGHT` work; discussion alone does not authorize implementation. An explicit request to implement a sufficiently defined change can be recorded as its approval without another ritual confirmation.
 - **Execute / resume:** act as Manager. Read [Protocol: Execution](references/PROTOCOL.md#execution), starting with its environment gate. Prefer Codex and ChatGPT Work; verify actual tools, never infer protected acceptance from the product name. Other/unknown hosts require disclosure and the user's approval before environment adaptation. This mode requests real subagent delegation where permitted by the host.
 - **Handoff / recover:** when replacing a long or unavailable main conversation, read [Main-window handoff and recovery](references/PROTOCOL.md#main-window-handoff-and-recovery). Match the user-selected project to its recorded identity, preserve state and prevent duplicate coordination. Do not copy the previous chat.
-- **Assigned worker:** read only the corresponding role and evidence rules in [Protocol](references/PROTOCOL.md#roles), your Task and its Spec. Return references, not a transcript.
+- **Assigned worker:** read only the corresponding role and evidence rules in [Protocol](references/PROTOCOL.md#roles), your Task, and its frozen approved Spec for `FULL` or inline approved scope for `LIGHTWEIGHT`. Return references, not a transcript.
 - **Finish / accept:** apply [Completion gate](references/GATE.md). Missing required evidence blocks completion. Report the assurance level honestly.
 
 ## Invariants

@@ -32,7 +32,7 @@ For outputs without Git use `--candidate files:.ai/evidence/candidate.json`. Tha
 
 Git Task/receipt target example: `{"kind":"git","commit":"<full commit ID>"}`. The checker verifies commit existence in this repo and matches it against the candidate explicitly selected on the command line. It does not assert the working tree/HEAD, merged code or deployed artifact equals that commit; the Manager/protected runner must select and verify the actual final deliverable. If integration changes its content, reverify the new candidate.
 
-Task and Spec use their first and only `json` fenced metadata block from the templates. Freeze Spec by hashing the entire approved file after approval is recorded. `approval_ref` points to durable approval evidence, which must be checked for actual authorization; a nonempty reference alone does not prove consent.
+Task and, for `FULL`, Spec use their first and only `json` fenced metadata block from the templates. Freeze a FULL Spec by hashing the entire approved file after approval is recorded. `approval_ref` points to durable approval evidence, which must be checked for actual authorization; a nonempty reference alone does not prove consent.
 
 `FULL` is the default, including for historical Tasks without a `profile` field. An eligible `LIGHTWEIGHT` Task instead embeds its complete approved `scope`, `approval_ref`, full Git `base`, empty `depends_on` and `scope_sha256`. Calculate the digest after filling the scope, then freeze it:
 
@@ -63,7 +63,7 @@ Store only at gate time, typically `.ai/evidence/TASK-001.json`; large native lo
 }
 ```
 
-Task `contributors` lists every implementation runtime ID. Multiple Developers are permitted; each needs creation/assignment provenance. At least one Developer DELIVERED result must bind the final candidate. Include only current-candidate results in this receipt; link previous receipts from Task history. For preselected test N/A, omit Tester/results, use Task `test_required:false`, `test:"N/A"`, and a concrete `test_na_reason`. Reviewer is always required. The checker rejects an optional failing test result as well.
+Task `contributors` lists every implementation runtime ID. Multiple Developers are permitted; each needs creation/assignment provenance. At least one Developer DELIVERED result must bind the final candidate. Include only current-candidate results in this receipt; link previous receipts from Task history. For an eligible LIGHTWEIGHT preselected Tester N/A, omit Tester/results, use Task `test_required:false`, `test:"N/A"`, and a concrete `test_na_reason`. Reviewer is always required. The checker rejects an optional failing test result as well. FULL ordinary functional work uses `test_required:true`; its existing pure-documentation N/A exception requires the reason selected before implementation.
 
 For `LIGHTWEIGHT`, use `scope_sha256` rather than `spec_sha256` in every result. The separate Tester may be omitted only while the eligibility assertions remain true; Developer targeted checks and the independent Reviewer remain mandatory. `FULL` retains its existing preselected documentation-only Test N/A rule. Neither profile lets the checker, Manager or workers grant formal acceptance, installation or publication.
 

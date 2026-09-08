@@ -52,6 +52,17 @@ class PackageTests(unittest.TestCase):
         first_title = (REPO / "references/PROTOCOL.md").read_text(encoding="utf-8").splitlines()[0]
         self.assertNotRegex(first_title, r"\d+\.\d+\.\d+")
 
+    def test_runtime_has_exactly_five_governance_templates(self):
+        templates = sorted(path for path in package.RUNTIME_FILES if path.startswith("templates/"))
+        self.assertEqual(templates, [
+            "templates/AGENTS.template.md",
+            "templates/DECISIONS.template.md",
+            "templates/PROJECT_STATE.template.md",
+            "templates/SPEC.template.md",
+            "templates/TASK.template.md",
+        ])
+        self.assertFalse((REPO / "templates/TASK-LIGHTWEIGHT.template.md").exists())
+
     def test_version_parser_accepts_semver_prerelease_and_block_scalar(self):
         data = b'---\ndescription: >-\n  human readable text\nmetadata:\n  version: "2.1.0-dev.1"\n---\n# Body\n'
         self.assertEqual(package.package_version(data), "2.1.0-dev.1")
@@ -142,6 +153,11 @@ class PackageTests(unittest.TestCase):
             "cache /private/tmp/pdp/archive.zip\n",
             "account /root/.codex/state\n",
             "tool /opt/company/bin/tool\n",
+            "cache /var/folders/yr/session/output\n",
+            "mount /Volumes/Work Disk/project\n",
+            "home C:\\Users\\alice\n",
+            "project C:\\Users\\alice\\source\\project\n",
+            "project D:/Users/alice/source/project\n",
         )
         for leak in leaks:
             with self.subTest(leak=leak):
@@ -149,7 +165,21 @@ class PackageTests(unittest.TestCase):
                     package.reject_leaks("fixture", leak.encode())
 
     def test_allows_documented_path_placeholders(self):
-        package.reject_leaks("fixture", b"<ABSOLUTE_LOCAL_REPOSITORY_PATH> /path/to/project <FULL_SOURCE_COMMIT>")
+        package.reject_leaks("fixture", b"<ABSOLUTE_LOCAL_REPOSITORY_PATH> <WINDOWS_USER_HOME> /path/to/project C:\\Users\\<USERNAME> <FULL_SOURCE_COMMIT>")
+
+    def test_rejects_windows_mount_and_var_paths_during_build(self):
+        leaks = (
+            "home C:\\Users\\alice\n",
+            "cache /var/folders/yr/session/output\n",
+            "mount /Volumes/Workspace/project\n",
+        )
+        for number, leak in enumerate(leaks):
+            (self.root / "LICENSE").write_text(leak, encoding="utf-8")
+            self.git("add", "LICENSE")
+            self.git("-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid", "-c", "commit.gpgsign=false", "commit", "-qm", "path leak %d" % number)
+            leak_commit = self.git("rev-parse", "HEAD")
+            with self.subTest(leak=leak), self.assertRaises(package.PackageError):
+                package.build(self.root, leak_commit, self.root / ("path-leak-%d.zip" % number))
 
     def test_failed_verification_does_not_replace_existing_archive(self):
         output = self.root / "atomic.zip"
