@@ -1,19 +1,19 @@
 # Project state
 
-- Updated: 2026-09-08T23:04:01+08:00
+- Updated: 2026-09-08T23:17:30+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
 - Coordination: `ACTIVE`; replacement Manager `/root` in Codex task `01a0815b-dc59-79c0-9813-d9fa81b8d433` verified the supplied checkout, installed Skill and native runtime state; the outgoing Manager task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` is idle and no active Worker is observable; updated 2026-09-08T22:13:32+08:00
 - Purpose / boundaries: Maintain the Project Development Protocol Skill without granting implementation, acceptance, installation, or publishing authority beyond explicit user decisions.
-- Working candidate: TASK-007 rework cycle 1 candidate `4fabd192ceb17ea38f5b9311e07d879b8ec0f020` failed fresh verification and is stale pending rework cycle 2. Earlier candidate `02d381e2c03a0c3df2e59c77e812afb19442c363` is also stale. Strictly accepted baseline remains TASK-005 candidate `bc70cb75dfa1076765678017cca3a76325f417b6` / version `2.0.4`.
+- Working candidate: TASK-007 rework cycle 2 candidate `4303e2ed3f4161441caef36dcd738241dc117ef7` for working/unreleased package version `2.1.0-dev.1`; independent Tester PASS but Reviewer REJECT. Earlier candidates `02d381e2c03a0c3df2e59c77e812afb19442c363` and `4fabd192ceb17ea38f5b9311e07d879b8ec0f020` are stale. Strictly accepted baseline remains TASK-005 candidate `bc70cb75dfa1076765678017cca3a76325f417b6` / version `2.0.4`.
 - Strictly Accepted Baseline: version `2.0.4` / Git commit `bc70cb75dfa1076765678017cca3a76325f417b6`; Human acceptance recorded in DEC-017.
 - Historical documented acceptance: `CHANGELOG.md` entries and tags `v2.0.2`, `v2.0.3`, `v2.0.4`; DEC-009 records the published 2.0.4 release candidate, DEC-010 the accepted validation-environment candidate, DEC-012 the accepted handoff candidate, and current formal acceptance is DEC-017.
 - Active approved Specs: `.ai/specs/SPEC-006.md` / SHA-256 `d57d15463f71f23aec19bfa600345afd24c7145af5026a80cd067ce18a1f6c1f` approved by DEC-018; completed `.ai/specs/SPEC-005-v2.md` / SHA-256 `9d90803a4900e56a21c5e6fe281644491e79d217126a5e08595e31f586438395`; `.ai/specs/SPEC-005.md` is superseded by DEC-016. Earlier completed Specs remain indexed in their Task records.
 - Runtime capabilities / assurance: native task-agent tools are exposed; current collaboration inventory contains only replacement Manager `/root`, and no dispatch was required during takeover, so creation/assignment/result access is `UNKNOWN` for this session. Historical access remains `VERIFIED` by TASK-001 through TASK-005 receipts. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is Codex desktop task `01a0815b-dc59-79c0-9813-d9fa81b8d433`, native collaboration inventory containing only `/root`, and task inventory showing outgoing Manager task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` idle; current-session creation/assignment/result access `UNKNOWN`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `bc70cb75dfa1076765678017cca3a76325f417b6` accepted by the user's “接受、同步本机并发布” decision; see DEC-017. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED.
-- Next action: same Developer performs TASK-007 rework cycle 2, then fresh Tester and Reviewer verify the new candidate. Do not install, push, tag or release without separate authorization.
+- Next action: Human decides whether to authorize one extra focused rework cycle for generalized absolute-path rejection or narrow SPEC-006's package-path criterion. Do not dispatch, install, push, tag or release meanwhile.
 
 ## Active work (index; Task files own detailed state)
 
@@ -25,11 +25,11 @@
 | `.ai/tasks/TASK-004.md` | DONE | Manager `/root` | Rework cycle 1: Developer delivered; fresh Tester/forward evaluator PASS; fresh Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-012 | NONE | NONE |
 | `.ai/tasks/TASK-005.md` — `agent_names` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted; installed Skill synchronized; GitHub `main` published | NONE | NONE |
 | `.ai/tasks/TASK-006.md` — Distribution audit | DONE | Manager `/root` | Three audit results; Test N/A; Reviewer APPROVE; gate CONSISTENT | NONE | NONE |
-| `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | DOING | Manager `/root` | Rework-cycle-1 candidate `4fabd192` failed Test/Review; cycle 2 | TASK-006 | Fix path and instruction contradictions |
+| `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | BLOCKED | Manager `/root` | Candidate `4303e2ed`: Tester PASS, Reviewer REJECT; 3-cycle limit reached | TASK-006 | Await Human rework/scope decision |
 
 ## Blockers and decisions needed
 
-NONE. TASK-005 candidate `bc70cb75dfa1076765678017cca3a76325f417b6` is formally accepted, synchronized to the installed Skill and published on GitHub `main` under DEC-017.
+TASK-007 is BLOCKED after exhausting the default three failed verification cycles. Candidate `4303e2ed3f4161441caef36dcd738241dc117ef7` passes independent testing but package leak detection still accepts some concrete absolute-path families (`/Library`, `/workspace`, `/mnt`, UNC). Human must authorize an additional focused rework cycle or narrow the criterion. TASK-005 baseline remains accepted and unaffected.
 
 ## Accepted / completed work
 

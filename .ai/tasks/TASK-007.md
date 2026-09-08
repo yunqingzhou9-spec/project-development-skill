@@ -4,20 +4,20 @@
 {
   "id": "TASK-007",
   "short_name": "clear_lightweight_skill",
-  "status": "DOING",
+  "status": "BLOCKED",
   "spec": {"path": ".ai/specs/SPEC-006.md", "sha256": "d57d15463f71f23aec19bfa600345afd24c7145af5026a80cd067ce18a1f6c1f"},
   "owner": "manager",
   "depends_on": ["TASK-006"],
   "base": "1daff6e007d419e553529b1fd6112e8c7a4459c8",
-  "candidate": {"kind": "git", "commit": "4fabd192ceb17ea38f5b9311e07d879b8ec0f020"},
+  "candidate": {"kind": "git", "commit": "4303e2ed3f4161441caef36dcd738241dc117ef7"},
   "contributors": ["/root/task_007_clear_lightweight_skill_developer"],
   "test_required": true,
   "test_na_reason": null,
-  "test": "FAIL",
+  "test": "PASS",
   "review": "REJECT",
-  "blockers": [],
-  "rework_cycles": 2,
-  "next_action": "Route rework-cycle-1 findings to the same Developer, unify LIGHTWEIGHT instructions, complete path rejection and remove the extra template."
+  "blockers": ["Default budget of three failed verification cycles is exhausted; Human decision required before further rework"],
+  "rework_cycles": 3,
+  "next_action": "Ask the Human whether to authorize one additional focused rework cycle to generalize placeholder-aware absolute-path rejection, or narrow the package-path acceptance criterion."
 }
 ```
 
@@ -35,6 +35,10 @@ Implement SPEC-006 AC-2 through AC-7 using the minimal remediation design accept
 - Fresh independent Test and Review: PENDING; old candidate verdicts are stale.
 - Rework-cycle-1 Test: FAIL because a normal Windows user path remained accepted by package leak scanning.
 - Rework-cycle-1 Review: REJECT because additional `/var/folders`, `/Volumes` and exact Windows paths remained accepted; FULL/LIGHTWEIGHT Tester and Spec-reading instructions contradicted each other; setup still claimed five templates while packaging a sixth.
+- Rework cycle 2 Developer self-checks for candidate `4303e2ed3f4161441caef36dcd738241dc117ef7`: completion tests 38/38 PASS; package tests 17/17 PASS; quick validation, compilation and diff check PASS; deterministic archive SHA-256 `4ea852cd15cbef493ea034c4b22f2c7f9e62163b7a9edb2f785068dd56f1a0af`, with manifest plus 12 allowlisted files and exactly five templates.
+- Fresh rework-cycle-2 Test and Review: PENDING; all earlier verdicts are stale.
+- Rework-cycle-2 independent Tester: PASS on candidate `4303e2ed3f4161441caef36dcd738241dc117ef7`; 38 completion and 17 package tests, quick validation, compilation, diff check, deterministic archive and adversarial checks all passed.
+- Rework-cycle-2 independent Reviewer: REJECT; package scanning still accepts concrete `/Library`, `/workspace`, `/mnt` and UNC absolute paths. All other AC areas were satisfactory and prior findings were fixed.
 
 ## Handoff / evidence
 
@@ -48,3 +52,5 @@ Implement SPEC-006 AC-2 through AC-7 using the minimal remediation design accept
 - 2026-09-08: Fresh Tester FAIL and Reviewer REJECT on the exact candidate. Rework cycle 1 opened; old verdicts remain historical and cannot cover a new candidate.
 - 2026-09-08: Same Developer delivered rework candidate `4fabd192ceb17ea38f5b9311e07d879b8ec0f020`, fixing all three findings and adding adversarial regressions; moved to VERIFY with fresh identities required.
 - 2026-09-08: Fresh rework Tester FAIL and Reviewer REJECT. Rework cycle 2 opened; candidate `4fabd192ceb17ea38f5b9311e07d879b8ec0f020` and its verdicts are stale for any later candidate.
+- 2026-09-08: Same Developer delivered rework-cycle-2 candidate `4303e2ed3f4161441caef36dcd738241dc117ef7`; moved to VERIFY with fresh identities required.
+- 2026-09-08: Third failed verification cycle reached the configured rework limit. Task moved to BLOCKED pending a Human decision; no further Worker was dispatched.
