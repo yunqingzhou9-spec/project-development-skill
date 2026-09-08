@@ -1,10 +1,10 @@
 # Project state
 
-- Updated: 2026-09-08T15:04:52+08:00
+- Updated: 2026-09-08T15:07:49+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
-- Coordination: `READY_FOR_TAKEOVER`; current Manager `/root` verified the repository, installed Skill and completed native workers, and will cease coordination after returning the populated prompt; updated 2026-09-08T15:04:52+08:00
+- Coordination: `ACTIVE`; replacement Manager `/root` in Codex task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` verified the supplied absolute checkout, repository identity, branch, HEAD, clean worktree, accepted candidate, installed Skill synchronization and native runtime state; updated 2026-09-08T15:07:49+08:00
 - Purpose / boundaries: Maintain the Project Development Protocol Skill without granting implementation, acceptance, installation, or publishing authority beyond explicit user decisions.
 - Working candidate: accepted TASK-004 rework candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54`; later commits contain governance and verification evidence only. Unaccepted candidate `8bdb522332aa176ab371aa147f7e28949ae03768` remains historical.
 - Strictly Accepted Baseline: version `2.0.4` / Git commit `b82bb16e5ee382b1c1867c245f20e148a3bd5d54`; Human acceptance recorded in DEC-012.
@@ -13,7 +13,7 @@
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session by TASK-003 Developer reference `/root/task_003_developer`; historical access was also `VERIFIED` by TASK-001 and TASK-002. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is the Codex desktop session, native collaboration inventory and TASK-003 Developer dispatch/result reference; creation/assignment/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54` accepted by the user's “接受” decision; see DEC-012. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED.
-- Next action: replacement Manager performs the real-window takeover test from the supplied absolute checkout, reports whether self-location succeeded, and awaits separate Human publication instructions. No push, tag or release is authorized.
+- Next action: await separate Human publication instructions. No push, tag or release is authorized.
 
 ## Active work (index; Task files own detailed state)
 
@@ -70,3 +70,13 @@ Version 2.0.4 is `RELEASED` to GitHub under DEC-009. Annotated tag `v2.0.4` poin
 - Active Tasks: `NONE`; TASK-001 through TASK-004 are DONE.
 - Blockers: `NONE`
 - Exact takeover action: replacement Manager starts from the supplied absolute checkout, verifies repository and native state, confirms the locally synchronized protocol is present, marks coordination `ACTIVE`, reports whether the self-locating handoff succeeded, and awaits separate Human publication instructions. Do not replay completed Tasks or publish anything.
+
+## Window takeover test (2026-09-08T15:07:49+08:00)
+
+- Result: `PASS`; the replacement Manager located and took over `PDP-SKILL` from the supplied absolute checkout without treating the initial ChatGPT-project mirror as the target repository.
+- Repository evidence before the state update: remote `https://github.com/yunqingzhou9-spec/project-development-skill.git`, branch `main`, HEAD `1c6d0142c04cd597f8662dee51f7b2b0d38250c4`, clean working tree, local branch 15 commits ahead of `origin/main`.
+- Candidate and version evidence: accepted candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54` exists and is an ancestor of HEAD; `SKILL.md` and `CHANGELOG.md` record `2.0.4`; existing tag `v2.0.4` still resolves to historical release candidate `912ec892395572447462ce7e0924ab149735f794` as recorded above.
+- Installed synchronization evidence: repository and installed `references/PROTOCOL.md` both have SHA-256 `b85f8b5dcb118134d6ec279e2cdca41582c8bffbfa8a099d1f098158172be3f1`.
+- Task and runtime evidence: no active Task or approved Spec is recorded; TASK-001 through TASK-004 remain DONE and were not redispatched. Native collaboration inventory showed only this replacement `/root`; Codex task inventory showed this task active and the prior matching main-window task idle, with no observable running Worker.
+- Blockers: `NONE`.
+- Next action: await separate Human publication instructions; no push, tag or release is authorized.
