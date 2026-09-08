@@ -13,7 +13,7 @@
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` by `/root/task_001_developer`, `/root/task_001_tester` and `/root/task_001_reviewer`; installed 2.0.2 completion checker returned `STRUCTURAL / CONSISTENT`; Manager completed TASK-001 at `PROTOCOL` assurance; protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted evidence is the Codex desktop session and native collaboration task/result provenance; delegation/result access `VERIFIED`; protected acceptance `MISSING`; adaptation decision `NONE`.
 - Formal acceptance: authority `HUMAN`; candidate `912ec892395572447462ce7e0924ab149735f794` accepted by the user's “接受候选并发布” decision; see DEC-009.
-- Next action: push this final acceptance/release-state record, verify remote `main`, then no active work remains.
+- Next action: `NONE`; acceptance, local synchronization, GitHub publication and remote-ref verification are complete.
 
 ## Active work (index; Task files own detailed state)
 
