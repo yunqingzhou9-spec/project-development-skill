@@ -112,24 +112,24 @@ $project-development 按已经批准的 Spec 开始执行，使用真实子 Agen
 计划更换窗口时，可以把下面这段直接发给旧窗口：
 
 ```text
-$project-development 准备把当前项目交接到新的主窗口。请停止派发新任务，检查所有活动 Agent，把 Project ID、绝对本地仓库路径、GitHub/远程 URL、当前稳定版本、分支、候选 commit、未提交变更、活动 Agent、阻塞项和准确的下一步写回仓库中的状态与 Task 记录；确认信息一致后将 coordination 标记为 READY_FOR_TAKEOVER，并停止继续协调。最终回复必须包含一段已填全、可直接复制到新窗口的完整接管提示词，明示上述四项身份信息和已核实的分支/候选 commit/未提交变更/活动 Agent/阻塞项/下一步；不要只回复 Project ID 和下一步。
+$project-development 准备交接当前项目。停止派发新任务。检查活动 Agent。核对 Project ID、本地仓库绝对路径、GitHub/远程 URL、稳定版本、分支、候选 commit、未提交变更、活动 Agent、阻塞项和下一步。把它们写回状态和 Task 记录。一致后将 coordination 标记为 READY_FOR_TAKEOVER。最后只返回一段已填好、可直接复制到新窗口的完整接管提示词。提示词必须包含上述全部信息。回复后停止协调。
 ```
 
 旧窗口确认可接管后，把它返回的已填全提示词发给新窗口。下面的占位符模板展示完整格式：
 
 ```text
-Project ID: <PROJECT_ID>
-Absolute local repository path: <ABSOLUTE_LOCAL_REPOSITORY_PATH>
-GitHub/remote URL: <GITHUB_OR_REMOTE_URL>
-Current stable version: <CURRENT_STABLE_VERSION>
-Verified branch: <BRANCH>
-Verified candidate commit: <CANDIDATE_COMMIT>
-Verified dirty/untracked changes: <DIRTY_OR_UNTRACKED_CHANGES>
-Verified active Agents: <ACTIVE_AGENTS>
-Verified blockers: <BLOCKERS>
-Exact next action: <NEXT_ACTION>
+项目 ID：<PROJECT_ID>
+本地仓库绝对路径：<ABSOLUTE_LOCAL_REPOSITORY_PATH>
+GitHub/远程 URL：<GITHUB_OR_REMOTE_URL>
+稳定版本：<CURRENT_STABLE_VERSION>
+分支：<BRANCH>
+候选 commit：<CANDIDATE_COMMIT>
+未提交变更：<DIRTY_OR_UNTRACKED_CHANGES>
+活动 Agent：<ACTIVE_AGENTS>
+阻塞项：<BLOCKERS>
+下一步：<NEXT_ACTION>
 
-$project-development 接管上述项目。即使当前初始工作区与项目无关，也不要将它当作目标仓库；先检查上述绝对路径指向的 checkout，再从该 checkout 读取 AGENTS.md、PROJECT_STATE.md、活动 Task 及其 Approved Spec。用四项身份信息定位并交叉核对 Project ID、仓库身份与范围、实际 checkout、当前稳定版本、分支、commit、未提交变更和原生活动 Agent 状态；仓库记录和可核验的原生运行状态仍是权威依据。如果路径缺失或无法访问，或身份信息与权威记录冲突，停止接管并请 Human 解决。解决记录与现场差异、核实原生任务状态之前不要继续派发；不要依赖或复制旧聊天，也不要重复派发仍可能运行的任务。
+$project-development 接管上述项目。不要假定当前工作区是目标仓库。先检查上述绝对路径指向的 checkout。路径不存在或无法访问时，停止并请 Human 处理。再从该 checkout 读取 AGENTS.md、PROJECT_STATE.md、活动 Task 及 Approved Spec。用上述信息核对仓库身份、范围和现场状态。以仓库记录和可核验的原生运行状态为准。信息缺失或冲突时，停止并请 Human 处理。先核实活动 Agent，再继续派发。不要复制或依赖旧聊天。不要重复派发可能仍在运行的任务。按已核对的下一步继续项目。
 ```
 
 首次设置时，Project ID 按固定顺序确定：先复用项目已有的权威 ID；若没有，则使用用户明确提供的 ID；两者都没有时，Skill 生成一个易读且唯一的 ID。它必须同时记录在 `AGENTS.md` 和 `PROJECT_STATE.md`，在目录移动和主窗口交接后保持不变。如果两处记录、用户指定值或当前项目之间出现冲突，Skill 应停止并请你确认，不能猜测或重新生成。
