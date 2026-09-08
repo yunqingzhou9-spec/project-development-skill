@@ -1,19 +1,19 @@
 # Project state
 
-- Updated: 2026-09-08T14:32:47+08:00
+- Updated: 2026-09-08T14:37:51+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
 - Coordination: `ACTIVE`; replacement Manager `/root` in the current Codex collaboration tree took over after verifying the repository snapshot and native runtime inventory; updated 2026-09-08T14:00:23+08:00
 - Purpose / boundaries: Maintain the Project Development Protocol Skill without granting implementation, acceptance, installation, or publishing authority beyond explicit user decisions.
-- Working candidate: TASK-004 base `a32f23fa8c1014924b95779d5c98640bd6c043ca`; implementation candidate pending. The Strictly Accepted Baseline remains `a47f0ef62ed25eed2b2241e496435531688ccd17`.
+- Working candidate: TASK-004 candidate `8bdb522332aa176ab371aa147f7e28949ae03768`, based on `a32f23fa8c1014924b95779d5c98640bd6c043ca`, pending independent verification. The Strictly Accepted Baseline remains `a47f0ef62ed25eed2b2241e496435531688ccd17`.
 - Strictly Accepted Baseline: version `2.0.4` / Git commit `a47f0ef62ed25eed2b2241e496435531688ccd17`; Human acceptance recorded in DEC-010.
 - Historical documented acceptance: `CHANGELOG.md` entries and tags `v2.0.2`, `v2.0.3`, `v2.0.4`; DEC-009 records the published 2.0.4 release candidate, while current formal acceptance is DEC-010.
 - Active approved Specs: `.ai/specs/SPEC-004.md` / SHA-256 `b7365083d284ce1ec1cc63f3094215e00cfc4c6ed9eaa28ca2cf23e7b7fb9ee6`; approved by the Human's 2026-09-08 prompt-revision request. Completed `.ai/specs/SPEC-003.md` / SHA-256 `1fc359f0227c1f44d49c24a13513168aaf0d7e36757838602616ec5c98245fbd`; completed `.ai/specs/SPEC-002-v2.md` / SHA-256 `d1c2b2c4176297f093dedc5bb090d2374c3475e018dd9614c9f6ce02bcd4f99b`; `.ai/specs/SPEC-002.md` is superseded by DEC-008. Completed `.ai/specs/SPEC-001.md` / SHA-256 `9650653205f6e1141c5774b6819aaa7e3a7cc2c3673ed5c937659aa98867e590`.
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session by TASK-003 Developer reference `/root/task_003_developer`; historical access was also `VERIFIED` by TASK-001 and TASK-002. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is the Codex desktop session, native collaboration inventory and TASK-003 Developer dispatch/result reference; creation/assignment/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `a47f0ef62ed25eed2b2241e496435531688ccd17` accepted by the user's “OK，那我接受这次候选” decision; see DEC-010. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED.
-- Next action: await TASK-004 Developer `/root/task_004_developer` candidate and self-check evidence.
+- Next action: assign fresh independent Tester and Reviewer to TASK-004 candidate `8bdb522332aa176ab371aa147f7e28949ae03768`.
 
 ## Active work (index; Task files own detailed state)
 
@@ -22,7 +22,7 @@
 | `.ai/tasks/TASK-001.md` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate | NONE | NONE |
 | `.ai/tasks/TASK-002.md` | DONE | Manager `/root` | Developer delivered; Test N/A; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate | NONE | NONE |
 | `.ai/tasks/TASK-003.md` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-010 | NONE | NONE |
-| `.ai/tasks/TASK-004.md` | DOING | Developer `/root/task_004_developer` | Native assignment active | NONE | Await candidate and self-check evidence |
+| `.ai/tasks/TASK-004.md` | VERIFY | Manager `/root` | Developer `/root/task_004_developer` delivered candidate `8bdb522332aa176ab371aa147f7e28949ae03768` after one same-identity resume | NONE | Independent Test and Review |
 
 ## Blockers and decisions needed
 
