@@ -82,7 +82,7 @@ Default rework budget: 3 failed verification cycles per Task; an explicit projec
 
 ### Main-window handoff and recovery
 
-Changing the main conversation does not create a new Spec or Task. Prompt wording and copied chat are not authoritative handoff state; repository records and verifiable native runtime evidence are. The user selects the intended project/workspace when opening the replacement conversation and, when several projects exist, names its stable Project ID. The Manager must match that ID to both AGENTS and PROJECT_STATE and verify repository identity and scope before changing anything. A name or folder label alone is insufficient. On a missing or conflicting ID, stop and ask the user to resolve or identify the intended project; do not search unrelated projects, guess or generate a replacement during handoff.
+Changing the main conversation does not create a new Spec or Task. Prompt wording and copied chat are not authoritative handoff state; repository records and verifiable native runtime evidence are. A replacement prompt begins with a populated identity capsule containing Project ID, absolute local repository path, GitHub/remote URL and current stable version. The capsule selects and locates the intended checkout for cross-checking; it does not replace authoritative records or promise that the path exists or is accessible on another host. The replacement Manager must inspect that supplied absolute checkout before reading its AGENTS and PROJECT_STATE, even when the initial workspace is unrelated, and must not mistake the initial workspace for the target repository. It matches the capsule to AGENTS, PROJECT_STATE, repository identity and scope before changing anything. A name or folder label alone is insufficient. If the supplied path is missing or inaccessible, or any identity field is missing or conflicts with authoritative records, stop takeover and ask the Human to resolve or identify the intended project; do not search unrelated projects, guess or generate a replacement during handoff.
 
 #### Planned handoff
 
@@ -91,13 +91,13 @@ The current Manager:
 1. Stops new dispatch and marks coordination `HANDOFF_PREPARING`.
 2. Checks active workers. Prefer waiting for normally progressing work to reach a reportable point. A worker may continue only if the replacement Manager can inspect or reconnect through a native reference.
 3. Stops a worker only when it is stalled, blocked, conflicting, or the user requires immediate handoff. First record its runtime ID, observable progress, changed files and unfinished work. Do not assume interruption deletes an agent or releases capacity.
-4. Writes Project ID, repository/worktree, branch, candidate commit, dirty/untracked changes, active workers, blockers and exact next action to state and Task records. Commit only coherent scoped work appropriate to commit; describe other partial work accurately.
-5. Marks coordination `READY_FOR_TAKEOVER` and ceases coordination for that project scope.
+4. Writes Project ID, absolute local repository path, GitHub/remote URL, current stable version, branch, candidate commit, dirty/untracked changes, active workers, blockers and exact next action to state and Task records. Commit only coherent scoped work appropriate to commit; describe other partial work accurately.
+5. Marks coordination `READY_FOR_TAKEOVER`, returns a complete copy-ready replacement prompt populated with those identity and verified state fields, and ceases coordination for that project scope. Returning only Project ID and next action is insufficient.
 
 The replacement Manager:
 
-1. Reads AGENTS, state, active Tasks and their approved Specs from the user-selected project.
-2. Confirms requested Project ID, repository identity, scope path, actual worktree/checkout, branch, commit, uncommitted changes and native worker state. A different worktree may not contain uncommitted or ignored files.
+1. Inspects the absolute checkout named in the identity capsule first, without assuming the initial workspace is the project, then reads AGENTS, state, active Tasks and their approved Specs from that checkout.
+2. Cross-checks all four capsule fields and confirms repository identity, scope path, actual worktree/checkout, branch, commit, uncommitted changes and native worker state against repository and native evidence. A different worktree may not contain uncommitted or ignored files.
 3. Reconnects to observable workers where supported. It does not duplicate an assignment that may still be running or allow two Managers to dispatch within the same scope.
 4. Reconciles differences between recorded and actual state, marks coordination `ACTIVE` with its current Manager/session reference, then resumes the recorded next action.
 
