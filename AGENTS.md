@@ -30,7 +30,7 @@ Only one main Manager coordinates the same project scope. For replacement or rec
 - Verification: functional work requires independent Tester and Reviewer; pure documentation may use reasoned Test N/A but still requires independent Reviewer; high-risk work requires both.
 - Rework: at most 3 failed verification cycles per Task.
 - Runtime / receipt access / assurance: Codex task-agent tools are exposed; creation and result provenance remain `UNKNOWN` until first actual dispatch. Protected acceptance is `MISSING`. Maximum claim is `PROTOCOL` plus separately reported `STRUCTURAL` checks.
-- Preferred host: Codex; apply the version 2.0.2 environment gate.
+- Preferred host: Codex; apply the environment gate from the Strictly Accepted Baseline recorded in `PROJECT_STATE.md`.
 - Formal acceptance authority: `HUMAN`; Manager reports eligibility, not approval.
 - Shared-write isolation: Manager stages and integrates serialized changes; verification agents do not edit implementation.
 - Release authority: explicit human authorization required. Never push GitHub or sync the installed Skill from implementation approval alone.
