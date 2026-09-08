@@ -1,0 +1,72 @@
+{
+  "manager_id": "01a0815b-dc59-79c0-9813-d9fa81b8d433",
+  "agents": [
+    {
+      "id": "/root/task_006_distribution_audit_version_analyst",
+      "role": "developer",
+      "task_id": "TASK-006",
+      "create_ref": "native collaboration spawn result for /root/task_006_distribution_audit_version_analyst",
+      "assignment_ref": "TASK-006 version and release identity audit assignment"
+    },
+    {
+      "id": "/root/task_006_distribution_audit_package_analyst",
+      "role": "developer",
+      "task_id": "TASK-006",
+      "create_ref": "native collaboration spawn result for /root/task_006_distribution_audit_package_analyst",
+      "assignment_ref": "TASK-006 distribution package hygiene audit assignment"
+    },
+    {
+      "id": "/root/task_006_distribution_audit_workflow_analyst",
+      "role": "developer",
+      "task_id": "TASK-006",
+      "create_ref": "native collaboration spawn result for /root/task_006_distribution_audit_workflow_analyst",
+      "assignment_ref": "TASK-006 beginner and lightweight workflow audit assignment"
+    },
+    {
+      "id": "/root/task_006_distribution_audit_reviewer",
+      "role": "reviewer",
+      "task_id": "TASK-006",
+      "create_ref": "native collaboration spawn result for /root/task_006_distribution_audit_reviewer",
+      "assignment_ref": "TASK-006 independent review assignment for candidate 7bb7b50ad6651f9b86937c6fabd6a91b2de92916"
+    }
+  ],
+  "results": [
+    {
+      "agent_id": "/root/task_006_distribution_audit_version_analyst",
+      "task_id": "TASK-006",
+      "spec_sha256": "d57d15463f71f23aec19bfa600345afd24c7145af5026a80cd067ce18a1f6c1f",
+      "target": {"kind": "git", "commit": "7bb7b50ad6651f9b86937c6fabd6a91b2de92916"},
+      "verdict": "DELIVERED",
+      "result_ref": "native final result from version analyst",
+      "report_ref": ".ai/tasks/TASK-006.md#evidence"
+    },
+    {
+      "agent_id": "/root/task_006_distribution_audit_package_analyst",
+      "task_id": "TASK-006",
+      "spec_sha256": "d57d15463f71f23aec19bfa600345afd24c7145af5026a80cd067ce18a1f6c1f",
+      "target": {"kind": "git", "commit": "7bb7b50ad6651f9b86937c6fabd6a91b2de92916"},
+      "verdict": "DELIVERED",
+      "result_ref": "native final result from package analyst",
+      "report_ref": ".ai/tasks/TASK-006.md#evidence"
+    },
+    {
+      "agent_id": "/root/task_006_distribution_audit_workflow_analyst",
+      "task_id": "TASK-006",
+      "spec_sha256": "d57d15463f71f23aec19bfa600345afd24c7145af5026a80cd067ce18a1f6c1f",
+      "target": {"kind": "git", "commit": "7bb7b50ad6651f9b86937c6fabd6a91b2de92916"},
+      "verdict": "DELIVERED",
+      "result_ref": "native final result from workflow analyst",
+      "report_ref": ".ai/tasks/TASK-006.md#evidence"
+    },
+    {
+      "agent_id": "/root/task_006_distribution_audit_reviewer",
+      "task_id": "TASK-006",
+      "spec_sha256": "d57d15463f71f23aec19bfa600345afd24c7145af5026a80cd067ce18a1f6c1f",
+      "target": {"kind": "git", "commit": "7bb7b50ad6651f9b86937c6fabd6a91b2de92916"},
+      "verdict": "APPROVE",
+      "result_ref": "native final result from independent audit reviewer",
+      "report_ref": ".ai/tasks/TASK-006.md#handoff--evidence",
+      "no_implementation_edits": true
+    }
+  ]
+}

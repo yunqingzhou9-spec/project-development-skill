@@ -1,6 +1,6 @@
 # Project state
 
-- Updated: 2026-09-08T22:26:56+08:00
+- Updated: 2026-09-08T22:31:44+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
@@ -24,8 +24,8 @@
 | `.ai/tasks/TASK-003.md` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-010 | NONE | NONE |
 | `.ai/tasks/TASK-004.md` | DONE | Manager `/root` | Rework cycle 1: Developer delivered; fresh Tester/forward evaluator PASS; fresh Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-012 | NONE | NONE |
 | `.ai/tasks/TASK-005.md` — `agent_names` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted; installed Skill synchronized; GitHub `main` published | NONE | NONE |
-| `.ai/tasks/TASK-006.md` — Distribution audit | VERIFY | Manager `/root` | Three read-only audit results delivered; Test N/A; Review pending | NONE | Obtain independent Reviewer verdict |
-| `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | READY | Manager `/root` | Not dispatched | TASK-006 | Wait for audited remediation design |
+| `.ai/tasks/TASK-006.md` — Distribution audit | DONE | Manager `/root` | Three audit results; Test N/A; Reviewer APPROVE; gate CONSISTENT | NONE | NONE |
+| `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | READY | Manager `/root` | Not dispatched; dependency cleared | TASK-006 | Assign Developer |
 
 ## Blockers and decisions needed
 

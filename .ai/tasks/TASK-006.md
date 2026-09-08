@@ -4,12 +4,12 @@
 {
   "id": "TASK-006",
   "short_name": "distribution_audit",
-  "status": "VERIFY",
+  "status": "DONE",
   "spec": {"path": ".ai/specs/SPEC-006.md", "sha256": "d57d15463f71f23aec19bfa600345afd24c7145af5026a80cd067ce18a1f6c1f"},
   "owner": "manager",
   "depends_on": [],
   "base": "247e5c5cf8076cccb653eae52582de35c92d1e17",
-  "candidate": null,
+  "candidate": {"kind": "git", "commit": "7bb7b50ad6651f9b86937c6fabd6a91b2de92916"},
   "contributors": [
     "/root/task_006_distribution_audit_version_analyst",
     "/root/task_006_distribution_audit_package_analyst",
@@ -18,10 +18,10 @@
   "test_required": false,
   "test_na_reason": "Read-only repository and workflow audit; findings are independently reviewed and implementation tests belong to TASK-007.",
   "test": "N/A",
-  "review": "PENDING",
+  "review": "APPROVE",
   "blockers": [],
   "rework_cycles": 0,
-  "next_action": "Obtain an independent Reviewer verdict on this audit candidate before TASK-007 implementation."
+  "next_action": "NONE; TASK-007 owns implementation of the approved remediation design."
 }
 ```
 
@@ -57,9 +57,11 @@ All four reported concerns exist, with one boundary correction: the installed Sk
 - Audit contributor `/root/task_006_distribution_audit_version_analyst`: native creation/assignment/result in current collaboration tree; final result delivered, no edits.
 - Audit contributor `/root/task_006_distribution_audit_package_analyst`: native creation/assignment/result in current collaboration tree; final result delivered, no edits.
 - Audit contributor `/root/task_006_distribution_audit_workflow_analyst`: native creation/assignment/result in current collaboration tree; final result delivered, no edits.
-- Independent Reviewer: PENDING.
+- Independent Reviewer `/root/task_006_distribution_audit_reviewer`: APPROVE for candidate `7bb7b50ad6651f9b86937c6fabd6a91b2de92916`; confirmed evidence and remediation boundaries; no implementation edits.
 
 ## History / next action
 
 - 2026-09-08: Created from DEC-018 and moved to DOING for read-only audit.
 - 2026-09-08: Three independent read-only analyses reconciled; moved to VERIFY with Test N/A and Reviewer pending.
+- 2026-09-08: Fresh independent Reviewer APPROVE bound to candidate `7bb7b50ad6651f9b86937c6fabd6a91b2de92916`; completion gate pending.
+- 2026-09-08: Manager verified native results and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-006.json`; marked DONE under PROTOCOL assurance. This is not formal Human acceptance of TASK-007 output.

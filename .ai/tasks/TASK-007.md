@@ -15,9 +15,9 @@
   "test_na_reason": null,
   "test": "PENDING",
   "review": "PENDING",
-  "blockers": ["TASK-006 audit and review must complete"],
+  "blockers": [],
   "rework_cycles": 0,
-  "next_action": "After TASK-006 completes, assign task_007_clear_lightweight_skill_developer against its accepted audit findings."
+  "next_action": "Assign task_007_clear_lightweight_skill_developer against TASK-006's reviewed audit findings."
 }
 ```
 
@@ -36,4 +36,4 @@ PENDING.
 ## History / next action
 
 - 2026-09-08: Created from DEC-018; waiting on TASK-006.
-
+- 2026-09-08: TASK-006 completed with Review APPROVE and structural receipt; dependency cleared.
