@@ -3,20 +3,20 @@
 ```json
 {
   "id": "TASK-004",
-  "status": "READY",
+  "status": "DOING",
   "spec": {"path": ".ai/specs/SPEC-004.md", "sha256": "b7365083d284ce1ec1cc63f3094215e00cfc4c6ed9eaa28ca2cf23e7b7fb9ee6"},
   "owner": "manager",
   "depends_on": [],
   "base": "a32f23fa8c1014924b95779d5c98640bd6c043ca",
   "candidate": null,
-  "contributors": [],
+  "contributors": ["/root/task_004_developer"],
   "test_required": true,
   "test_na_reason": null,
   "test": "PENDING",
   "review": "PENDING",
   "blockers": [],
   "rework_cycles": 0,
-  "next_action": "Assign a fresh Developer after committing the approved Spec and Task"
+  "next_action": "Await Developer candidate and self-check evidence"
 }
 ```
 
@@ -32,9 +32,10 @@ PENDING.
 
 ## Handoff / evidence
 
-Manager created TASK-004 from the Human's explicit implementation request. Native Developer, Tester and Reviewer receipts will be recorded here.
+Manager created TASK-004 from the Human's explicit implementation request. Developer creation/assignment native reference: `/root/task_004_developer`.
 
 ## History / next action
 
 - 2026-09-08T14:32:00+08:00 — Manager recorded SPEC-004 as APPROVED and created TASK-004 at READY.
-- Next: commit governance records, then assign a fresh Developer.
+- 2026-09-08T14:32:47+08:00 — Manager assigned fresh Developer `/root/task_004_developer`; Task moved READY → DOING.
+- Next: await Developer candidate and self-check evidence.

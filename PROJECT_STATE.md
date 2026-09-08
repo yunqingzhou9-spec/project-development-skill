@@ -1,6 +1,6 @@
 # Project state
 
-- Updated: 2026-09-08T14:32:00+08:00
+- Updated: 2026-09-08T14:32:47+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
@@ -13,7 +13,7 @@
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session by TASK-003 Developer reference `/root/task_003_developer`; historical access was also `VERIFIED` by TASK-001 and TASK-002. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is the Codex desktop session, native collaboration inventory and TASK-003 Developer dispatch/result reference; creation/assignment/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `a47f0ef62ed25eed2b2241e496435531688ccd17` accepted by the user's “OK，那我接受这次候选” decision; see DEC-010. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED.
-- Next action: commit SPEC-004 and TASK-004 governance records, then assign a fresh Developer.
+- Next action: await TASK-004 Developer `/root/task_004_developer` candidate and self-check evidence.
 
 ## Active work (index; Task files own detailed state)
 
@@ -22,7 +22,7 @@
 | `.ai/tasks/TASK-001.md` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate | NONE | NONE |
 | `.ai/tasks/TASK-002.md` | DONE | Manager `/root` | Developer delivered; Test N/A; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate | NONE | NONE |
 | `.ai/tasks/TASK-003.md` | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted candidate under DEC-010 | NONE | NONE |
-| `.ai/tasks/TASK-004.md` | READY | Manager `/root` | No worker assigned | NONE | Commit governance records, then assign Developer |
+| `.ai/tasks/TASK-004.md` | DOING | Developer `/root/task_004_developer` | Native assignment active | NONE | Await candidate and self-check evidence |
 
 ## Blockers and decisions needed
 
