@@ -3,7 +3,7 @@
 ```json
 {
   "id": "TASK-004",
-  "status": "VERIFY",
+  "status": "DONE",
   "spec": {"path": ".ai/specs/SPEC-004.md", "sha256": "b7365083d284ce1ec1cc63f3094215e00cfc4c6ed9eaa28ca2cf23e7b7fb9ee6"},
   "owner": "manager",
   "depends_on": [],
@@ -12,11 +12,11 @@
   "contributors": ["/root/task_004_developer"],
   "test_required": true,
   "test_na_reason": null,
-  "test": "PENDING",
-  "review": "PENDING",
+  "test": "PASS",
+  "review": "APPROVE",
   "blockers": [],
   "rework_cycles": 1,
-  "next_action": "Reverify concise rework candidate b82bb16e5ee382b1c1867c245f20e148a3bd5d54"
+  "next_action": "NONE; rework candidate complete under PROTOCOL assurance; formal Human acceptance remains separate"
 }
 ```
 
@@ -38,6 +38,9 @@ Developer self-checks for candidate `8bdb522332aa176ab371aa147f7e28949ae03768`:
 - Independent Tester/forward evaluator `/root/task_004_tester`: PASS for AC-1 through AC-6. Began in unrelated empty workspace `/private/tmp/task004-forward-unrelated.jiaOaQ`, inspected the populated absolute checkout first, then read and cross-checked target governance/native state. Confirmed no old-chat dependency, no redispatch while verification was active, and stop behavior for conflicting remote or nonexistent path. Also confirmed 28/28 tests, Skill validation, unchanged deliverable blobs and no edits.
 - Independent Reviewer `/root/task_004_reviewer`: APPROVE with no findings. Confirmed four-field completeness, copy-ready outgoing prompt, wrong-workspace handling, authority and conflict boundaries, reusable placeholders, exact two-file scope, candidate-bound regression checks and no edits.
 - Completion gate: installed version 2.0.4 checker returned `STRUCTURAL / CONSISTENT` for exact candidate `8bdb522332aa176ab371aa147f7e28949ae03768`. The checker reports `runtime_authenticated:false` and `enforced:false`; Manager separately inspected native creation, assignment and result records and marks Task completion at `PROTOCOL` assurance.
+- Rework cycle 1 Tester/forward evaluator `/root/task_004_tester`: fresh PASS for candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54`. Confirmed all ACs, 28/28 tests, Skill validation, unchanged deliverable blobs and a fresh unrelated-workspace scenario with conflict/missing-path stops and no redispatch. Measured outgoing/recovery instruction reductions of about 25%/19% while retaining all ten fields and safeguards.
+- Rework cycle 1 Reviewer `/root/task_004_reviewer`: fresh APPROVE with no findings for the same candidate. Confirmed materially lower attention burden, clear linear sequence, complete fields/boundaries, exact two-file scope, placeholder privacy and no edits.
+- Rework cycle 1 completion gate: installed version 2.0.4 checker returned `STRUCTURAL / CONSISTENT` for exact candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54`. The checker reports `runtime_authenticated:false` and `enforced:false`; Manager separately inspected native records and marks completion at `PROTOCOL` assurance.
 
 ## Handoff / evidence
 
@@ -55,4 +58,6 @@ Manager created TASK-004 from the Human's explicit implementation request. Devel
 - 2026-09-08T14:48:29+08:00 — Before formal acceptance, Human requested simpler, more elegant prompts with lower attention burden. Candidate `8bdb522332aa176ab371aa147f7e28949ae03768` and its verdicts are preserved as historical evidence but stale for the requested revision; Manager moved Task DONE → DOING, cleared current verdicts and opened rework cycle 1.
 - 2026-09-08T14:52:17+08:00 — Same Developer returned rework candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54`, changing only `README.md` and `references/PROTOCOL.md`. Manager confirmed short Chinese labels/sentences, retained required safeguards, clean worktree and frozen Spec digest; Task moved DOING → VERIFY.
 - 2026-09-08T14:53:12+08:00 — Manager reassigned the same independent Tester/forward evaluator `/root/task_004_tester` and Reviewer `/root/task_004_reviewer` within TASK-004 to the new candidate; both prior verdicts remain stale.
-- Next: reverify the new candidate. Prior candidate receipt `.ai/evidence/TASK-004.json` remains historical; create a new receipt for rework cycle 1.
+- Fresh Tester returned PASS and Reviewer returned APPROVE with no findings for rework candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54`. Prior candidate receipt `.ai/evidence/TASK-004.json` remains historical; current receipt is `.ai/evidence/TASK-004-rework-1.json`.
+- 2026-09-08T14:56:21+08:00 — Structural gate returned CONSISTENT; Manager verified native provenance, exact candidate scope and authority, then moved Task VERIFY → DONE under PROTOCOL assurance.
+- Next: NONE. Formal Human acceptance, installed-Skill synchronization and publication remain separate decisions.
