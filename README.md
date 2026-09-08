@@ -1,8 +1,56 @@
 # Project Development Skill
 
-一个轻量、通用、以仓库为项目记忆的 Codex Skill。它帮助你在一个主对话中完成需求澄清、Spec 审批、任务拆解、子 Agent 协作、独立测试与审查，以及可恢复的项目交接。
+# 中文
 
-适用于软件、数据、自动化和 AI 项目，不包含任何特定业务领域规则。
+> **让 AI 不只是会写代码，而是能像一支受管理的软件团队一样完成项目。**
+
+使用 AI 开发时，真正困难的往往不是“生成代码”，而是：**需求没想清楚、任务不会拆、多个 Agent 难协调、实现缺乏独立验证、返工过程混乱，以及到底什么时候才算真正完成。**
+
+`project-development` 就是为了解决这些问题。
+
+它在一个主窗口中保留常驻的 **Chief of Staff + Manager**：前者帮助 Human 澄清目标、范围和验收标准，后者把批准后的 Spec 拆成 Tasks，并按需创建独立的 Developer、Tester、Reviewer 等 Worker Agents，自动组织实现、测试、审查和返工。
+
+```sql
+Idea
+→ Clarify the goal
+→ Approve the Spec
+→ Break it into Tasks
+→ Create the right Worker Agents
+→ Implement
+→ Independently test & review
+→ Rework when needed
+→ Complete
+→ Human acceptance
+```
+
+**Human 负责方向和最终决策，AI 团队负责把事情可靠地做完。**
+
+---
+
+# English
+
+> **Make AI not just write code, but complete software work like a managed engineering team.**
+
+The hard part of AI-assisted development is often no longer code generation. It is **clarifying what should be built, breaking it into executable work, coordinating multiple agents, independently verifying implementation, managing rework, and knowing when the work is actually done.**
+
+`project-development` is designed to solve that problem.
+
+It keeps a persistent **Chief of Staff + Manager** in one primary session: the Chief of Staff helps the Human clarify goals, scope, trade-offs, and acceptance criteria; the Manager turns the approved Spec into Tasks and dynamically creates independent Developer, Tester, Reviewer, and other Worker Agents to execute, verify, review, and rework the project.
+
+```sql
+Idea
+→ Clarify the goal
+→ Approve the Spec
+→ Break it into Tasks
+→ Create the right Worker Agents
+→ Implement
+→ Independently test & review
+→ Rework when needed
+→ Complete
+→ Human acceptance
+```
+
+**The Human owns direction and final decisions. The AI team handles the work of getting there reliably.**
 
 ## 它解决什么
 

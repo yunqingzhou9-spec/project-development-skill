@@ -1,4 +1,4 @@
-# Project development protocol — 2.0.3
+# Project development protocol — 2.0.4
 
 Read the relevant section, not the entire file on every action. These are workflow rules, not a permission grant or a claim that any host supports delegation.
 
