@@ -3,12 +3,12 @@
 ```json
 {
   "id": "TASK-004",
-  "status": "DOING",
+  "status": "VERIFY",
   "spec": {"path": ".ai/specs/SPEC-004.md", "sha256": "b7365083d284ce1ec1cc63f3094215e00cfc4c6ed9eaa28ca2cf23e7b7fb9ee6"},
   "owner": "manager",
   "depends_on": [],
   "base": "a32f23fa8c1014924b95779d5c98640bd6c043ca",
-  "candidate": null,
+  "candidate": {"kind": "git", "commit": "b82bb16e5ee382b1c1867c245f20e148a3bd5d54"},
   "contributors": ["/root/task_004_developer"],
   "test_required": true,
   "test_na_reason": null,
@@ -16,7 +16,7 @@
   "review": "PENDING",
   "blockers": [],
   "rework_cycles": 1,
-  "next_action": "Route Human readability feedback to the same Developer and obtain a new candidate"
+  "next_action": "Reverify concise rework candidate b82bb16e5ee382b1c1867c245f20e148a3bd5d54"
 }
 ```
 
@@ -53,4 +53,5 @@ Manager created TASK-004 from the Human's explicit implementation request. Devel
 - Independent Tester/forward evaluator returned PASS and independent Reviewer returned APPROVE with no findings for exact candidate `8bdb522332aa176ab371aa147f7e28949ae03768`.
 - 2026-09-08T14:42:50+08:00 — Structural gate returned CONSISTENT; Manager verified native provenance, exact candidate scope and implementation authority, then moved Task VERIFY → DONE under PROTOCOL assurance.
 - 2026-09-08T14:48:29+08:00 — Before formal acceptance, Human requested simpler, more elegant prompts with lower attention burden. Candidate `8bdb522332aa176ab371aa147f7e28949ae03768` and its verdicts are preserved as historical evidence but stale for the requested revision; Manager moved Task DONE → DOING, cleared current verdicts and opened rework cycle 1.
-- Next: reuse the same TASK-004 Developer for focused wording rework and obtain a new candidate.
+- 2026-09-08T14:52:17+08:00 — Same Developer returned rework candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54`, changing only `README.md` and `references/PROTOCOL.md`. Manager confirmed short Chinese labels/sentences, retained required safeguards, clean worktree and frozen Spec digest; Task moved DOING → VERIFY.
+- Next: reverify the new candidate. Prior candidate receipt `.ai/evidence/TASK-004.json` remains historical; create a new receipt for rework cycle 1.
