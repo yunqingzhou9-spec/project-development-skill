@@ -59,31 +59,13 @@ $project-development 按已经批准的 Spec 开始执行，使用真实子 Agen
 
 ## 更换主窗口
 
-在旧窗口发送下面这段文字，让当前 Manager 完成交接准备：
-
-```text
-$project-development 请准备主窗口交接：停止新派工，检查活动 Agent，把 Project ID、仓库/工作区、分支、候选提交、未提交修改、活动 Agent、阻塞项和确切下一步写回 PROJECT_STATE.md 与活动 Task；标记 READY_FOR_TAKEOVER 后停止协调，并回复 Project ID 和可接管状态。不要推送或发布。
-```
-
-只有在旧窗口回复已经写回状态并进入 `READY_FOR_TAKEOVER` 后，再在 Codex 中打开或选择同一个仓库，并在新窗口发送：
+先让旧窗口把状态写回仓库并标记可接管。然后在 Codex 中打开或选择同一个仓库，在新窗口明确指定项目的 `Project ID`：
 
 ```text
 $project-development 接管项目 <PROJECT_ID>。请从 AGENTS.md 和 PROJECT_STATE.md 恢复，核对仓库、工作区和活动任务后继续；不要依赖或复制旧聊天。
 ```
 
-这些文字用于明确发起流程，不是决定交接是否有效的“口令”。仓库中的状态、Task 记录以及平台可核验的 Agent 运行状态才是依据；不要把旧聊天复制到新窗口来代替这些记录。
-
 同时进行多个项目时，应分别打开对应的仓库或工作区，并使用各自稳定的 `Project ID`。如果项目身份与当前仓库不匹配，Skill 应停止并请你确认，不能猜测。
-
-## Project ID 如何产生
-
-首次为项目建立治理文件时，Skill 按以下顺序确定 Project ID：
-
-1. 项目已有权威 ID 时，直接复用。
-2. 没有既有 ID、但用户明确提供了 ID 时，采用用户提供的值。
-3. 两者都没有时，由 Skill 生成一个可读且唯一的 ID，例如 `SNAKE-GAME-7F3A2C`。
-
-确定后，Skill 会把同一个 ID 写入 `AGENTS.md` 和 `PROJECT_STATE.md`。它用于识别项目，不是密码；仓库改名、移动路径或更换主窗口时都不应重新生成。如果已记录的 ID 发生冲突，Skill 必须停止并请用户确认，不能静默替换。
 
 ## 验证
 
