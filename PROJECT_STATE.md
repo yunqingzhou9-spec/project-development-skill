@@ -1,10 +1,10 @@
 # Project state
 
-- Updated: 2026-09-08T15:02:04+08:00
+- Updated: 2026-09-08T15:04:07+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
-- Coordination: `ACTIVE`; replacement Manager `/root` in the current Codex collaboration tree took over after verifying the repository snapshot and native runtime inventory; updated 2026-09-08T14:00:23+08:00
+- Coordination: `HANDOFF_PREPARING`; current Manager `/root` stopped new dispatch and is preparing the Human-requested real-window synchronization test; updated 2026-09-08T15:04:07+08:00
 - Purpose / boundaries: Maintain the Project Development Protocol Skill without granting implementation, acceptance, installation, or publishing authority beyond explicit user decisions.
 - Working candidate: accepted TASK-004 rework candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54`; later commits contain governance and verification evidence only. Unaccepted candidate `8bdb522332aa176ab371aa147f7e28949ae03768` remains historical.
 - Strictly Accepted Baseline: version `2.0.4` / Git commit `b82bb16e5ee382b1c1867c245f20e148a3bd5d54`; Human acceptance recorded in DEC-012.
@@ -13,7 +13,7 @@
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session by TASK-003 Developer reference `/root/task_003_developer`; historical access was also `VERIFIED` by TASK-001 and TASK-002. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is the Codex desktop session, native collaboration inventory and TASK-003 Developer dispatch/result reference; creation/assignment/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision is the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `b82bb16e5ee382b1c1867c245f20e148a3bd5d54` accepted by the user's “接受” decision; see DEC-012. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED.
-- Next action: Human performs a real new-window handoff test against the locally synchronized Skill. If the Human confirms it is effective, await separate publication instructions; no push, tag or release is currently authorized.
+- Next action: finish the planned handoff record, mark coordination `READY_FOR_TAKEOVER`, and return one populated replacement prompt for the Human's real-window test. No push, tag or release is authorized.
 
 ## Active work (index; Task files own detailed state)
 
@@ -57,14 +57,14 @@ Version 2.0.4 is `RELEASED` to GitHub under DEC-009. Annotated tag `v2.0.4` poin
 - Project ID: `PDP-SKILL`
 - Repository / scope: `https://github.com/yunqingzhou9-spec/project-development-skill.git` / `.`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
+- Current stable version: `2.0.4`
 - Branch: `main`
-- Repository HEAD before handoff-state commits: `a9d48275ba888e2f0bd89f037383da216fd54d9b`
-- Handoff-preparing commit: `1f9c707fc3e0397c09f3b228261848dd7f41a6da`; the final READY_FOR_TAKEOVER state is the following governance-only commit, whose actual hash the replacement Manager must verify locally.
-- Upstream before handoff-state commits: `origin/main` at `a9d48275ba888e2f0bd89f037383da216fd54d9b`
-- Accepted candidate / release tag: `912ec892395572447462ce7e0924ab149735f794` / `v2.0.4`
-- Dirty or untracked work before handoff preparation: `NONE`
-- Handoff working tree: clean after the HANDOFF_PREPARING commit; only this final READY_FOR_TAKEOVER state update is being committed. The local branch will be two governance commits ahead of `origin/main`; neither commit is authorized for automatic push.
-- Active Worker Agents: `NONE`; `/root/task_002_developer` and `/root/task_002_reviewer` are completed, and earlier recorded workers are completed or no longer live.
-- Active Tasks: `NONE`; TASK-001 and TASK-002 are DONE with no next action.
+- Repository HEAD before handoff-state commits: `d248d47cc27acba9ad8640269a3bf7da08f102c3`
+- Upstream before handoff-state commits: `origin/main` at `a32f23fa8c1014924b95779d5c98640bd6c043ca`; local `main` was 13 commits ahead.
+- Accepted candidate / release tag: `b82bb16e5ee382b1c1867c245f20e148a3bd5d54` / existing `v2.0.4` at `912ec892395572447462ce7e0924ab149735f794`
+- Installed Skill: accepted `references/PROTOCOL.md` synchronized and validated under DEC-013; SHA-256 `b85f8b5dcb118134d6ec279e2cdca41582c8bffbfa8a099d1f098158172be3f1`.
+- Dirty or untracked work before handoff preparation: `NONE`.
+- Active Worker Agents: `NONE`; `/root/task_004_developer`, `/root/task_004_tester` and `/root/task_004_reviewer` are completed. Current Manager `/root` will cease coordination after the final prompt.
+- Active Tasks: `NONE`; TASK-001 through TASK-004 are DONE.
 - Blockers: `NONE`
-- Exact takeover action: replacement Manager reads `AGENTS.md` and this state, verifies Project ID `PDP-SKILL`, repository identity, current local HEAD/branch/worktree/upstream and native worker state, confirms no duplicate Manager or writer, then marks coordination `ACTIVE`. Do not replay completed Tasks. Await a new Human goal.
+- Exact takeover action: replacement Manager starts from the supplied absolute checkout, verifies repository and native state, confirms the locally synchronized protocol is present, marks coordination `ACTIVE`, reports whether the self-locating handoff succeeded, and awaits separate Human publication instructions. Do not replay completed Tasks or publish anything.
