@@ -46,4 +46,6 @@ Use `AGENTS.md`, `PROJECT_STATE.md`, `DECISIONS.md`, `.ai/specs/` and `.ai/tasks
 
 Select `LIGHTWEIGHT` only by the bounded checklist in [Protocol](references/PROTOCOL.md#workflow-profiles). Any false or uncertain item selects `FULL`. `LIGHTWEIGHT` still requires a real Developer, an independent Reviewer, candidate-bound evidence and Human acceptance; it removes redundant records, not safeguards.
 
+For distribution, the exact runtime allowlist read from an immutable source commit plus canonical manifest hashes is the structural cleanliness boundary. Maintained text scanning is defense in depth for known project-specific, user-home and local-system paths, native runtime IDs and private-key markers; it is not exhaustive absolute-path recognition or semantic-secret proof. See [Protocol: Identity vocabulary](references/PROTOCOL.md#identity-vocabulary).
+
 Keep domain rules and project commands in the project. Keep prompts short. The user handles scope, consequential tradeoffs and actions outside existing authority; the Manager handles routine dispatch, verification and bounded rework.

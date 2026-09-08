@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Build and verify a deterministic, source-bound Skill ZIP using only stdlib."""
+"""Build and verify a deterministic exact-allowlist Skill ZIP using only stdlib.
+
+Immutable-source membership plus canonical manifest hashes are the structural
+cleanliness boundary. Maintained text patterns are defense in depth for known
+local paths, runtime IDs, and private keys, not exhaustive path or secret proof.
+"""
 
 import argparse
 import hashlib

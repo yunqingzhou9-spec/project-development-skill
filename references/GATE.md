@@ -12,6 +12,8 @@ Read at VERIFY/completion, or when configuring runtime verification. This packag
 
 Assurance vocabulary: PROTOCOL = Manager followed rules and checked native records; STRUCTURAL = this script checked supplied data consistency; ENFORCED = a verified protected integration controls acceptance. Record the actual level plus evidence; never infer a stronger one from a successful script exit.
 
+For a generated Skill distribution, the exact runtime allowlist from an immutable source commit plus canonical manifest hashes is the structural cleanliness boundary. Maintained scanning for known project-specific, user-home and local-system paths, native runtime IDs and private-key markers is defense in depth, not exhaustive path recognition or semantic-secret proof. Package verification therefore establishes exact membership and source-byte identity plus the documented targeted pattern checks—nothing stronger.
+
 Apply the protocol's [environment gate](PROTOCOL.md#environment-gate) for all hosts. Codex/ChatGPT Work names alone do not establish ENFORCED capability. On other/unknown hosts disclose the unvalidated support condition and obtain approval before adapting the environment. Human-controlled formal acceptance can be used under PROTOCOL without claiming protected automation. This structural script does not implement environment discovery, adaptation approval or formal-acceptance authentication; those are Manager/native-host checks.
 
 ## Invocation

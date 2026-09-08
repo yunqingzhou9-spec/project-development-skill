@@ -109,9 +109,13 @@ project-development-skill/
 
 ## 构建干净安装包 / Build a clean installable archive
 
-构建与校验都必须指定完整 source commit。命令只读取该 commit 的精确 runtime allowlist，加入 canonical manifest，并拒绝治理文件、额外/危险成员、符号链接、哈希或版本/commit 不一致，以及具体本机路径、runtime UUID 和私钥标记。输出在 `dist/`，不会加入 Git。
+构建与校验都必须指定完整 source commit。命令只读取该 commit 的精确 runtime allowlist，加入 canonical manifest，并拒绝治理文件、额外/危险成员、符号链接、哈希或版本/commit 不一致，以及维护策略覆盖的已知本机路径、runtime UUID 和私钥标记。输出在 `dist/`，不会加入 Git。
 
-Both commands require the full source commit. The builder reads only the exact runtime allowlist from that commit, adds a canonical manifest, and rejects governance files, extra/unsafe members, symlinks, hash/version/commit mismatches, concrete local paths, runtime UUIDs, and private-key markers. `dist/` is ignored by Git.
+结构清洁边界是：从 immutable source commit 读取的精确 allowlist，以及对照该 source 校验的 canonical manifest 哈希。针对已知项目 checkout、用户目录、本机系统路径、原生 runtime ID 和私钥标记的文本扫描只是 defense in depth；它不是对所有绝对路径语法或语义秘密的穷尽证明。
+
+Both commands require the full source commit. The builder reads only the exact runtime allowlist from that commit, adds a canonical manifest, and rejects governance files, extra/unsafe members, symlinks, hash/version/commit mismatches, and maintained patterns for known local paths, runtime UUIDs, and private-key markers. `dist/` is ignored by Git.
+
+The exact allowlist read from the immutable source commit plus canonical manifest hashes verified against that source is the structural cleanliness boundary. Maintained text scanning for known project checkout, user-home and local-system paths, native runtime IDs, and private-key markers is defense in depth. It is not exhaustive absolute-path recognition or semantic-secret proof.
 
 ```sh
 python3 scripts/package_skill.py build --repo . \

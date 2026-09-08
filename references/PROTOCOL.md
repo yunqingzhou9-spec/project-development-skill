@@ -15,6 +15,8 @@ Read the relevant section, not the entire file on every action. These are workfl
 
 Never infer one identity from another. Preserve historical tags and releases; publication, installation and accepted-baseline promotion each require their own authority and evidence.
 
+The exact runtime allowlist read from the explicit immutable source commit plus canonical manifest hashes verified against that source is the structural cleanliness boundary. Maintained text-pattern scanning is defense in depth for known project-specific checkout, user-home and local-system paths, native runtime IDs and private-key markers. It is not exhaustive recognition of all path syntax, placeholder combinations or semantic secrets; do not report it as such.
+
 ## Setup
 
 1. Inspect the project's existing instructions, Git state and governance. Reuse existing sources instead of creating a competing hierarchy. Do not modify business code during governance-only setup.

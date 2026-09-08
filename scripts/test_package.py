@@ -1,4 +1,4 @@
-"""Offline regression tests for deterministic clean Skill archives."""
+"""Offline regression tests for deterministic allowlisted Skill archives."""
 
 import importlib.util
 import json
@@ -62,6 +62,24 @@ class PackageTests(unittest.TestCase):
             "templates/TASK.template.md",
         ])
         self.assertFalse((REPO / "templates/TASK-LIGHTWEIGHT.template.md").exists())
+
+    def test_documented_cleanliness_boundary_is_bounded(self):
+        for path in (REPO / "README.md", REPO / "SKILL.md", REPO / "references/PROTOCOL.md", REPO / "references/GATE.md"):
+            text = " ".join(path.read_text(encoding="utf-8").lower().split())
+            with self.subTest(path=path):
+                self.assertIn("exact runtime allowlist", text)
+                self.assertIn("immutable source commit", text)
+                self.assertIn("structural cleanliness boundary", text)
+                self.assertIn("canonical manifest hash", text)
+                self.assertIn("defense in depth", text)
+                self.assertIn("not exhaustive", text)
+        help_text = " ".join(package.__doc__.lower().split())
+        self.assertIn("exact-allowlist", help_text)
+        self.assertIn("immutable-source", help_text)
+        self.assertIn("structural cleanliness boundary", help_text)
+        self.assertIn("canonical manifest hash", help_text)
+        self.assertIn("defense in depth", help_text)
+        self.assertIn("not exhaustive", help_text)
 
     def test_version_parser_accepts_semver_prerelease_and_block_scalar(self):
         data = b'---\ndescription: >-\n  human readable text\nmetadata:\n  version: "2.1.0-dev.1"\n---\n# Body\n'
@@ -147,7 +165,7 @@ class PackageTests(unittest.TestCase):
         with self.assertRaises(package.PackageError):
             package.build(self.root, leak_commit, self.root / "leak.zip")
 
-    def test_rejects_codex_uuidv7_and_local_system_paths(self):
+    def test_rejects_maintained_runtime_and_local_path_patterns(self):
         leaks = (
             "task 01a0815b-dc59-79c0-9813-d9fa81b8d433\n",
             "cache /private/tmp/pdp/archive.zip\n",
@@ -163,11 +181,18 @@ class PackageTests(unittest.TestCase):
             "wsl /mnt/c/Users/alice/project\n",
             "drive E:\\Projects\\alice\\private\n",
             "unc \\\\server\\Users\\alice\\project\n",
+            "-----BEGIN PRIVATE KEY-----\n",
         )
         for leak in leaks:
             with self.subTest(leak=leak):
                 with self.assertRaises(package.PackageError):
                     package.reject_leaks("fixture", leak.encode())
+
+    def test_rejects_current_checkout_and_user_home_patterns(self):
+        with self.assertRaises(package.PackageError):
+            package.reject_leaks("fixture", ("checkout " + str(REPO)).encode())
+        with self.assertRaises(package.PackageError):
+            package.reject_leaks("fixture", ("home " + str(Path.home())).encode())
 
     def test_allows_documented_path_placeholders(self):
         package.reject_leaks("fixture", b"<ABSOLUTE_LOCAL_REPOSITORY_PATH> <WINDOWS_USER_HOME> /path/to/project C:\\Users\\<USERNAME> <FULL_SOURCE_COMMIT>")
@@ -176,8 +201,10 @@ class PackageTests(unittest.TestCase):
     def test_packager_runtime_text_does_not_self_reject(self):
         package.reject_leaks("scripts/package_skill.py", SCRIPT.read_bytes())
 
-    def test_rejects_windows_mount_and_var_paths_during_build(self):
+    def test_rejects_representative_maintained_patterns_during_build(self):
         leaks = (
+            "checkout " + str(REPO) + "\n",
+            "user home " + str(Path.home()) + "\n",
             "home C:\\Users\\alice\n",
             "cache /var/folders/yr/session/output\n",
             "mount /Volumes/Workspace/project\n",
@@ -186,6 +213,7 @@ class PackageTests(unittest.TestCase):
             "wsl /mnt/c/Users/alice/project\n",
             "drive E:\\Projects\\alice\\private\n",
             "unc \\\\server\\Users\\alice\\project\n",
+            "-----BEGIN PRIVATE KEY-----\n",
         )
         for number, leak in enumerate(leaks):
             (self.root / "LICENSE").write_text(leak, encoding="utf-8")
