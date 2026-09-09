@@ -9,11 +9,11 @@
 - Working candidate: accepted TASK-010 release candidate `1c4f2f9a10d735cb506ebc90f143d8cec801e66c` for formal package version `2.1.0`; later commits contain governance evidence only. Local synchronization and GitHub publication are in progress under DEC-025.
 - Strictly Accepted Baseline: formal package version `2.1.0` / Git commit `1c4f2f9a10d735cb506ebc90f143d8cec801e66c`; Human acceptance recorded in DEC-025 after independent Test PASS, Review APPROVE and pre-release `STRUCTURAL / CONSISTENT`. The local installed Skill matches this candidate; published version remains `2.0.4` until remote release steps verify successfully.
 - Historical documented acceptance: `CHANGELOG.md` entries and tags `v2.0.2`, `v2.0.3`, `v2.0.4`; DEC-009 records the published 2.0.4 release candidate, DEC-010 the accepted validation-environment candidate, DEC-012 the accepted handoff candidate, and current formal acceptance is DEC-017.
-- Active approved Specs: `.ai/specs/SPEC-009.md` / SHA-256 `d084aababfc04cf6a980b097a43c45fd1752fe77d45baff5e052c322650e5490` approved under DEC-024. Completed `.ai/specs/SPEC-008.md` / SHA-256 `0775b8345946b9db9e08fa9c7aebb2c4613c25cea3936451af227dd7fe514876` was approved by DEC-023. Completed earlier Specs remain indexed in their Task records.
+- Active approved Specs: `.ai/specs/SPEC-010-v2.md` approved under DEC-026 and frozen at SHA-256 `cde3da8b111396d96bb497cca2069e96668baa08199bf94234cce4dc20be99d4`. SPEC-009 remains active through TASK-010 release closure. Completed earlier Specs remain indexed in their Task records.
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session through TASK-006 and TASK-007 worker results and receipts. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is Codex desktop task `01a0815b-dc59-79c0-9813-d9fa81b8d433` plus current native TASK-006/TASK-007 creation, assignment and result references; delegation/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision remains the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; TASK-010 candidate `1c4f2f9a10d735cb506ebc90f143d8cec801e66c` and archive SHA-256 `cb7501603baa8053c6c58a3408fbd7f378edd2a44178796d8eb4c41f8cb17afd` accepted under DEC-025. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED. Installation and GitHub publication are explicitly authorized for this exact state.
-- Next action: run fresh remote conflict checks, then publish only `main`, `v2.1.0` and the accepted clean GitHub Release asset with post-verification.
+- Next action: execute TASK-011 on the isolated sanitized branch, close TASK-010 with placeholder-only release evidence, independently verify, and fast-forward public `main` without publishing rejected local commits.
 
 ## Active work (index; Task files own detailed state)
 
@@ -29,10 +29,11 @@
 | `.ai/tasks/TASK-008.md` — Local Skill synchronization | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-007 | NONE |
 | `.ai/tasks/TASK-009.md` — Backup discovery cleanup | DONE | Manager `/root` | Candidate `4d6940c`; Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-008 | NONE |
 | `.ai/tasks/TASK-010.md` — Finalize 2.1.0 release | DOING | Manager `/root` | Candidate accepted; local 2.1.0 install Tester PASS | TASK-007, TASK-008, TASK-009 | Fresh remote preflight and publish |
+| `.ai/tasks/TASK-011.md` — Sanitized release closure | DOING | Manager `/root` | Isolated branch from public main; Developer, Tester and Reviewer pending | TASK-010 | Sanitize governance tree |
 
 ## Blockers and decisions needed
 
-NONE. DEC-025 supplies exact-candidate acceptance and release authority. Installation and publication are now in progress; abort on any preflight conflict or verification failure.
+NONE. Product 2.1.0 is already released and verified. DEC-026 authorizes sanitized governance closure; raw-path local commits remain excluded from publication.
 
 ## Accepted / completed work
 
