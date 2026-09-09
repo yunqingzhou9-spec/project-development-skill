@@ -9,15 +9,15 @@
   "owner": "manager",
   "depends_on": ["TASK-010"],
   "base": "adbb53cd5020c2f1192fb6163355e2878335d26c",
-  "candidate": "80838770c45fbd6dd7ff4c22f19112a93a3fbe38",
+  "candidate": "a1d42876769612d00c4951dd7e1dbc06566348ce",
   "contributors": ["task_011_sanitized_release_closure_v2_developer"],
   "test_required": true,
   "test_na_reason": null,
-  "test": "PASS",
-  "review": "CHANGES_REQUESTED",
+  "test": "PENDING",
+  "review": "PENDING",
   "blockers": [],
   "rework_cycles": 1,
-  "next_action": "Rework the frozen-Spec provenance record: bind TASK-009 to the original SPEC-008 blob and label the current file as a DEC-026-authorized sanitized projection, then create a new candidate."
+  "next_action": "Run fresh independent Tester and Reviewer verification against exact rework candidate a1d42876769612d00c4951dd7e1dbc06566348ce."
 }
 ```
 
@@ -32,6 +32,7 @@ Execute SPEC-010-v2 as a FULL governance/release-recovery workflow on an isolate
 - Developer verification: completion 38/38 PASS; package 20/20 PASS; Skill quick validation PASS; Python compilation PASS; diff and strict tracked-Markdown privacy scans PASS; excluded local-only commits are not ancestors.
 - Independent Tester PASS on `80838770c45fbd6dd7ff4c22f19112a93a3fbe38` for AC-1 through AC-5 and the Tester portion of AC-6.
 - Independent Reviewer CHANGES_REQUESTED on `80838770c45fbd6dd7ff4c22f19112a93a3fbe38`: sanitizing frozen `.ai/specs/SPEC-008.md` changed its current digest while TASK-009 still paired that path with the original approved digest. Rework must preserve the original source-commit-qualified binding and explicitly label the current file as a sanitized projection.
+- Rework candidate `a1d42876769612d00c4951dd7e1dbc06566348ce`: TASK-009 now binds the approved Spec to immutable blob `cf04ea8b76fa7403cc14a3ddd8d148048ee8290c:.ai/specs/SPEC-008.md` at its original digest and separately records the DEC-026-authorized current sanitized projection and digest. Fresh independent verification is required.
 
 ## Handoff / evidence
 
@@ -46,3 +47,4 @@ Execute SPEC-010-v2 as a FULL governance/release-recovery workflow on an isolate
 - 2026-09-09: Created under DEC-026 from public `main`; the unpublished SPEC-010 draft was rejected by its own privacy scan and is excluded.
 - 2026-09-09: Developer delivered exact candidate `80838770c45fbd6dd7ff4c22f19112a93a3fbe38`; independent verification pending.
 - 2026-09-09: Tester PASS; Reviewer requested one bounded provenance-integrity rework cycle. Candidate `80838770c45fbd6dd7ff4c22f19112a93a3fbe38` is not publishable.
+- 2026-09-09: Developer delivered rework candidate `a1d42876769612d00c4951dd7e1dbc06566348ce`; prior verdicts do not carry forward.

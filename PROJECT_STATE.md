@@ -6,7 +6,7 @@
 - Local checkout: `<LOCAL_CHECKOUT>`
 - Coordination: `ACTIVE`; replacement Manager `/root` in Codex task `01a0815b-dc59-79c0-9813-d9fa81b8d433` verified the supplied checkout, installed Skill and native runtime state; the outgoing Manager task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` is idle and no active Worker is observable; updated 2026-09-08T22:13:32+08:00
 - Purpose / boundaries: Maintain the Project Development Protocol Skill without granting implementation, acceptance, installation, or publishing authority beyond explicit user decisions.
-- Working candidate: TASK-011 candidate `80838770c45fbd6dd7ff4c22f19112a93a3fbe38` is not publishable after Reviewer CHANGES_REQUESTED; rework cycle 1 is active. The accepted and released TASK-010 product candidate remains `1c4f2f9a10d735cb506ebc90f143d8cec801e66c` at formal package version `2.1.0`.
+- Working candidate: TASK-011 rework candidate `a1d42876769612d00c4951dd7e1dbc06566348ce`; prior candidate `80838770c45fbd6dd7ff4c22f19112a93a3fbe38` is not publishable. The accepted and released TASK-010 product candidate remains `1c4f2f9a10d735cb506ebc90f143d8cec801e66c` at formal package version `2.1.0`.
 - Strictly Accepted Baseline: formal package version `2.1.0` / Git commit `1c4f2f9a10d735cb506ebc90f143d8cec801e66c`; Human acceptance recorded in DEC-025 after independent Test PASS, Review APPROVE and pre-release `STRUCTURAL / CONSISTENT`. The local installed Skill and published `v2.1.0` release match this candidate.
 - Historical documented acceptance: `CHANGELOG.md` entries and tags `v2.0.2`, `v2.0.3`, `v2.0.4`, `v2.1.0`; DEC-009 records the published 2.0.4 release candidate, DEC-010 the accepted validation-environment candidate, DEC-012 the accepted handoff candidate, DEC-017 the accepted naming-guidance candidate, and current formal acceptance is DEC-025.
 - Active approved Specs: `.ai/specs/SPEC-010-v2.md` approved under DEC-026 and frozen at SHA-256 `cde3da8b111396d96bb497cca2069e96668baa08199bf94234cce4dc20be99d4`. SPEC-009 remains active through TASK-010 release closure. Completed earlier Specs remain indexed in their Task records; TASK-009 binds its original approval to `cf04ea8b76fa7403cc14a3ddd8d148048ee8290c:.ai/specs/SPEC-008.md` at SHA-256 `0775b8345946b9db9e08fa9c7aebb2c4613c25cea3936451af227dd7fe514876`, while the current `.ai/specs/SPEC-008.md` is a DEC-026-authorized sanitized projection at SHA-256 `138dae994b2492029e79be25d3add2275af42604d76f74bf7c4734ecaf79d699`.
@@ -29,7 +29,7 @@
 | `.ai/tasks/TASK-008.md` — Local Skill synchronization | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-007 | NONE |
 | `.ai/tasks/TASK-009.md` — Backup discovery cleanup | DONE | Manager `/root` | Candidate `4d6940c`; Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-008 | NONE |
 | `.ai/tasks/TASK-010.md` — Finalize 2.1.0 release | DOING | Manager `/root` | Product 2.1.0 RELEASED; tag, clean asset and local install verified | TASK-007, TASK-008, TASK-009 | Finish sanitized governance closure through TASK-011 |
-| `.ai/tasks/TASK-011.md` — Sanitized release closure | DOING | Manager `/root` | Candidate `8083877`: Tester PASS; Reviewer CHANGES_REQUESTED; rework cycle 1 | TASK-010 | Repair frozen-Spec provenance and create new candidate |
+| `.ai/tasks/TASK-011.md` — Sanitized release closure | DOING | Manager `/root` | Rework candidate `a1d4287`; fresh Tester and Reviewer pending | TASK-010 | Independently verify exact rework candidate |
 
 ## Blockers and decisions needed
 
