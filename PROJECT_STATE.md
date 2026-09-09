@@ -29,7 +29,7 @@
 | `.ai/tasks/TASK-008.md` — Local Skill synchronization | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-007 | NONE |
 | `.ai/tasks/TASK-009.md` — Backup discovery cleanup | DONE | Manager `/root` | Candidate `4d6940c`; Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-008 | NONE |
 | `.ai/tasks/TASK-010.md` — Finalize 2.1.0 release | DOING | Manager `/root` | Product 2.1.0 RELEASED; tag, clean asset and local install verified | TASK-007, TASK-008, TASK-009 | Finish sanitized governance closure through TASK-011 |
-| `.ai/tasks/TASK-011.md` — Sanitized release closure | DOING | Manager `/root` | Rework candidate `a1d4287`; fresh Tester and Reviewer pending | TASK-010 | Independently verify exact rework candidate |
+| `.ai/tasks/TASK-011.md` — Sanitized release closure | VERIFY | Manager `/root` | Candidate `a1d4287`; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-010 | Fresh remote fast-forward preflight and sanitized publication |
 
 ## Blockers and decisions needed
 

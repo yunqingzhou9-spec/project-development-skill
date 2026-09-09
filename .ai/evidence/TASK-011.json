@@ -1,0 +1,56 @@
+{
+  "manager_id": "01a0815b-dc59-79c0-9813-d9fa81b8d433",
+  "agents": [
+    {
+      "id": "/root/task_011_sanitized_release_closure_v2_developer",
+      "role": "developer",
+      "task_id": "TASK-011",
+      "create_ref": "native collaboration spawn result for TASK-011 Developer",
+      "assignment_ref": "TASK-011 implementation and rework assignments under SPEC-010-v2"
+    },
+    {
+      "id": "/root/task_011_sanitized_release_closure_v2_rework_tester",
+      "role": "tester",
+      "task_id": "TASK-011",
+      "create_ref": "native collaboration spawn result for fresh TASK-011 rework Tester",
+      "assignment_ref": "fresh independent Test assignment for candidate a1d42876769612d00c4951dd7e1dbc06566348ce"
+    },
+    {
+      "id": "/root/task_011_sanitized_release_closure_v2_rework_reviewer",
+      "role": "reviewer",
+      "task_id": "TASK-011",
+      "create_ref": "native collaboration spawn result for fresh TASK-011 rework Reviewer",
+      "assignment_ref": "fresh independent Review assignment for candidate a1d42876769612d00c4951dd7e1dbc06566348ce"
+    }
+  ],
+  "results": [
+    {
+      "agent_id": "/root/task_011_sanitized_release_closure_v2_developer",
+      "task_id": "TASK-011",
+      "spec_sha256": "cde3da8b111396d96bb497cca2069e96668baa08199bf94234cce4dc20be99d4",
+      "target": {"kind": "git", "commit": "a1d42876769612d00c4951dd7e1dbc06566348ce"},
+      "verdict": "DELIVERED",
+      "result_ref": "native final result from TASK-011 Developer rework cycle 1",
+      "report_ref": ".ai/tasks/TASK-011.md#verification--findings"
+    },
+    {
+      "agent_id": "/root/task_011_sanitized_release_closure_v2_rework_tester",
+      "task_id": "TASK-011",
+      "spec_sha256": "cde3da8b111396d96bb497cca2069e96668baa08199bf94234cce4dc20be99d4",
+      "target": {"kind": "git", "commit": "a1d42876769612d00c4951dd7e1dbc06566348ce"},
+      "verdict": "PASS",
+      "result_ref": "native final result from fresh TASK-011 rework Tester",
+      "report_ref": ".ai/tasks/TASK-011.md#verification--findings"
+    },
+    {
+      "agent_id": "/root/task_011_sanitized_release_closure_v2_rework_reviewer",
+      "task_id": "TASK-011",
+      "spec_sha256": "cde3da8b111396d96bb497cca2069e96668baa08199bf94234cce4dc20be99d4",
+      "target": {"kind": "git", "commit": "a1d42876769612d00c4951dd7e1dbc06566348ce"},
+      "verdict": "APPROVE",
+      "result_ref": "native final result from fresh TASK-011 rework Reviewer",
+      "report_ref": ".ai/tasks/TASK-011.md#verification--findings",
+      "no_implementation_edits": true
+    }
+  ]
+}
