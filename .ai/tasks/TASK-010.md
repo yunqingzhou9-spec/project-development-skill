@@ -4,7 +4,7 @@
 {
   "id": "TASK-010",
   "short_name": "finalize_2_1_0_release",
-  "status": "DOING",
+  "status": "DONE",
   "spec": {"path": ".ai/specs/SPEC-009.md", "sha256": "d084aababfc04cf6a980b097a43c45fd1752fe77d45baff5e052c322650e5490"},
   "owner": "manager",
   "depends_on": ["TASK-007", "TASK-008", "TASK-009"],
@@ -17,7 +17,7 @@
   "review": "APPROVE",
   "blockers": [],
   "rework_cycles": 0,
-  "next_action": "Complete the sanitized governance closure under TASK-011; the accepted 2.1.0 product release and local installation are already verified."
+  "next_action": "NONE; product release, sanitized governance publication and local reconciliation are complete."
 }
 ```
 
@@ -60,3 +60,4 @@ Execute SPEC-009 as a FULL release workflow. Candidate creation and verification
 - 2026-09-09: Human replied “接受该候选并发布”; DEC-025 records exact-candidate acceptance, the blocker is cleared, and TASK-010 returned to DOING for local synchronization and publication.
 - 2026-09-09: Developer synchronized the accepted archive locally with a recoverable backup; independent Tester verified AC-7 PASS. Fresh remote preflight and publication remain.
 - 2026-09-09: Product `2.1.0` was published and post-verified: annotated tag `v2.1.0` resolves to the accepted candidate, the Release asset hash matches the accepted archive, and the installed Skill remains verified. TASK-011 now owns the remaining sanitized governance closure.
+- 2026-09-09: TASK-011 completed the sanitized governance publication and local reconciliation without publishing the rejected raw-path commits. TASK-010 is DONE.

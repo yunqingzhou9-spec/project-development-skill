@@ -4,7 +4,7 @@
 {
   "id": "TASK-011",
   "short_name": "sanitized_release_closure",
-  "status": "VERIFY",
+  "status": "DONE",
   "spec": {"path": ".ai/specs/SPEC-010-v2.md", "sha256": "cde3da8b111396d96bb497cca2069e96668baa08199bf94234cce4dc20be99d4"},
   "owner": "manager",
   "depends_on": ["TASK-010"],
@@ -17,7 +17,7 @@
   "review": "APPROVE",
   "blockers": [],
   "rework_cycles": 1,
-  "next_action": "Perform a fresh remote fast-forward preflight and publish only the sanitized main line, then verify remote state and reconcile the primary checkout."
+  "next_action": "NONE; await the Human's next project instruction."
 }
 ```
 
@@ -35,6 +35,8 @@ Execute SPEC-010-v2 as a FULL governance/release-recovery workflow on an isolate
 - Rework candidate `a1d42876769612d00c4951dd7e1dbc06566348ce`: TASK-009 now binds the approved Spec to immutable blob `cf04ea8b76fa7403cc14a3ddd8d148048ee8290c:.ai/specs/SPEC-008.md` at its original digest and separately records the DEC-026-authorized current sanitized projection and digest. Fresh independent verification is required.
 - Fresh independent Tester PASS and Reviewer APPROVE on exact rework candidate `a1d42876769612d00c4951dd7e1dbc06566348ce`; no findings remain. Candidate-bound receipt: `.ai/evidence/TASK-011.json`.
 - Structural gate result: `STRUCTURAL / CONSISTENT` for TASK-011, frozen Spec digest and exact candidate `a1d42876769612d00c4951dd7e1dbc06566348ce`; native provenance was separately inspected by the Manager. The gate is not protected acceptance.
+- AC-7 complete: fresh fetch found public `main` unchanged at base `adbb53cd5020c2f1192fb6163355e2878335d26c`; an explicit non-force main-only push advanced it to verified governance tip `81889382bc8c347119ea93aab659df4e887f286e`. Post-push checks found the current remote Markdown clean and confirmed unchanged `v2.1.0` and Release asset identity.
+- AC-8 complete: the primary checkout's rejected raw-path commits were preserved on unpushed local recovery branch `local/private-task010-raw-path-records`; a new clean local `main` was created to track sanitized `origin/main`. No destructive reset or history rewrite was used.
 
 ## Handoff / evidence
 
@@ -52,3 +54,4 @@ Execute SPEC-010-v2 as a FULL governance/release-recovery workflow on an isolate
 - 2026-09-09: Developer delivered rework candidate `a1d42876769612d00c4951dd7e1dbc06566348ce`; prior verdicts do not carry forward.
 - 2026-09-09: Fresh rework Tester PASS and Reviewer APPROVE received; structural gate and remote operations pending.
 - 2026-09-09: Candidate-bound structural gate returned CONSISTENT; fresh remote preflight and authorized sanitized publication remain.
+- 2026-09-09: Sanitized governance commits were fast-forwarded to public `main`, remote state was post-verified, and the primary checkout was reconciled while preserving private recovery history. TASK-011 is DONE.
