@@ -1,6 +1,6 @@
 # Project state
 
-- Updated: 2026-09-09T00:35:13+08:00
+- Updated: 2026-09-09T09:58:18+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
@@ -9,11 +9,11 @@
 - Working candidate: accepted TASK-007 SPEC-006-v2 candidate `3ff3e5b8239d92f4847dcd37625865975761480d` for working/unreleased package version `2.1.0-dev.1`; later commits contain governance evidence only. All earlier TASK-007 candidates and verdicts are stale.
 - Strictly Accepted Baseline: working/unreleased package version `2.1.0-dev.1` / Git commit `3ff3e5b8239d92f4847dcd37625865975761480d`; Human acceptance recorded in DEC-021. The local installed Skill was synchronized to this accepted candidate under DEC-022/TASK-008. Published release remains version `2.0.4`.
 - Historical documented acceptance: `CHANGELOG.md` entries and tags `v2.0.2`, `v2.0.3`, `v2.0.4`; DEC-009 records the published 2.0.4 release candidate, DEC-010 the accepted validation-environment candidate, DEC-012 the accepted handoff candidate, and current formal acceptance is DEC-017.
-- Active approved Specs: `NONE`; completed `.ai/specs/SPEC-008.md` / SHA-256 `0775b8345946b9db9e08fa9c7aebb2c4613c25cea3936451af227dd7fe514876` was approved by DEC-023. Completed `.ai/specs/SPEC-007.md` / SHA-256 `4e9f04950791572dfca380a4e722fcbd31daa3d26f87a41092fb5d0225bfcc77` was approved by DEC-022. Completed `.ai/specs/SPEC-006-v2.md` / SHA-256 `2d8f44a7c7442776ef8b0d359655f1b6845efe3ca41c3ff9447d67caa7fdb102` was approved by DEC-020.
+- Active approved Specs: `.ai/specs/SPEC-009.md` / SHA-256 `d084aababfc04cf6a980b097a43c45fd1752fe77d45baff5e052c322650e5490` approved under DEC-024. Completed `.ai/specs/SPEC-008.md` / SHA-256 `0775b8345946b9db9e08fa9c7aebb2c4613c25cea3936451af227dd7fe514876` was approved by DEC-023. Completed earlier Specs remain indexed in their Task records.
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session through TASK-006 and TASK-007 worker results and receipts. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is Codex desktop task `01a0815b-dc59-79c0-9813-d9fa81b8d433` plus current native TASK-006/TASK-007 creation, assignment and result references; delegation/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision remains the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `3ff3e5b8239d92f4847dcd37625865975761480d` accepted by the user's “接受” decision under DEC-021. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED. Local installation was separately authorized and completed under DEC-022/TASK-008; publication is not included.
-- Next action: await the Human's next project instruction. A real-project smoke test is recommended before any publication decision; push, tag and release remain unauthorized.
+- Next action: prepare and independently verify the exact `2.1.0` release candidate under TASK-010, then obtain candidate-specific Human acceptance before publication.
 
 ## Active work (index; Task files own detailed state)
 
@@ -28,10 +28,11 @@
 | `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | DONE | Manager `/root` | Candidate `3ff3e5b`: Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted | TASK-006 | NONE |
 | `.ai/tasks/TASK-008.md` — Local Skill synchronization | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-007 | NONE |
 | `.ai/tasks/TASK-009.md` — Backup discovery cleanup | DONE | Manager `/root` | Candidate `4d6940c`; Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-008 | NONE |
+| `.ai/tasks/TASK-010.md` — Finalize 2.1.0 release | DOING | Manager `/root` | FULL release workflow; Developer dispatch pending | TASK-007, TASK-008, TASK-009 | Create bounded release candidate |
 
 ## Blockers and decisions needed
 
-NONE. TASK-009 completed the DEC-023 backup move and current-state reconciliation; remote publication remains outside scope.
+NONE. DEC-024 authorizes release preparation and eventual GitHub publication, but exact-candidate Human acceptance remains required before remote mutation.
 
 ## Accepted / completed work
 
