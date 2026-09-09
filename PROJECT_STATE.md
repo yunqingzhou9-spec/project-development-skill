@@ -6,7 +6,7 @@
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
 - Coordination: `ACTIVE`; replacement Manager `/root` in Codex task `01a0815b-dc59-79c0-9813-d9fa81b8d433` verified the supplied checkout, installed Skill and native runtime state; the outgoing Manager task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` is idle and no active Worker is observable; updated 2026-09-08T22:13:32+08:00
 - Purpose / boundaries: Maintain the Project Development Protocol Skill without granting implementation, acceptance, installation, or publishing authority beyond explicit user decisions.
-- Working candidate: accepted TASK-007 SPEC-006-v2 candidate `3ff3e5b8239d92f4847dcd37625865975761480d` for working/unreleased package version `2.1.0-dev.1`; later commits contain governance evidence only. All earlier TASK-007 candidates and verdicts are stale.
+- Working candidate: TASK-010 release candidate `1c4f2f9a10d735cb506ebc90f143d8cec801e66c` for formal package version `2.1.0`; Developer self-checks pass, independent Test/Review pending. Strictly Accepted Baseline remains the accepted TASK-007 candidate until the Human accepts this exact new candidate.
 - Strictly Accepted Baseline: working/unreleased package version `2.1.0-dev.1` / Git commit `3ff3e5b8239d92f4847dcd37625865975761480d`; Human acceptance recorded in DEC-021. The local installed Skill was synchronized to this accepted candidate under DEC-022/TASK-008. Published release remains version `2.0.4`.
 - Historical documented acceptance: `CHANGELOG.md` entries and tags `v2.0.2`, `v2.0.3`, `v2.0.4`; DEC-009 records the published 2.0.4 release candidate, DEC-010 the accepted validation-environment candidate, DEC-012 the accepted handoff candidate, and current formal acceptance is DEC-017.
 - Active approved Specs: `.ai/specs/SPEC-009.md` / SHA-256 `d084aababfc04cf6a980b097a43c45fd1752fe77d45baff5e052c322650e5490` approved under DEC-024. Completed `.ai/specs/SPEC-008.md` / SHA-256 `0775b8345946b9db9e08fa9c7aebb2c4613c25cea3936451af227dd7fe514876` was approved by DEC-023. Completed earlier Specs remain indexed in their Task records.
@@ -28,7 +28,7 @@
 | `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | DONE | Manager `/root` | Candidate `3ff3e5b`: Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted | TASK-006 | NONE |
 | `.ai/tasks/TASK-008.md` — Local Skill synchronization | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-007 | NONE |
 | `.ai/tasks/TASK-009.md` — Backup discovery cleanup | DONE | Manager `/root` | Candidate `4d6940c`; Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-008 | NONE |
-| `.ai/tasks/TASK-010.md` — Finalize 2.1.0 release | DOING | Manager `/root` | FULL release workflow; Developer dispatch pending | TASK-007, TASK-008, TASK-009 | Create bounded release candidate |
+| `.ai/tasks/TASK-010.md` — Finalize 2.1.0 release | VERIFY | Manager `/root` | Candidate `1c4f2f9`; Developer delivered; Test and Review pending | TASK-007, TASK-008, TASK-009 | Verify candidate and release readiness |
 
 ## Blockers and decisions needed
 
