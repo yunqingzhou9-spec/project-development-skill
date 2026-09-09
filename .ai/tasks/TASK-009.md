@@ -5,7 +5,8 @@
   "id": "TASK-009",
   "short_name": "backup_discovery_cleanup",
   "status": "DONE",
-  "spec": {"path": ".ai/specs/SPEC-008.md", "sha256": "0775b8345946b9db9e08fa9c7aebb2c4613c25cea3936451af227dd7fe514876"},
+  "spec": {"path": "cf04ea8b76fa7403cc14a3ddd8d148048ee8290c:.ai/specs/SPEC-008.md", "sha256": "0775b8345946b9db9e08fa9c7aebb2c4613c25cea3936451af227dd7fe514876"},
+  "sanitized_spec_projection": {"path": ".ai/specs/SPEC-008.md", "authorization_ref": "DEC-026", "sha256": "138dae994b2492029e79be25d3add2275af42604d76f74bf7c4734ecaf79d699"},
   "owner": "manager",
   "depends_on": ["TASK-008"],
   "base": "499fc99a2a79cde74bf948251838b03bad007027",
@@ -23,7 +24,7 @@
 
 ## Scope and acceptance
 
-Execute SPEC-008. The Developer owns only the exact backup move and preservation checks. The Manager serializes the `PROJECT_STATE.md` truth reconciliation and Git write-back. Fresh independent Tester and Reviewer verify the combined result.
+Execute SPEC-008. The immutable approved Spec is source-commit-qualified as `cf04ea8b76fa7403cc14a3ddd8d148048ee8290c:.ai/specs/SPEC-008.md`, SHA-256 `0775b8345946b9db9e08fa9c7aebb2c4613c25cea3936451af227dd7fe514876`. The current `.ai/specs/SPEC-008.md`, SHA-256 `138dae994b2492029e79be25d3add2275af42604d76f74bf7c4734ecaf79d699`, is a DEC-026-authorized sanitized projection only. The original approved blob remains in public ancestor history and was neither rewritten nor retrospectively replaced. The Developer owns only the exact backup move and preservation checks. The Manager serializes the `PROJECT_STATE.md` truth reconciliation and Git write-back. Fresh independent Tester and Reviewer verify the combined result.
 
 ## Verification / findings
 
@@ -52,3 +53,4 @@ Execute SPEC-008. The Developer owns only the exact backup move and preservation
 - 2026-09-09: Candidate `4d6940c852a251db5779b259b73f9f23e5c1554d` frozen; moved to VERIFY with fresh Tester and Reviewer required. An initially transcribed nonexistent full hash sharing the same short prefix was invalidated before any final verdict; both workers received the corrected Git-resolved identity.
 - 2026-09-09: Fresh Tester PASS and Reviewer APPROVE received for the corrected exact candidate; completion gate pending.
 - 2026-09-09: Manager verified native provenance and the `STRUCTURAL / CONSISTENT` receipt, marked TASK-009 DONE and retained the no-publication boundary.
+- 2026-09-09: DEC-026 sanitized the current working-tree projection of SPEC-008. TASK-009 remains bound to the original approved blob at `cf04ea8b76fa7403cc14a3ddd8d148048ee8290c:.ai/specs/SPEC-008.md`; public ancestor history and the original digest remain unchanged.
