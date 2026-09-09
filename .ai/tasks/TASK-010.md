@@ -4,7 +4,7 @@
 {
   "id": "TASK-010",
   "short_name": "finalize_2_1_0_release",
-  "status": "BLOCKED",
+  "status": "DOING",
   "spec": {"path": ".ai/specs/SPEC-009.md", "sha256": "d084aababfc04cf6a980b097a43c45fd1752fe77d45baff5e052c322650e5490"},
   "owner": "manager",
   "depends_on": ["TASK-007", "TASK-008", "TASK-009"],
@@ -15,9 +15,9 @@
   "test_na_reason": null,
   "test": "PASS",
   "review": "APPROVE",
-  "blockers": ["Human candidate-specific acceptance required for release candidate 1c4f2f9a10d735cb506ebc90f143d8cec801e66c and archive SHA-256 cb7501603baa8053c6c58a3408fbd7f378edd2a44178796d8eb4c41f8cb17afd before installation or publication."],
+  "blockers": [],
   "rework_cycles": 0,
-  "next_action": "Human accepts or rejects the exact candidate and archive; on acceptance, Manager refreshes remote state, synchronizes the installed Skill, publishes only main/v2.1.0/GitHub Release, and post-verifies."
+  "next_action": "Synchronize and validate the accepted 2.1.0 archive locally, then refresh remote state and perform the authorized publication with post-verification."
 }
 ```
 
@@ -33,6 +33,7 @@ Execute SPEC-009 as a FULL release workflow. Candidate creation and verification
 - Independent Tester `/root/task_010_finalize_2_1_0_release_tester`: PASS for pre-release AC-1 through AC-5 and release-readiness boundaries; independently rebuilt the identical archive and preserved AC-6/7/9/10 as uncompleted.
 - Independent Reviewer `/root/task_010_finalize_2_1_0_release_reviewer`: APPROVE with no P0/P1 findings. Its P2 comparison-wording finding was corrected above without changing the product candidate; it independently reproduced the same archive and confirmed no early installation or publication.
 - Pre-release completion gate: `.ai/evidence/TASK-010.json` returned `STRUCTURAL / CONSISTENT`; Manager verified native creation, assignments and final results. AC-6 through AC-10 remain deliberately uncompleted.
+- AC-6 complete: Human accepted exact candidate `1c4f2f9a10d735cb506ebc90f143d8cec801e66c` and archive SHA-256 `cb7501603baa8053c6c58a3408fbd7f378edd2a44178796d8eb4c41f8cb17afd` under DEC-025 and instructed publication.
 
 ## Handoff / evidence
 
@@ -51,3 +52,4 @@ Execute SPEC-009 as a FULL release workflow. Candidate creation and verification
 - 2026-09-09: Developer delivered candidate `1c4f2f9a10d735cb506ebc90f143d8cec801e66c` and deterministic clean archive evidence; moved to VERIFY with fresh identities required.
 - 2026-09-09: Fresh Tester PASS and Reviewer APPROVE received for the exact candidate. Reviewer P2 governance-comparison wording was corrected; structural gate and Human candidate-specific acceptance remain pending.
 - 2026-09-09: Pre-release structural gate returned CONSISTENT. Task moved to BLOCKED solely for Human acceptance of the exact candidate and archive before any installation or remote mutation.
+- 2026-09-09: Human replied “接受该候选并发布”; DEC-025 records exact-candidate acceptance, the blocker is cleared, and TASK-010 returned to DOING for local synchronization and publication.
