@@ -1,6 +1,6 @@
 # Project state
 
-- Updated: 2026-09-09T09:58:18+08:00
+- Updated: 2026-09-09T10:11:02+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
 - Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
@@ -13,7 +13,7 @@
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session through TASK-006 and TASK-007 worker results and receipts. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is Codex desktop task `01a0815b-dc59-79c0-9813-d9fa81b8d433` plus current native TASK-006/TASK-007 creation, assignment and result references; delegation/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision remains the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
 - Formal acceptance: authority `HUMAN`; candidate `3ff3e5b8239d92f4847dcd37625865975761480d` accepted by the user's “接受” decision under DEC-021. Protected acceptance remains unavailable, so the claim is HUMAN / PROTOCOL rather than ENFORCED. Local installation was separately authorized and completed under DEC-022/TASK-008; publication is not included.
-- Next action: prepare and independently verify the exact `2.1.0` release candidate under TASK-010, then obtain candidate-specific Human acceptance before publication.
+- Next action: Human accepts or rejects TASK-010 candidate `1c4f2f9a10d735cb506ebc90f143d8cec801e66c` and archive SHA-256 `cb7501603baa8053c6c58a3408fbd7f378edd2a44178796d8eb4c41f8cb17afd`. On acceptance, complete local installation and the already authorized GitHub publication with fresh pre/post checks.
 
 ## Active work (index; Task files own detailed state)
 
@@ -28,11 +28,11 @@
 | `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | DONE | Manager `/root` | Candidate `3ff3e5b`: Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted | TASK-006 | NONE |
 | `.ai/tasks/TASK-008.md` — Local Skill synchronization | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-007 | NONE |
 | `.ai/tasks/TASK-009.md` — Backup discovery cleanup | DONE | Manager `/root` | Candidate `4d6940c`; Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-008 | NONE |
-| `.ai/tasks/TASK-010.md` — Finalize 2.1.0 release | VERIFY | Manager `/root` | Candidate `1c4f2f9`; Developer delivered; Test and Review pending | TASK-007, TASK-008, TASK-009 | Verify candidate and release readiness |
+| `.ai/tasks/TASK-010.md` — Finalize 2.1.0 release | BLOCKED | Manager `/root` | Candidate `1c4f2f9`; Developer delivered; Tester PASS; Reviewer APPROVE; pre-release gate CONSISTENT | TASK-007, TASK-008, TASK-009 | Await Human exact-candidate acceptance |
 
 ## Blockers and decisions needed
 
-NONE. DEC-024 authorizes release preparation and eventual GitHub publication, but exact-candidate Human acceptance remains required before remote mutation.
+TASK-010 is blocked only on candidate-specific Human acceptance of `1c4f2f9a10d735cb506ebc90f143d8cec801e66c` and clean archive SHA-256 `cb7501603baa8053c6c58a3408fbd7f378edd2a44178796d8eb4c41f8cb17afd`. No installation or publication has occurred for 2.1.0.
 
 ## Accepted / completed work
 

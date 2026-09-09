@@ -1,0 +1,56 @@
+{
+  "manager_id": "01a0815b-dc59-79c0-9813-d9fa81b8d433",
+  "agents": [
+    {
+      "id": "/root/task_010_finalize_2_1_0_release_developer",
+      "role": "developer",
+      "task_id": "TASK-010",
+      "create_ref": "native collaboration spawn result for /root/task_010_finalize_2_1_0_release_developer",
+      "assignment_ref": "TASK-010 bounded 2.1.0 release-candidate assignment under SPEC-009"
+    },
+    {
+      "id": "/root/task_010_finalize_2_1_0_release_tester",
+      "role": "tester",
+      "task_id": "TASK-010",
+      "create_ref": "native collaboration spawn result for /root/task_010_finalize_2_1_0_release_tester",
+      "assignment_ref": "fresh independent pre-release Test assignment for candidate 1c4f2f9a10d735cb506ebc90f143d8cec801e66c"
+    },
+    {
+      "id": "/root/task_010_finalize_2_1_0_release_reviewer",
+      "role": "reviewer",
+      "task_id": "TASK-010",
+      "create_ref": "native collaboration spawn result for /root/task_010_finalize_2_1_0_release_reviewer",
+      "assignment_ref": "fresh independent pre-release Review assignment for candidate 1c4f2f9a10d735cb506ebc90f143d8cec801e66c"
+    }
+  ],
+  "results": [
+    {
+      "agent_id": "/root/task_010_finalize_2_1_0_release_developer",
+      "task_id": "TASK-010",
+      "spec_sha256": "d084aababfc04cf6a980b097a43c45fd1752fe77d45baff5e052c322650e5490",
+      "target": {"kind": "git", "commit": "1c4f2f9a10d735cb506ebc90f143d8cec801e66c"},
+      "verdict": "DELIVERED",
+      "result_ref": "native final result from TASK-010 Developer",
+      "report_ref": ".ai/tasks/TASK-010.md#verification--findings"
+    },
+    {
+      "agent_id": "/root/task_010_finalize_2_1_0_release_tester",
+      "task_id": "TASK-010",
+      "spec_sha256": "d084aababfc04cf6a980b097a43c45fd1752fe77d45baff5e052c322650e5490",
+      "target": {"kind": "git", "commit": "1c4f2f9a10d735cb506ebc90f143d8cec801e66c"},
+      "verdict": "PASS",
+      "result_ref": "native final result from fresh TASK-010 Tester",
+      "report_ref": ".ai/tasks/TASK-010.md#verification--findings"
+    },
+    {
+      "agent_id": "/root/task_010_finalize_2_1_0_release_reviewer",
+      "task_id": "TASK-010",
+      "spec_sha256": "d084aababfc04cf6a980b097a43c45fd1752fe77d45baff5e052c322650e5490",
+      "target": {"kind": "git", "commit": "1c4f2f9a10d735cb506ebc90f143d8cec801e66c"},
+      "verdict": "APPROVE",
+      "result_ref": "native final result from fresh TASK-010 Reviewer",
+      "report_ref": ".ai/tasks/TASK-010.md#verification--findings",
+      "no_implementation_edits": true
+    }
+  ]
+}
