@@ -17,7 +17,7 @@
   "review": "APPROVE",
   "blockers": [],
   "rework_cycles": 0,
-  "next_action": "Synchronize and validate the accepted 2.1.0 archive locally, then refresh remote state and perform the authorized publication with post-verification."
+  "next_action": "Complete the sanitized governance closure under TASK-011; the accepted 2.1.0 product release and local installation are already verified."
 }
 ```
 
@@ -32,9 +32,12 @@ Execute SPEC-009 as a FULL release workflow. Candidate creation and verification
 - Developer deterministic builds: two 34,297-byte archives are byte-identical with SHA-256 `cb7501603baa8053c6c58a3408fbd7f378edd2a44178796d8eb4c41f8cb17afd`; both verify as version `2.1.0`, source commit `1c4f2f9a10d735cb506ebc90f143d8cec801e66c`, 12 allowlisted runtime files plus canonical manifest.
 - Independent Tester `/root/task_010_finalize_2_1_0_release_tester`: PASS for pre-release AC-1 through AC-5 and release-readiness boundaries; independently rebuilt the identical archive and preserved AC-6/7/9/10 as uncompleted.
 - Independent Reviewer `/root/task_010_finalize_2_1_0_release_reviewer`: APPROVE with no P0/P1 findings. Its P2 comparison-wording finding was corrected above without changing the product candidate; it independently reproduced the same archive and confirmed no early installation or publication.
-- Pre-release completion gate: `.ai/evidence/TASK-010.json` returned `STRUCTURAL / CONSISTENT`; Manager verified native creation, assignments and final results. AC-6 through AC-10 remain deliberately uncompleted.
+- Pre-release completion gate: `.ai/evidence/TASK-010.json` returned `STRUCTURAL / CONSISTENT`; Manager verified native creation, assignments and final results. At that checkpoint AC-6 through AC-10 were deliberately uncompleted; the later entries below record their completion.
 - AC-6 complete: Human accepted exact candidate `1c4f2f9a10d735cb506ebc90f143d8cec801e66c` and archive SHA-256 `cb7501603baa8053c6c58a3408fbd7f378edd2a44178796d8eb4c41f8cb17afd` under DEC-025 and instructed publication.
-- AC-7 complete: local installed Skill is exact `2.1.0` archive content bound to the accepted candidate; independent Tester PASS, quick validation PASS and installed verifier VERIFIED. Recoverable `2.1.0-dev.1` backup retained at `/Users/duolaamengmac/.codex/backups/project-development/2.1.0-dev.1-20260909T101834+0800-task-010`; earlier 2.0.4 backup remains intact.
+- AC-7 complete: local installed Skill is exact `2.1.0` archive content bound to the accepted candidate; independent Tester PASS, quick validation PASS and installed verifier VERIFIED. Recoverable `2.1.0-dev.1` backup retained at `<CODEX_BACKUPS>/project-development/2.1.0-dev.1-20260909T101834+0800-task-010`; earlier 2.0.4 backup remains intact.
+- AC-8 complete: refreshed remote state allowed a non-force, explicit `main` push; annotated tag `v2.1.0` was created and resolves to exact accepted candidate `1c4f2f9a10d735cb506ebc90f143d8cec801e66c`. Existing `v2.0.4` remains unchanged.
+- AC-9 complete: GitHub Release `v2.1.0` is live with clean asset `project-development-2.1.0.zip`; the downloaded asset is byte-identical to the accepted archive and has SHA-256 `cb7501603baa8053c6c58a3408fbd7f378edd2a44178796d8eb4c41f8cb17afd`.
+- AC-10 product checks complete: remote release/tag identity, installed version and artifact identity are verified. Publication governance closure continues separately under TASK-011 so rejected raw-path commits are never published.
 
 ## Handoff / evidence
 
@@ -45,8 +48,8 @@ Execute SPEC-009 as a FULL release workflow. Candidate creation and verification
 - Developer `/root/task_010_finalize_2_1_0_release_developer`: native creation/assignment/result in the current collaboration tree; delivered exact candidate and two deterministic archives without installation or publication.
 - Tester `/root/task_010_finalize_2_1_0_release_tester`: native creation/assignment/result in the current collaboration tree; PASS with no edits.
 - Reviewer `/root/task_010_finalize_2_1_0_release_reviewer`: native creation/assignment/result in the current collaboration tree; APPROVE with no implementation edits.
-- Candidate archive paths: `/private/tmp/task-010-release/project-development-2.1.0-build-1.zip` and `/private/tmp/task-010-release/project-development-2.1.0-build-2.zip`.
-- Release asset path: `/private/tmp/task-010-release/project-development-2.1.0.zip`, byte-identical to the accepted archive.
+- Candidate archive paths: `<TEMP_DIR>/task-010-release/project-development-2.1.0-build-1.zip` and `<TEMP_DIR>/task-010-release/project-development-2.1.0-build-2.zip`.
+- Release asset path: `<TEMP_DIR>/task-010-release/project-development-2.1.0.zip`, byte-identical to the accepted archive.
 
 ## History / next action
 
@@ -56,3 +59,4 @@ Execute SPEC-009 as a FULL release workflow. Candidate creation and verification
 - 2026-09-09: Pre-release structural gate returned CONSISTENT. Task moved to BLOCKED solely for Human acceptance of the exact candidate and archive before any installation or remote mutation.
 - 2026-09-09: Human replied “接受该候选并发布”; DEC-025 records exact-candidate acceptance, the blocker is cleared, and TASK-010 returned to DOING for local synchronization and publication.
 - 2026-09-09: Developer synchronized the accepted archive locally with a recoverable backup; independent Tester verified AC-7 PASS. Fresh remote preflight and publication remain.
+- 2026-09-09: Product `2.1.0` was published and post-verified: annotated tag `v2.1.0` resolves to the accepted candidate, the Release asset hash matches the accepted archive, and the installed Skill remains verified. TASK-011 now owns the remaining sanitized governance closure.

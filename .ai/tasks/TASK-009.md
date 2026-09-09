@@ -29,7 +29,7 @@ Execute SPEC-008. The Developer owns only the exact backup move and preservation
 
 - Developer self-check: moved the exact backup to the approved destination; source no longer exists, destination is readable, version remains `2.0.4`, 11 regular files and no symlinks.
 - Developer hash check: all per-file SHA-256 values match before/after; deterministic sorted-list digest `6a2ab2112f7ea4bdc0ffd268347f8d3c861b7c0ec0248f98f50e3b162cf7a766`.
-- Discovery check: only `/Users/duolaamengmac/.codex/skills/project-development/SKILL.md` remains under the Skill root for this name.
+- Discovery check: only `<CODEX_SKILLS>/project-development/SKILL.md` remains under the Skill root for this name.
 - Current installation check: unchanged `2.1.0-dev.1`, 13 files, source commit `3ff3e5b8239d92f4847dcd37625865975761480d`, all manifest hashes valid.
 - Independent Tester `/root/task_009_backup_discovery_cleanup_tester`: PASS on corrected candidate `4d6940c852a251db5779b259b73f9f23e5c1554d`; all six acceptance criteria and 38/38 plus 20/20 regressions passed.
 - Independent Reviewer `/root/task_009_backup_discovery_cleanup_reviewer`: APPROVE on the corrected candidate with no P0/P1/P2 findings; verified the state wording, backup-byte identity, single discovery entry, unchanged current installation and local no-publication evidence.
@@ -39,8 +39,8 @@ Execute SPEC-008. The Developer owns only the exact backup move and preservation
 ## Handoff / evidence
 
 - User authorization: “先做1和2”.
-- Source backup: `/Users/duolaamengmac/.codex/skills/project-development.backup-20260909T000444+0800-2.0.4-4547`.
-- Destination backup: `/Users/duolaamengmac/.codex/backups/project-development/2.0.4-20260909T000444+0800-4547`.
+- Source backup: `<CODEX_SKILLS>/project-development.backup-20260909T000444+0800-2.0.4-4547`.
+- Destination backup: `<CODEX_BACKUPS>/project-development/2.0.4-20260909T000444+0800-4547`.
 - Developer `/root/task_009_backup_discovery_cleanup_developer`: native creation/assignment/result in the current collaboration tree; no repository edits.
 - Tester `/root/task_009_backup_discovery_cleanup_tester`: native creation/assignment/result in the current collaboration tree; PASS with no edits.
 - Reviewer `/root/task_009_backup_discovery_cleanup_reviewer`: native creation/assignment/result in the current collaboration tree; APPROVE with no implementation edits.

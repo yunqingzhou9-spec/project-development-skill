@@ -14,7 +14,7 @@ Prevent the retained `2.0.4` backup from being discovered as a second installed 
 
 Included work:
 
-- move `/Users/duolaamengmac/.codex/skills/project-development.backup-20260909T000444+0800-2.0.4-4547` to `/Users/duolaamengmac/.codex/backups/project-development/2.0.4-20260909T000444+0800-4547` without changing its bytes;
+- move `<CODEX_SKILLS>/project-development.backup-20260909T000444+0800-2.0.4-4547` to `<CODEX_BACKUPS>/project-development/2.0.4-20260909T000444+0800-4547` without changing its bytes;
 - update only the stale Strictly Accepted Baseline and Formal acceptance statements in `PROJECT_STATE.md` so installation is recorded as completed under DEC-022/TASK-008 while publication remains unauthorized;
 - independently verify the backup, Skill discovery boundary, current installation and repository state.
 

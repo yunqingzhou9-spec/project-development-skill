@@ -42,8 +42,8 @@ Execute SPEC-007. This is a stateful local installation Task, so use the FULL wo
 - Developer `/root/task_008_local_skill_sync_developer`: native creation/assignment/result in the current collaboration tree.
 - Tester `/root/task_008_local_skill_sync_tester`: native creation/assignment/result in the current collaboration tree; PASS with no edits.
 - Reviewer `/root/task_008_local_skill_sync_reviewer`: native creation/assignment/result in the current collaboration tree; APPROVE with no implementation edits.
-- Built archive: `/private/tmp/task-008-local-skill-sync.xXwwn2/project-development.zip`.
-- Retained backup: `/Users/duolaamengmac/.codex/skills/project-development.backup-20260909T000444+0800-2.0.4-4547`.
+- Built archive: `<TEMP_DIR>/task-008-local-skill-sync.xXwwn2/project-development.zip`.
+- Retained backup: `<CODEX_SKILLS>/project-development.backup-20260909T000444+0800-2.0.4-4547`.
 
 ## History / next action
 

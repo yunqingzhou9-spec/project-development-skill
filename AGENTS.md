@@ -10,7 +10,7 @@ If the skill is unavailable, report it; do not invent its rules or claim indepen
 
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
-- Current local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
+- Current local checkout: `<LOCAL_CHECKOUT>`
 - Purpose / scope / exclusions: Maintain the repository-centered project governance Skill; it does not supply domain implementation capability or publishing authority.
 - Domain rules / architecture: `SKILL.md`, `references/PROTOCOL.md`, `references/GATE.md`
 - State: `PROJECT_STATE.md`

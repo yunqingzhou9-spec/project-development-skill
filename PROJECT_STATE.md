@@ -1,14 +1,14 @@
 # Project state
 
-- Updated: 2026-09-09T10:21:54+08:00
+- Updated: 2026-09-09T10:56:52+08:00
 - Project ID / name: `PDP-SKILL / Project Development Protocol Skill`
 - Repository identity / scope path: `https://github.com/yunqingzhou9-spec/project-development-skill.git / .`
-- Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
+- Local checkout: `<LOCAL_CHECKOUT>`
 - Coordination: `ACTIVE`; replacement Manager `/root` in Codex task `01a0815b-dc59-79c0-9813-d9fa81b8d433` verified the supplied checkout, installed Skill and native runtime state; the outgoing Manager task `01a07fd6-cdf4-7ca3-a330-31501a59ce00` is idle and no active Worker is observable; updated 2026-09-08T22:13:32+08:00
 - Purpose / boundaries: Maintain the Project Development Protocol Skill without granting implementation, acceptance, installation, or publishing authority beyond explicit user decisions.
-- Working candidate: accepted TASK-010 release candidate `1c4f2f9a10d735cb506ebc90f143d8cec801e66c` for formal package version `2.1.0`; later commits contain governance evidence only. Local synchronization and GitHub publication are in progress under DEC-025.
-- Strictly Accepted Baseline: formal package version `2.1.0` / Git commit `1c4f2f9a10d735cb506ebc90f143d8cec801e66c`; Human acceptance recorded in DEC-025 after independent Test PASS, Review APPROVE and pre-release `STRUCTURAL / CONSISTENT`. The local installed Skill matches this candidate; published version remains `2.0.4` until remote release steps verify successfully.
-- Historical documented acceptance: `CHANGELOG.md` entries and tags `v2.0.2`, `v2.0.3`, `v2.0.4`; DEC-009 records the published 2.0.4 release candidate, DEC-010 the accepted validation-environment candidate, DEC-012 the accepted handoff candidate, and current formal acceptance is DEC-017.
+- Working candidate: TASK-011 sanitized governance candidate is pending; the accepted and released TASK-010 product candidate remains `1c4f2f9a10d735cb506ebc90f143d8cec801e66c` at formal package version `2.1.0`.
+- Strictly Accepted Baseline: formal package version `2.1.0` / Git commit `1c4f2f9a10d735cb506ebc90f143d8cec801e66c`; Human acceptance recorded in DEC-025 after independent Test PASS, Review APPROVE and pre-release `STRUCTURAL / CONSISTENT`. The local installed Skill and published `v2.1.0` release match this candidate.
+- Historical documented acceptance: `CHANGELOG.md` entries and tags `v2.0.2`, `v2.0.3`, `v2.0.4`, `v2.1.0`; DEC-009 records the published 2.0.4 release candidate, DEC-010 the accepted validation-environment candidate, DEC-012 the accepted handoff candidate, DEC-017 the accepted naming-guidance candidate, and current formal acceptance is DEC-025.
 - Active approved Specs: `.ai/specs/SPEC-010-v2.md` approved under DEC-026 and frozen at SHA-256 `cde3da8b111396d96bb497cca2069e96668baa08199bf94234cce4dc20be99d4`. SPEC-009 remains active through TASK-010 release closure. Completed earlier Specs remain indexed in their Task records.
 - Runtime capabilities / assurance: native task-agent creation, assignment and result access `VERIFIED` in this session through TASK-006 and TASK-007 worker results and receipts. Protected acceptance `MISSING`.
 - Environment: `CODEX`; trusted current evidence is Codex desktop task `01a0815b-dc59-79c0-9813-d9fa81b8d433` plus current native TASK-006/TASK-007 creation, assignment and result references; delegation/result access `VERIFIED`, protected acceptance `MISSING`; adaptation decision remains the Human's approved repository-local `.venv` and `PyYAML` installation under SPEC-003.
@@ -28,7 +28,7 @@
 | `.ai/tasks/TASK-007.md` — Clear and lightweight Skill | DONE | Manager `/root` | Candidate `3ff3e5b`: Tester PASS; Reviewer APPROVE; gate CONSISTENT; Human accepted | TASK-006 | NONE |
 | `.ai/tasks/TASK-008.md` — Local Skill synchronization | DONE | Manager `/root` | Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-007 | NONE |
 | `.ai/tasks/TASK-009.md` — Backup discovery cleanup | DONE | Manager `/root` | Candidate `4d6940c`; Developer delivered; Tester PASS; Reviewer APPROVE; gate CONSISTENT | TASK-008 | NONE |
-| `.ai/tasks/TASK-010.md` — Finalize 2.1.0 release | DOING | Manager `/root` | Candidate accepted; local 2.1.0 install Tester PASS | TASK-007, TASK-008, TASK-009 | Fresh remote preflight and publish |
+| `.ai/tasks/TASK-010.md` — Finalize 2.1.0 release | DOING | Manager `/root` | Product 2.1.0 RELEASED; tag, clean asset and local install verified | TASK-007, TASK-008, TASK-009 | Finish sanitized governance closure through TASK-011 |
 | `.ai/tasks/TASK-011.md` — Sanitized release closure | DOING | Manager `/root` | Isolated branch from public main; Developer, Tester and Reviewer pending | TASK-010 | Sanitize governance tree |
 
 ## Blockers and decisions needed
@@ -51,15 +51,17 @@ TASK-005 candidate `bc70cb75dfa1076765678017cca3a76325f417b6` is DONE and formal
 
 TASK-006 audit candidate `7bb7b50ad6651f9b86937c6fabd6a91b2de92916` is DONE under `PROTOCOL` assurance with Test N/A, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-006.json`. It confirmed the four reported problems while distinguishing source-archive leakage from the clean installed Skill.
 
-TASK-007 candidate `3ff3e5b8239d92f4847dcd37625865975761480d` is DONE and formally accepted under `HUMAN / PROTOCOL` assurance for SPEC-006-v2. Independent Tester PASS, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-007.json` are recorded. It introduces working/unreleased version `2.1.0-dev.1`, clear identity semantics, a deterministic exact-allowlist package with source-bound manifest, a bilingual beginner quick start and a bounded LIGHTWEIGHT workflow. It was synchronized locally under TASK-008 and remains unpublished.
+TASK-007 candidate `3ff3e5b8239d92f4847dcd37625865975761480d` is DONE and formally accepted under `HUMAN / PROTOCOL` assurance for SPEC-006-v2. Independent Tester PASS, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-007.json` are recorded. It introduced working/unreleased version `2.1.0-dev.1`, clear identity semantics, a deterministic exact-allowlist package with source-bound manifest, a bilingual beginner quick start and a bounded LIGHTWEIGHT workflow. It was synchronized locally under TASK-008, then finalized and published as `2.1.0` under TASK-010.
 
-TASK-008 is DONE under `PROTOCOL` assurance. The local installed Skill now exactly matches the verified archive from accepted candidate `3ff3e5b8239d92f4847dcd37625865975761480d`: working/unreleased version `2.1.0-dev.1`, archive SHA-256 `74920397033b299f77d16a20aa9f649c6fb0b11045bb826ee4a416d282a51c69`, 12 allowlisted runtime files plus `MANIFEST.json`. The previous 2.0.4 installation remains recoverable at `/Users/duolaamengmac/.codex/backups/project-development/2.0.4-20260909T000444+0800-4547`; TASK-009 moved it out of Skill discovery without changing its bytes. Independent Tester PASS, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-008.json` are recorded. No push, tag or release was performed.
+TASK-008 is DONE under `PROTOCOL` assurance. The local installed Skill now exactly matches the verified archive from accepted candidate `3ff3e5b8239d92f4847dcd37625865975761480d`: working/unreleased version `2.1.0-dev.1`, archive SHA-256 `74920397033b299f77d16a20aa9f649c6fb0b11045bb826ee4a416d282a51c69`, 12 allowlisted runtime files plus `MANIFEST.json`. The previous 2.0.4 installation remains recoverable at `<CODEX_BACKUPS>/project-development/2.0.4-20260909T000444+0800-4547`; TASK-009 moved it out of Skill discovery without changing its bytes. Independent Tester PASS, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-008.json` are recorded. No push, tag or release was performed during TASK-008.
+
+TASK-010 product release is complete and verified under `HUMAN / PROTOCOL` assurance for candidate `1c4f2f9a10d735cb506ebc90f143d8cec801e66c`. Annotated tag `v2.1.0` resolves to that exact candidate; GitHub Release `v2.1.0` contains clean asset `project-development-2.1.0.zip`, whose downloaded SHA-256 is `cb7501603baa8053c6c58a3408fbd7f378edd2a44178796d8eb4c41f8cb17afd`; the local installed Skill is the same verified `2.1.0` archive. TASK-011 owns only the remaining sanitized governance closure.
 
 TASK-009 is DONE under `PROTOCOL` assurance for candidate `4d6940c852a251db5779b259b73f9f23e5c1554d`. The retained 2.0.4 backup was moved outside `~/.codex/skills` with all 11 file hashes preserved, so only the current `2.1.0-dev.1` Skill is discoverable. The two stale current-state installation statements and the backup path were reconciled. Independent Tester PASS, independent Reviewer APPROVE and `STRUCTURAL / CONSISTENT` receipt `.ai/evidence/TASK-009.json` are recorded. No push, tag or release was performed.
 
 ## Release
 
-Version 2.0.4 is `RELEASED` to GitHub under DEC-009. Annotated tag `v2.0.4` points to accepted candidate `912ec892395572447462ce7e0924ab149735f794`. Under DEC-011, the accepted TASK-003 repository state was published by explicit main-only refspec: remote `main` advanced from `a9d48275ba888e2f0bd89f037383da216fd54d9b` to the accepted state and its governance receipts. Verification after the receipt push found local and remote `main` equal at `0d499190787b07f565576189e30143d83f7de829`; this final state update contains no deliverable change. Under DEC-014, the accepted TASK-004 handoff prompts and completed takeover records were published by explicit main-only refspec: remote `main` advanced from `a32f23fa8c1014924b95779d5c98640bd6c043ca` to `ee55847babf5a6349ff05477e9b3a6950c96459f`; remote-ref verification confirmed the README update was present in the published commit and `v2.0.4` remained unchanged. Under DEC-017, accepted TASK-005 naming guidance and its governance evidence were published by explicit main-only refspec: remote `main` advanced from `6741a431a43252d77c7b7f5c997620c90fec36f4` to `7970f4ee3f79db83b2e959e54d506b3857c95781`; post-push verification confirmed the README update and unchanged `v2.0.4` target. No new tag, version or GitHub Release was created. Published repository: `https://github.com/yunqingzhou9-spec/project-development-skill`.
+Version 2.1.0 is `RELEASED` to GitHub under DEC-025. Annotated tag `v2.1.0` resolves to accepted candidate `1c4f2f9a10d735cb506ebc90f143d8cec801e66c`; GitHub Release `v2.1.0` contains clean asset `project-development-2.1.0.zip`, and the independently downloaded asset SHA-256 equals the accepted archive at `cb7501603baa8053c6c58a3408fbd7f378edd2a44178796d8eb4c41f8cb17afd`. Public `main` reached release-publication state `adbb53cd5020c2f1192fb6163355e2878335d26c`; TASK-011 prepares the sanitized fast-forward governance closure from that commit. Version 2.0.4 remains released under DEC-009, and annotated tag `v2.0.4` still points to accepted candidate `912ec892395572447462ce7e0924ab149735f794`. Historical publication receipts under DEC-011, DEC-014 and DEC-017 remain valid. Published repository: `https://github.com/yunqingzhou9-spec/project-development-skill`.
 
 ## Takeover reconciliation (2026-09-08T14:00:23+08:00)
 
@@ -73,7 +75,7 @@ Version 2.0.4 is `RELEASED` to GitHub under DEC-009. Annotated tag `v2.0.4` poin
 
 - Project ID: `PDP-SKILL`
 - Repository / scope: `https://github.com/yunqingzhou9-spec/project-development-skill.git` / `.`
-- Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
+- Local checkout: `<LOCAL_CHECKOUT>`
 - Current stable version: `2.0.4`
 - Branch: `main`
 - Repository HEAD before handoff-state commits: `d248d47cc27acba9ad8640269a3bf7da08f102c3`
@@ -102,7 +104,7 @@ Version 2.0.4 is `RELEASED` to GitHub under DEC-009. Annotated tag `v2.0.4` poin
 
 - Project ID: `PDP-SKILL`
 - Repository / scope: `https://github.com/yunqingzhou9-spec/project-development-skill.git` / `.`
-- Local checkout: `/Users/duolaamengmac/Documents/Codex/2026-09-07/referenced-chatgpt-conversation-this-is-an-3/outputs/project-development-skill`
+- Local checkout: `<LOCAL_CHECKOUT>`
 - Current stable version: `2.0.4`
 - Branch: `main`
 - Strictly accepted candidate: `bc70cb75dfa1076765678017cca3a76325f417b6`
