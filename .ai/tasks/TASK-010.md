@@ -34,6 +34,7 @@ Execute SPEC-009 as a FULL release workflow. Candidate creation and verification
 - Independent Reviewer `/root/task_010_finalize_2_1_0_release_reviewer`: APPROVE with no P0/P1 findings. Its P2 comparison-wording finding was corrected above without changing the product candidate; it independently reproduced the same archive and confirmed no early installation or publication.
 - Pre-release completion gate: `.ai/evidence/TASK-010.json` returned `STRUCTURAL / CONSISTENT`; Manager verified native creation, assignments and final results. AC-6 through AC-10 remain deliberately uncompleted.
 - AC-6 complete: Human accepted exact candidate `1c4f2f9a10d735cb506ebc90f143d8cec801e66c` and archive SHA-256 `cb7501603baa8053c6c58a3408fbd7f378edd2a44178796d8eb4c41f8cb17afd` under DEC-025 and instructed publication.
+- AC-7 complete: local installed Skill is exact `2.1.0` archive content bound to the accepted candidate; independent Tester PASS, quick validation PASS and installed verifier VERIFIED. Recoverable `2.1.0-dev.1` backup retained at `/Users/duolaamengmac/.codex/backups/project-development/2.1.0-dev.1-20260909T101834+0800-task-010`; earlier 2.0.4 backup remains intact.
 
 ## Handoff / evidence
 
@@ -45,6 +46,7 @@ Execute SPEC-009 as a FULL release workflow. Candidate creation and verification
 - Tester `/root/task_010_finalize_2_1_0_release_tester`: native creation/assignment/result in the current collaboration tree; PASS with no edits.
 - Reviewer `/root/task_010_finalize_2_1_0_release_reviewer`: native creation/assignment/result in the current collaboration tree; APPROVE with no implementation edits.
 - Candidate archive paths: `/private/tmp/task-010-release/project-development-2.1.0-build-1.zip` and `/private/tmp/task-010-release/project-development-2.1.0-build-2.zip`.
+- Release asset path: `/private/tmp/task-010-release/project-development-2.1.0.zip`, byte-identical to the accepted archive.
 
 ## History / next action
 
@@ -53,3 +55,4 @@ Execute SPEC-009 as a FULL release workflow. Candidate creation and verification
 - 2026-09-09: Fresh Tester PASS and Reviewer APPROVE received for the exact candidate. Reviewer P2 governance-comparison wording was corrected; structural gate and Human candidate-specific acceptance remain pending.
 - 2026-09-09: Pre-release structural gate returned CONSISTENT. Task moved to BLOCKED solely for Human acceptance of the exact candidate and archive before any installation or remote mutation.
 - 2026-09-09: Human replied “接受该候选并发布”; DEC-025 records exact-candidate acceptance, the blocker is cleared, and TASK-010 returned to DOING for local synchronization and publication.
+- 2026-09-09: Developer synchronized the accepted archive locally with a recoverable backup; independent Tester verified AC-7 PASS. Fresh remote preflight and publication remain.
