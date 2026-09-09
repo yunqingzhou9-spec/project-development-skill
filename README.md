@@ -103,9 +103,9 @@ project-development-skill/
 
 ## 版本与发行身份
 
-`SKILL.md` frontmatter 中的 `metadata.version` 是唯一权威的软件包版本。本仓库当前可使用开发版号；开发版号不表示已经发布。Working version、Human 已接受的 immutable baseline、source commit、历史 Git tag/GitHub Release、生成的安装包，以及本机 installed copy 是六个不同身份，必须分别核对，不能因数字相同而互相推断。
+`SKILL.md` frontmatter 中的 `metadata.version` 是唯一权威的软件包版本。源候选可使用预发布或正式 SemVer；候选中的版本号本身不表示已经发布。Working version、Human 已接受的 immutable baseline、source commit、历史 Git tag/GitHub Release、生成的安装包，以及本机 installed copy 是六个不同身份，必须分别核对，不能因数字相同而互相推断。
 
-`SKILL.md` frontmatter `metadata.version` is the only authoritative package version. A development version is not a release claim. The working version, Human-accepted immutable baseline, source commit, historical Git tag/release, generated archive, and installed copy are six separate identities and must be verified independently.
+`SKILL.md` frontmatter `metadata.version` is the only authoritative package version. A source candidate may use prerelease or final SemVer; its version alone is not a release claim. The working version, Human-accepted immutable baseline, source commit, historical Git tag/release, generated archive, and installed copy are six separate identities and must be verified independently.
 
 ## 构建干净安装包 / Build a clean installable archive
 

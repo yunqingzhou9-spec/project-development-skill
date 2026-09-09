@@ -25,7 +25,7 @@ class PackageTests(unittest.TestCase):
         for path in package.RUNTIME_FILES:
             target = self.root / path
             target.parent.mkdir(parents=True, exist_ok=True)
-            content = "---\nmetadata:\n  version: \"2.1.0-dev.1\"\n---\n" if path == "SKILL.md" else "safe runtime content for " + path + "\n"
+            content = "---\nmetadata:\n  version: \"2.1.0\"\n---\n" if path == "SKILL.md" else "safe runtime content for " + path + "\n"
             target.write_text(content, encoding="utf-8")
         self.git("init", "-q")
         self.git("add", ".")
@@ -46,9 +46,9 @@ class PackageTests(unittest.TestCase):
                 name, data = transform(info.filename, current.read(info.filename))
                 changed.writestr(package.zip_info(name), data)
 
-    def test_working_version_has_one_authoritative_runtime_source(self):
+    def test_release_candidate_has_final_authoritative_version(self):
         skill = (REPO / "SKILL.md").read_bytes()
-        self.assertRegex(package.package_version(skill), r"^\d+\.\d+\.\d+-dev\.\d+$")
+        self.assertEqual(package.package_version(skill), "2.1.0")
         first_title = (REPO / "references/PROTOCOL.md").read_text(encoding="utf-8").splitlines()[0]
         self.assertNotRegex(first_title, r"\d+\.\d+\.\d+")
 
@@ -112,7 +112,7 @@ class PackageTests(unittest.TestCase):
             self.assertEqual(set(archive.namelist()), expected)
             manifest = json.loads(archive.read(package.ARCHIVE_ROOT + "/" + package.MANIFEST_PATH))
             self.assertEqual(manifest["source_commit"], self.commit)
-            self.assertEqual(manifest["version"], "2.1.0-dev.1")
+            self.assertEqual(manifest["version"], "2.1.0")
             self.assertEqual([item["path"] for item in manifest["files"]], sorted(package.RUNTIME_FILES))
 
     def test_rejects_extra_member(self):

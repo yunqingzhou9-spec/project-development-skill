@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-09-09
+
 - Clarify package, source, accepted-baseline, tag, artifact and installed-copy identities; the working package version is sourced only from `SKILL.md` metadata.
 - Add a deterministic allowlisted archive builder/verifier with a canonical source-bound manifest and leak/safety checks.
 - Add a bilingual beginner quick start and an objectively bounded LIGHTWEIGHT workflow while preserving FULL safeguards and Human authority.
