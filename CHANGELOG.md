@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+## [2.2.0] - 2026-09-09
+
+- 按任务需要选择流程和子智能体，减少简单改动的操作与等待。
+- 增加简洁工作记录、同机窗口协调与可核对来源的安装工具。
+- 保留历史工作记录的检查能力，明确检查、验收、安装与发布的区别。
+- 重写中文 README：许愿机（测试版）、通用安装提示词、明确分工、窗口交接与免责声明。
+
 ## [2.1.0] - 2026-09-09
 
 - Clarify package, source, accepted-baseline, tag, artifact and installed-copy identities; the working package version is sourced only from `SKILL.md` metadata.

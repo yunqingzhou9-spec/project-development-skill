@@ -1,4 +1,4 @@
 interface:
-  display_name: "Project Development Protocol"
-  short_description: "Repository-centered development and audit governance"
-  default_prompt: "Use $project-development to bootstrap or continue this project from its repository SSOT."
+  display_name: "项目开发助手"
+  short_description: "按目标推进项目，检查结果并保存可继续的状态"
+  default_prompt: "用 $project-development 从项目现状继续完成我的目标。"

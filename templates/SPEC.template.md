@@ -12,6 +12,10 @@
 
 <Outcome and included behavior.>
 
+## Effort and verification
+
+<Assess risk, reversibility, coupling, uncertainty and needed checks. Bound unresolved investigation. Clear low-risk work may use main-Agent self-checks; high-risk behavior requires distinct independent verification and review. Existing policy controls.>
+
 ## Non-goals / constraints
 
 <Excluded behavior, important constraints and consequential unresolved choices.>

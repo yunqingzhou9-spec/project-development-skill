@@ -1,43 +1,22 @@
 # Project instructions
 
-## Start here
+Use `$project-development`. Read `PROJECT_STATE.md`, only the active Task's approved scope and relevant links. Respect the recorded governing policy; prospective rules cannot weaken accepted requirements. Setup/discussion alone does not authorize implementation.
 
-Use `$project-development`. Read `PROJECT_STATE.md`, then only your Task, its frozen approved Spec for `FULL` or inline approved scope for `LIGHTWEIGHT`, and relevant links. This project authorizes task-scoped subagent delegation for approved execution, subject to host permissions. Discussion/setup alone does not authorize implementation.
+- Project ID / name: `<reuse authoritative existing ID; else explicit user ID; else generate a stable readable ID> / <name>`
+- Repository identity / scope: `<portable identity> / <relative scope>`
+- Purpose / exclusions: <fill>
+- State / decisions: `PROJECT_STATE.md` / `DECISIONS.md`
+- Existing architecture / commands / history: <links or UNVERIFIED>
+- Governing policy: <accepted protocol version and project requirements>
 
-If the skill is unavailable, report it; do not invent its rules or claim independent acceptance. A project-local copy may be linked here when the host cannot discover installed skills.
+Use the same Project ID in state. Checkout locations and native IDs stay private outside published records. Conflicting identity or inaccessible checkout stops dependent recovery; do not guess a replacement project.
 
-## Project
+Choose effort from risk, reversibility, coupling, uncertainty and required verification. Main Agent may implement a clear low-risk local change and self-check honestly. High-risk work requires distinct independent behavior and review; other selected checks and existing stricter policy remain required. Delegate only useful independent work with isolated write ownership. If selected capabilities are missing, report the affected blocker; do not fabricate independence.
 
-- Project ID / name: `<reuse authoritative existing ID; else explicit user ID; else Skill-generated readable unique ID> / <human-facing name>`
-- Repository identity / scope: `<remote or NONE> / <relative scope path>`
-- Current local checkout: `<host-specific path; may change>`
-- Purpose / scope / exclusions: <fill>
-- Domain rules / architecture: <links or explicit unknown>
-- State: `PROJECT_STATE.md`
-- Decisions: `DECISIONS.md`
-- Specs / Tasks: `.ai/specs/` / `.ai/tasks/`
-- Existing issues / roadmap / invalid history: <reuse links, or state sections>
+Only one cooperative local owner coordinates shared writes and dispatch; follow the Skill coordinator and recovery rules. Its ownership assertion cannot fence arbitrary shell writers or grant remote side-effect authority. Workers return isolated outputs; only the current owner integrates them and updates shared state.
 
-## Team
-
-Chief of Staff clarifies; Human approves; Manager dispatches and updates shared state. Developer implements and runs targeted verification. `FULL` functional work also uses an independent Tester; eligible `LIGHTWEIGHT` may preselect Tester N/A. A fresh independent Reviewer always checks correctness. Read only your role in the skill protocol. Fresh workers across Tasks; one active Task per worker. Never treat roleplay or self-authored identities as independent evidence.
-
-Only one main Manager coordinates the same project scope. For replacement or recovery, follow the skill's main-window handoff protocol and verify the Project ID before dispatching.
-
-Record the same Project ID here and in `PROJECT_STATE.md`. Keep it stable across checkout moves and main-window handoffs. If authoritative records, a user-provided ID or the selected project conflict, stop and ask the user to resolve the conflict; do not guess or regenerate it.
-
-## Project settings
-
-- Verification: `FULL` functional work = independent test + review; `FULL` pure docs = review + reasoned test N/A; eligible `LIGHTWEIGHT` = Developer targeted verification + fresh independent review, with Tester optionally preselected N/A; high risk = FULL test + review + integration acceptance.
-- Rework: at most 3 failed verification cycles per Task.
-- Runtime / receipt access / assurance: <observed tools; unknown until checked>
-- Preferred hosts: Codex / ChatGPT Work; run the skill's environment gate. Other/unknown host adaptation requires an explicit scoped user decision.
-- Formal acceptance authority: HUMAN; Manager reports eligibility, not approval. PROTECTED_SERVICE requires verified protected controls and a recorded authority decision.
-- Shared-write isolation: <serial ownership or supported worktrees>
-- Release authority and applicable checks: <existing policy or human decision required>
-
-## Commands
-
-- Setup: <command or UNVERIFIED>
-- Static / unit / integration / scenario: <commands or reasoned N/A>
-- Completion gate: Python 3 + installed skill `scripts/check_completion.py`; see its `references/GATE.md` only at completion.
+- Investigation: bounded question/experiment, default 15 minutes or two experiments, then reassess.
+- Failed verification cycles: at most 3 unless project policy states otherwise.
+- Formal acceptance: HUMAN unless an explicitly authorized protected service is verified.
+- Installation / release: separate authority required; task completion is not publishing permission.
+- Capability observations / private registry locator: <portable references only; unknown stays unknown>

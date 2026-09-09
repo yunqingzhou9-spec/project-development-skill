@@ -49,12 +49,120 @@ def project_file(root, name):
     return target
 
 
-def metadata(path):
-    blocks = re.findall(r"^```json\s*\n(.*?)^```\s*$", path.read_text(encoding="utf-8"), re.M | re.S)
-    require(len(blocks) == 1, "Expected exactly one JSON metadata block: " + str(path))
+def metadata_bytes(data):
+    blocks = re.findall(r"^```json\s*\n(.*?)^```\s*$", data.decode("utf-8"), re.M | re.S)
+    require(len(blocks) == 1, "Expected exactly one JSON metadata block")
     result = json.loads(blocks[0])
     require(isinstance(result, dict), "Metadata must be an object")
     return result
+
+
+def metadata(path):
+    return metadata_bytes(path.read_bytes())
+
+
+def relative_path(name):
+    require(nonempty(name) and "\\" not in name and ":" not in name, "Invalid relative path")
+    path = Path(name)
+    require(not path.is_absolute() and ".." not in path.parts and path.as_posix() == name and name != ".", "Unsafe relative path")
+    return name
+
+
+def spec_bytes(root, reference):
+    require(isinstance(reference, dict), "Missing Spec reference")
+    name = reference.get("path")
+    require(nonempty(name), "Missing Spec path")
+    if ":" not in name:
+        relative_path(name)
+        return project_file(root, name).read_bytes()
+    commit, path = name.split(":", 1)
+    git_commit(root, commit, "Spec revision")
+    relative_path(path)
+    entry = subprocess.run(["git", "-C", str(root), "ls-tree", "-z", commit, "--", path], capture_output=True, check=True, timeout=15).stdout
+    require(entry.startswith((b"100644 blob ", b"100755 blob ")) and entry.count(b"\0") == 1, "Spec must be a regular Git blob")
+    return subprocess.run(["git", "-C", str(root), "cat-file", "blob", commit + ":" + path], capture_output=True, check=True, timeout=15).stdout
+
+
+def git_scope(root, base, target, deliverables=None):
+    require(target.get("kind") == "git", "Git scope requires a Git candidate")
+    git_commit(root, base, "Scope base")
+    result = subprocess.run(["git", "-C", str(root), "merge-base", "--is-ancestor", base, target["commit"]], capture_output=True, timeout=15)
+    require(result.returncode == 0, "Scope base must be an ancestor of candidate")
+    if deliverables is not None:
+        require(isinstance(deliverables, list) and deliverables and all(isinstance(x, str) for x in deliverables), "Missing declared deliverables")
+        require(len(set(deliverables)) == len(deliverables), "Duplicate deliverables")
+        for name in deliverables:
+            relative_path(name)
+        result = subprocess.run(["git", "-C", str(root), "diff", "--no-renames", "--name-only", "-z", base, target["commit"]], capture_output=True, check=True, timeout=15)
+        changed = {x.decode("utf-8") for x in result.stdout.split(b"\0") if x}
+        require(changed == set(deliverables), "Candidate diff must exactly match declared deliverables")
+
+
+def work_check(root, task, target, receipt_path):
+    require(task.get("format") == "work-v1", "Unsupported work format")
+    scope = task.get("scope")
+    require(isinstance(scope, dict), "Missing scope")
+    require(nonempty(task.get("approval_ref")) and nonempty(scope.get("outcome")), "Missing authorization or outcome")
+    require(isinstance(scope.get("acceptance"), list) and scope["acceptance"] and all(nonempty(x) for x in scope["acceptance"]), "Missing observable acceptance")
+    assessment = scope.get("assessment")
+    require(isinstance(assessment, dict) and set(assessment) == {"risk", "reversibility", "coupling", "uncertainty", "verification_reason"}, "Missing effort assessment")
+    require(assessment["risk"] in ("low", "ordinary", "high") and all(nonempty(x) for x in assessment.values()), "Invalid effort assessment")
+    scope_hash = canonical_digest(scope)
+    require(task.get("scope_sha256") == scope_hash, "Scope digest mismatch")
+    require(isinstance(scope.get("deliverables"), list) and scope["deliverables"], "Missing declared deliverables")
+    dependencies = task.get("depends_on")
+    require(isinstance(dependencies, list) and all(nonempty(x) for x in dependencies) and len(set(dependencies)) == len(dependencies), "Explicit dependencies required")
+    require(task.get("dependencies_satisfied") == dependencies, "Unresolved dependencies")
+    if target["kind"] == "git":
+        git_scope(root, scope.get("base"), target, scope.get("deliverables"))
+    else:
+        require(set(scope.get("deliverables", [])) == {x["path"] for x in target["files"]}, "Snapshot scope mismatch")
+    checks = scope.get("checks")
+    require(isinstance(checks, list) and checks, "Select required checks before implementation")
+    selected = {}
+    for item in checks:
+        require(isinstance(item, dict) and nonempty(item.get("id")) and item["id"] not in selected, "Invalid or duplicate check")
+        require(nonempty(item.get("capability")) and type(item.get("independent")) is bool, "Check needs capability and independence")
+        selected[item["id"]] = item
+    if assessment["risk"] == "high":
+        require({"behavior", "review"} <= {x["capability"] for x in checks if x["independent"]}, "High risk requires independent behavior and review checks")
+    receipt_file = Path(receipt_path) if Path(receipt_path).is_absolute() else project_file(root, receipt_path)
+    receipts = json.loads(receipt_file.read_text(encoding="utf-8"))
+    require(isinstance(receipts, dict), "Evidence must be an object")
+    require(receipts.get("format") == "evidence-v1", "Unsupported evidence format")
+    require(not receipts.get("formal_acceptance"), "Structural evidence cannot issue formal acceptance")
+    identities = receipts.get("identities")
+    require(isinstance(identities, list) and identities, "Missing identities")
+    actors = {}
+    for item in identities:
+        require(isinstance(item, dict) and nonempty(item.get("id")) and item["id"] not in actors and nonempty(item.get("provenance_ref")) and type(item.get("contributed")) is bool, "Invalid identity provenance")
+        actors[item["id"]] = item
+    contributors = task.get("contributors")
+    require(isinstance(contributors, list) and contributors and len(set(contributors)) == len(contributors) and all(x in actors for x in contributors), "Invalid contributors")
+    require(set(contributors) == {x for x, item in actors.items() if item.get("contributed") is True}, "Contributor list incomplete")
+    results = receipts.get("checks")
+    require(isinstance(results, list) and results, "Missing checks")
+    observed, refs = set(), set()
+    independent_actors = {"behavior": set(), "review": set()}
+    for item in results:
+        require(isinstance(item, dict) and item.get("id") not in observed, "Duplicate check result")
+        cid, actor = item.get("id"), item.get("actor")
+        require(cid in selected and actor in actors, "Undeclared check or actor")
+        require(item.get("task_id") == task["id"] and item.get("scope_sha256") == scope_hash and item.get("target") == target, "Stale check inputs")
+        require(item.get("status") == "PASS", "Failing, blocked or unfinished evidence")
+        require(all(nonempty(item.get(x)) for x in ("command", "environment", "report_ref", "result_ref")), "Missing reproducible check evidence")
+        require(item["result_ref"] not in refs, "Reused result reference")
+        if selected[cid]["independent"]:
+            require(actor not in contributors and item.get("no_implementation_edits") is True, "Self-check cannot claim independence")
+            capability = selected[cid]["capability"]
+            if capability in independent_actors:
+                independent_actors[capability].add(actor)
+        observed.add(cid)
+        refs.add(item["result_ref"])
+    if assessment["risk"] == "high":
+        require(independent_actors["behavior"].isdisjoint(independent_actors["review"]), "High risk behavior and review need distinct verifiers")
+    require(observed == set(selected), "Missing selected required check")
+    return {"task_id": task["id"], "format": "work-v1", "criteria_sha256": scope_hash, "candidate": target, "formal_acceptance": False}
 
 
 def candidate(root, selected):
@@ -150,6 +258,8 @@ def check(root, task_path, receipt_path, selected):
     require(task.get("blockers") == [], "Blockers must be explicitly empty")
     target = candidate(root, selected)
     require(task.get("candidate") == target, "Task is not for the selected final candidate")
+    if "format" in task:
+        return work_check(root, task, target, receipt_path)
     profile = task.get("profile", "FULL")
     require(profile in ("FULL", "LIGHTWEIGHT"), "Invalid workflow profile")
     if profile == "LIGHTWEIGHT":
@@ -158,10 +268,12 @@ def check(root, task_path, receipt_path, selected):
     else:
         spec_ref = task.get("spec")
         require(isinstance(spec_ref, dict), "Missing Spec reference")
-        spec_path = project_file(root, spec_ref.get("path"))
-        criteria_hash = digest(spec_path.read_bytes())
+        original_spec = spec_bytes(root, spec_ref)
+        criteria_hash = digest(original_spec)
         require(criteria_hash == spec_ref.get("sha256"), "Approved Spec bytes changed")
-        spec = metadata(spec_path)
+        spec = metadata_bytes(original_spec)
+        if task.get("base") and target["kind"] == "git":
+            git_scope(root, task["base"], target, task.get("deliverables"))
         require(spec.get("status") == "APPROVED" and nonempty(spec.get("approval_ref")), "Missing approved Spec / approval evidence reference")
         criteria_key = "spec_sha256"
     require(type(task.get("test_required")) is bool, "Explicit test profile required")
@@ -210,7 +322,7 @@ def check(root, task_path, receipt_path, selected):
         roles_seen.add(role)
     needed = {"developer", "reviewer"} | ({"tester"} if task["test_required"] else set())
     require(needed <= roles_seen, "Missing required role result")
-    return {"task_id": task["id"], "profile": profile, "criteria_sha256": criteria_hash, "candidate": target}
+    return {"task_id": task["id"], "profile": profile, "criteria_sha256": criteria_hash, "candidate": target, "scope_validation": "exact" if profile == "LIGHTWEIGHT" or (target["kind"] == "git" and task.get("base") and task.get("deliverables")) else "legacy scope not declared; native/manual scope verification required"}
 
 
 def main():

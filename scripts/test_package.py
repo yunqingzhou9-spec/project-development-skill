@@ -48,7 +48,7 @@ class PackageTests(unittest.TestCase):
 
     def test_release_candidate_has_final_authoritative_version(self):
         skill = (REPO / "SKILL.md").read_bytes()
-        self.assertEqual(package.package_version(skill), "2.1.0")
+        self.assertEqual(package.package_version(skill), "2.2.0-dev.1")
         first_title = (REPO / "references/PROTOCOL.md").read_text(encoding="utf-8").splitlines()[0]
         self.assertNotRegex(first_title, r"\d+\.\d+\.\d+")
 
@@ -63,23 +63,11 @@ class PackageTests(unittest.TestCase):
         ])
         self.assertFalse((REPO / "templates/TASK-LIGHTWEIGHT.template.md").exists())
 
-    def test_documented_cleanliness_boundary_is_bounded(self):
-        for path in (REPO / "README.md", REPO / "SKILL.md", REPO / "references/PROTOCOL.md", REPO / "references/GATE.md"):
-            text = " ".join(path.read_text(encoding="utf-8").lower().split())
+    def test_runtime_members_are_real_and_privacy_scanned(self):
+        for path in package.RUNTIME_FILES:
             with self.subTest(path=path):
-                self.assertIn("exact runtime allowlist", text)
-                self.assertIn("immutable source commit", text)
-                self.assertIn("structural cleanliness boundary", text)
-                self.assertIn("canonical manifest hash", text)
-                self.assertIn("defense in depth", text)
-                self.assertIn("not exhaustive", text)
-        help_text = " ".join(package.__doc__.lower().split())
-        self.assertIn("exact-allowlist", help_text)
-        self.assertIn("immutable-source", help_text)
-        self.assertIn("structural cleanliness boundary", help_text)
-        self.assertIn("canonical manifest hash", help_text)
-        self.assertIn("defense in depth", help_text)
-        self.assertIn("not exhaustive", help_text)
+                self.assertTrue((REPO / path).is_file())
+                package.reject_leaks(path, (REPO / path).read_bytes())
 
     def test_version_parser_accepts_semver_prerelease_and_block_scalar(self):
         data = b'---\ndescription: >-\n  human readable text\nmetadata:\n  version: "2.1.0-dev.1"\n---\n# Body\n'

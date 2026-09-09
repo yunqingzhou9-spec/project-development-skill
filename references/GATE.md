@@ -2,7 +2,15 @@
 
 Read at VERIFY/completion, or when configuring runtime verification. This package provides a standard-library Python structural checker, not a host-specific agent launcher or a protected CI service.
 
-## Required procedure
+## New work-v1 procedure
+
+Read [WORK_FORMAT.md](WORK_FORMAT.md). Main implementer self-checks are permitted when selected before implementation and project risk/policy allows. Verify every declared contributor, selected capability, criterion and candidate. Independently verify native provenance only for checks claiming independence; self-checks remain labelled self-checks. High-risk behavior and review require distinct non-contributors. Do not omit failures or silently remove a required check. The checker validates input binding, exact Git scope/ancestry and evidence consistency; it does not authenticate risk assessment, dependencies, provenance or Human approval.
+
+Use `--receipts <PRIVATE_ABSOLUTE_EVIDENCE_FILE>` for work-v1. Tracked Task contributors are portable aliases; private evidence maps them to native records. Run the same invocation below with that private receipt argument. A consistent result permits routine task completion only under the governing project policy, never formal acceptance.
+
+For historical FULL Spec references, an explicit full-commit Git blob in `spec.path` is supported. FULL checks ancestry when a base exists and exact changed-file scope when `deliverables` exists. Without a historical declared list, complete scope is not structurally established.
+
+## Legacy FULL/LIGHTWEIGHT procedure
 
 1. Manager obtains the actual runtime creation, assignment and result records through the host tools. Check task ownership, independent identities, candidate, criteria digest (frozen Spec for `FULL`, inline scope for eligible `LIGHTWEIGHT`) and actual report conclusions. A tool name, a printed UUID or a worker's claim is not evidence. Receipts below are a compact index of those records, not their authentication.
 2. Capture all implementation contributors, including anyone who repaired the candidate. Required Tester and Reviewer must not be contributors or the Manager, and must differ from each other. Confirm Reviewer did not modify the implementation. For file outputs include the complete deliverable set; for Git ensure deliverable changes are committed.
@@ -45,9 +53,9 @@ python3 <skill>/scripts/check_completion.py --repo <project> \
 
 The checker recomputes canonical scope JSON, requires every fixed eligibility assertion to be true, verifies that the base is an ancestor, and inspects the complete base-to-candidate diff. Every changed path must be an exact declared deliverable except that the current Task file may also be present as the combined handoff. The Task path does not count toward the maximum five deliverable files or 200 added/deleted deliverable text lines. Extra paths and binary/generated candidates are rejected. The checker cannot determine whether risks were omitted; the Manager and independent Reviewer must assess completeness and immediately escalate uncertain/ineligible work to `FULL`.
 
-## Runtime receipt format
+## Legacy runtime receipt format
 
-Store only at gate time, typically `.ai/evidence/TASK-001.json`; large native logs remain in their original system and are referenced. If retention is short, preserve supported exports before losing access; an unverifiable excerpt does not become authenticated by copying it. Never fabricate records to make the checker pass.
+Legacy records retain their receipt layout. Keep them private; do not publish historical runtime IDs. For new work use the private evidence format above. Store only at gate time, typically `.ai/evidence/TASK-001.json`; large native logs remain in their original system and are referenced. If retention is short, preserve supported exports before losing access; an unverifiable excerpt does not become authenticated by copying it. Never fabricate records to make the checker pass.
 
 ```json
 {
