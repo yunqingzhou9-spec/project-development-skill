@@ -48,7 +48,7 @@ class PackageTests(unittest.TestCase):
 
     def test_release_candidate_has_final_authoritative_version(self):
         skill = (REPO / "SKILL.md").read_bytes()
-        self.assertEqual(package.package_version(skill), "2.2.0-dev.1")
+        self.assertEqual(package.package_version(skill), "2.2.0")
         first_title = (REPO / "references/PROTOCOL.md").read_text(encoding="utf-8").splitlines()[0]
         self.assertNotRegex(first_title, r"\d+\.\d+\.\d+")
 
