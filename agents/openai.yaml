@@ -1,4 +1,4 @@
 interface:
-  display_name: "项目开发助手"
+  display_name: "许愿机（测试版）"
   short_description: "按目标推进项目，检查结果并保存可继续的状态"
   default_prompt: "用 $project-development 从项目现状继续完成我的目标。"

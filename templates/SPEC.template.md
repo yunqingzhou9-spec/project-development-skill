@@ -24,4 +24,4 @@
 
 - AC-1: <observable criterion>
 
-Set APPROVED only from actual human authorization; record a durable decision reference quoting or accurately capturing the approved scope. Hash the entire approved file and freeze it. Changes use a new version and applicable approval, preserving this one. A sufficiently defined explicit implementation request may already be approval.
+Set APPROVED only when the Human explicitly confirms the current goal and solution-direction draft after seeing it. The instruction that began the discussion does not also approve a draft produced afterward, regardless of how detailed or imperative it was. Record a durable decision reference quoting or accurately capturing the confirmed scope, hash the entire approved file and freeze it. Material changes use a new version and applicable confirmation, preserving this one; routine choices inside the confirmed scope do not require repeated approval.

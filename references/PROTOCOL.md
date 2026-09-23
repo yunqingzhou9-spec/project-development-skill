@@ -25,6 +25,46 @@ Reuse the authoritative Project ID; otherwise use the user's explicit ID, otherw
 
 Preserve existing Spec/Task/decision history, invalid records and accepted baseline. Link these rather than copying their contents into current state. Unknown facts remain UNVERIFIED. User authorization defines intent; source/runtime evidence shows behavior; Task records track workflow; state is a current index. Conflicts need investigation, not convenient reinterpretation.
 
+## Goal intake and confirmation
+
+Treat a new request as one of: discussion only, read-only investigation, a new or changed goal awaiting confirmation, an explicit response to the current confirmation draft, or continuation inside an already confirmed scope. Do not infer confirmation from an imperative tone, extensive detail, silence or a message that preceded the draft it would supposedly approve.
+
+Before implementation, worker dispatch or external side effects, proportionately assess:
+
+- the desired observable outcome and who or what benefits;
+- internal consistency and feasibility in the available environment;
+- material scope, non-goals, constraints, assumptions, dependencies and risks;
+- observable completion criteria; and
+- whether a consequential product or solution-direction choice remains unresolved.
+
+Use read-only project inspection, research and a bounded investigation when they help resolve these questions. Ask only for information whose answer could materially change the outcome, feasibility, risk, completion criteria or solution direction. When the request is already concrete, reflect it briefly rather than manufacturing questions. When it is unreasonable, contradictory or infeasible, explain why, identify viable alternatives where available, and help the Human revise it.
+
+Present a concise confirmation draft after the material issues are resolved. Include the goal, in-scope result, important non-goals or constraints, observable completion criteria and proposed solution direction when each is relevant. Make uncertainty and meaningful alternatives visible. Ask the Human to confirm or correct this draft, and wait for an explicit response to that current draft before implementation, worker dispatch or external side effects.
+
+After confirmation, record the authorization reference and frozen scope before implementation. Routine implementation choices inside that scope do not require repeated permission. A material change to the outcome, included or excluded behavior, risk, completion criteria or solution direction invalidates the affected part of the confirmation: summarize the delta and obtain confirmation before dependent work continues. Unrelated release, installation, publication, credential, billing or destructive authority remains separate unless the confirmed scope explicitly and validly includes it.
+
+Discussion-only requests stay in discussion. Read-only inspection and bounded investigation do not become implementation authorization. Continuing an active task inside its confirmed scope does not require a new confirmation merely because a new turn or window begins; verify the durable authorization record and current project state instead.
+
+## Reuse discovery
+
+Once the goal is clear enough to evaluate solutions, decide whether a reuse check could materially change the proposed direction. Run it for reusable components, frameworks, automation, common algorithms, protocols and established integrations where an existing tool is plausible. A small project-specific content or glue change, a fixed mandated implementation, or a search whose cost clearly exceeds its value may skip the check; state the reason briefly rather than performing a ritual search.
+
+Use available native web search as the baseline for public discovery. When available, a GitHub plugin or authenticated CLI may add repository-specific metadata, but neither is a required dependency. Prefer primary evidence from the repository, official documentation, releases, security notices and license. If no suitable search capability is available, disclose that discovery is incomplete and do not infer that no reusable option exists.
+
+For each serious candidate, compare:
+
+- fit to the current proposed outcome and constraints;
+- maintenance activity and release recency;
+- documentation, examples and adoption path;
+- license compatibility;
+- security posture and dependency risk;
+- compatibility with the current project and environment; and
+- integration effort, operating burden and long-term ownership cost.
+
+Do not select by stars, downloads or popularity alone. Present applicable direct-reuse, adaptation and custom-implementation options in the solution-direction confirmation draft, identifying the recommendation, material tradeoffs and important unknowns. If discovery changes the intended outcome or boundaries, update the draft before asking for confirmation.
+
+Pre-confirmation discovery is read-only. Do not clone or download a candidate, install dependencies, run its code, change project files, supply credentials or connect an external service until the Human confirms the goal and solution direction and any separately required authority is present. Public-page research does not itself authorize those actions.
+
 ## Roles
 
 The main Agent clarifies, coordinates and may implement authorized ordinary work directly. It records itself as a contributor and labels its own checks as self-checks. Human owns consequential choices and formal acceptance. A coordinator cannot issue that acceptance.
