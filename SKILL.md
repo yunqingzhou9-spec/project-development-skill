@@ -3,7 +3,7 @@ name: project-development
 description: >-
   Bootstrap or operate lightweight repository-centered project governance from one conversation: clarify and approve specs, coordinate task agents, preserve project state, and verify delivery evidence. Use for multi-task software, data, automation, and AI projects or when explicitly requested. Not a substitute for domain engineering, runtime delegation tools, or a protected release system.
 metadata:
-  version: "2.3.0"
+  version: "2.4.0"
 ---
 
 # Project Development
@@ -18,7 +18,7 @@ Read the selected project's AGENTS, its state pointer, then only the active work
 - Asking for a change: assess the request and help the user form a concrete goal before acting. Present a concise confirmation draft and wait for explicit confirmation before implementation, worker dispatch or external side effects. Follow [Goal intake and confirmation](references/PROTOCOL.md#goal-intake-and-confirmation).
 - Working: assess risk, reversibility, coupling, uncertainty and useful verification. A clear low-risk local change can be implemented by the main Agent with honest targeted self-checks. Select independent capabilities where they add needed assurance; high-risk work requires separate independent behavior verification and review. No fixed file/line cutoff or mandatory worker count for new ordinary work.
 - Investigating: unknowns trigger a bounded investigation, not automatic escalation. Resolve uncertainty with a small experiment, then reassess. Read [Effort and resources](references/PROTOCOL.md#effort-and-resources).
-- Continuing or switching windows: use bound project context, or Project ID plus an accessible checkout locator. Read [Recovery](references/PROTOCOL.md#main-window-handoff-and-recovery); reconstruct HEAD and active workers, never copy a full transcript.
+- Continuing or switching windows: use bound project context, or Project ID plus an accessible checkout locator. For an idle planned handoff read only AGENTS, the current short pointer and the [performance path](references/PERFORMANCE.md#idle-window-handoff). Use fresh targeted native observations and the fixed helper with its private timing receipt; avoid history/source audits, duplicate checks and custom timing scripts on the normal path. Aim for 10 seconds; investigate longer waits without time-based aborts or skipped safety checks. Expand to [Recovery](references/PROTOCOL.md#main-window-handoff-and-recovery) only on mismatch. Never copy a full transcript.
 - Completing: apply [Gate](references/GATE.md). Use [work-v1](references/WORK_FORMAT.md) for new work unless project policy selects legacy FULL/LIGHTWEIGHT. Missing required checks block completion.
 - Installing: use the [verified clean archive installer](references/INSTALL.md), never copy the repository root.
 
@@ -48,7 +48,7 @@ One cooperative local owner guards shared writes, dispatch and integration using
 
 Freeze scope before implementation and bind all results to the exact candidate and inputs. Contributors may self-check but cannot claim independent review. Required failing evidence cannot be omitted, relabelled N/A or waived just to finish. If selected native delegation is unavailable, block that check; do not roleplay independence.
 
-Keep working version, accepted baseline, source commit, published release and installed copy distinct. This package version is 2.3.0; verify publication and installation independently. A structural check does not issue formal Human acceptance, establish protected enforcement or grant installation/publication authority.
+Keep working version, accepted baseline, source commit, published release and installed copy distinct. This package version is 2.4.0; accepted baseline, publication pointers and installed copies remain separately verified. A structural check does not issue formal Human acceptance, establish protected enforcement or grant installation/publication authority.
 
 Persist the active outcome, blockers, candidate and next action before stopping. Link history, do not embed it into current state. Native IDs and local locators belong in a private runtime registry, never published templates or product files.
 

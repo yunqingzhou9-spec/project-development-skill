@@ -13,7 +13,11 @@ Use the same Project ID in state. Checkout locations and native IDs stay private
 
 Choose effort from risk, reversibility, coupling, uncertainty and required verification. Main Agent may implement a clear low-risk local change and self-check honestly. High-risk work requires distinct independent behavior and review; other selected checks and existing stricter policy remain required. Delegate only useful independent work with isolated write ownership. If selected capabilities are missing, report the affected blocker; do not fabricate independence.
 
+For future Tasks, follow the Skill's proportional work and native child routing guide. This rule applies only after the governing change has passed its own required checks; it does not change historical or active Task requirements. Use a supported model/effort at child creation and keep required independence regardless of model.
+
 Only one cooperative local owner coordinates shared writes and dispatch; follow the Skill coordinator and recovery rules. Its ownership assertion cannot fence arbitrary shell writers or grant remote side-effect authority. Workers return isolated outputs; only the current owner integrates them and updates shared state.
+
+For an idle same-host handoff, keep the state pointer short and use the Skill's inspect/prepare/takeover path after actual native writer checks and attempt resolution. The helper's local snapshot never proves native workers stopped. On mismatch, use manual reconciliation before takeover.
 
 - Investigation: bounded question/experiment, default 15 minutes or two experiments, then reassess.
 - Failed verification cycles: at most 3 unless project policy states otherwise.

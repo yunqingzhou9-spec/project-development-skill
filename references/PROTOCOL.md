@@ -103,13 +103,15 @@ Prepare a durable attempt before calling native creation. Save returned native i
 
 Use fresh task-scoped workers where required, with short context: task number/purpose, accurate role, scope reference/digest, base/candidate and needed files. Prefer names such as task_<sequence>_<purpose>_<role> if supported; names are not native identity. One active Task per worker; reuse within the same Task for focused rework. Respect actual capacity; interruption does not prove termination or released capacity. Use native event waits when available instead of repeated polling.
 
+At native child creation, choose a supported model and reasoning effort proportional to difficulty and risk; use the configurable [routing guide](PERFORMANCE.md#native-child-routing). A different model does not establish verifier independence. Do not claim an in-flight model switch or change global model settings for a task.
+
 ### Effort and resources
 
-Record meaningful task-level observations: elapsed active work/wait time when measured, attempts and failed cycles, commands/check outcomes and broad investigation effort. Token/cost is UNAVAILABLE unless the host actually measures it; never estimate savings as measured facts. Do not create per-message ledgers.
+Record meaningful task-level observations: elapsed active work/wait time when measured, attempts and failed cycles, commands/check outcomes and broad investigation effort. Separate measured command time from host round-trip time. Token/cost or remaining usage is UNAVAILABLE unless the host actually measures it; never estimate savings as measured facts. Do not create per-message ledgers.
 
 Default at most 3 failed verification cycles per Task (project overrides apply). Budget exhaustion prompts a root-cause summary and replan, not repeated identical retries or dropped checks. Keep ordinary repairs within authorization. Scope/risk/authority decisions go to the Human only when needed.
 
-Reuse objective facts and successful checks only if relevant input hashes, command, environment/dependency identity and scope match, with original references retained. Changed candidate deliverables invalidate verdicts; never reuse stale final acceptance. Avoid rebuilding unchanged verification solely to produce more logs. A check cache is not a native identity or Human approval cache.
+Reuse objective facts and successful checks only if relevant input hashes, command, environment/dependency identity and scope match, with original references retained. Changed candidate deliverables invalidate verdicts; never reuse stale final acceptance. Avoid rebuilding unchanged verification solely to produce more logs. A check cache never supplies writer ownership, native identity or Human approval.
 
 ### State and evidence
 
@@ -121,7 +123,7 @@ Use a full immutable Git commit containing all declared deliverables, or an expl
 
 Normally the user needs only bound project context, or Project ID plus an accessible checkout locator. Do not require them to transcribe changing version, HEAD, branch or Worker state. If the locator is inaccessible or identity conflicts, stop dependent takeover and ask for the correct context; never search unrelated projects.
 
-Planned handoff: stop new dispatch; persist a compact active index and next action; record native worker references privately. Wait for progressing work or reconnect it, and confirm any stopped writer through actual native evidence. Resolve active attempts before release; the old coordinator releases ownership and ceases action. The replacement reads AGENTS/state, checks real Git/native state, claims the next generation and resumes. A different checkout may lack uncommitted output.
+Planned idle handoff: stop new dispatch, persist the short current scope and next action, and observe the real native owner/workers. Resolve attempts, then assert the current generation and release; only after RELEASED give the fixed prompt with the verified checkout locator. The replacement reads AGENTS/current state, checks local Git and actual native writer state, confirms RELEASED and no unresolved attempts, then claims the next generation. The [fast helper](PERFORMANCE.md#idle-window-handoff) batches local checks without network, reinstall, historical audit or full retest by default. It cannot prove native writers stopped. A mismatch expands only relevant checks and blocks unsafe takeover. A different checkout may lack uncommitted output.
 
 Unplanned recovery: inspect the old owner/generation and native inventory. If a writer cannot be ruled out, keep conflicting work blocked. Explicit recovery requires evidence of stopped/reconnected writers, the observed old owner/generation and a new owner; it never auto-steals due to elapsed time. Old attempts remain visible and must be resolved/reconciled before new dispatch; old-generation results are rejected. See executable recovery examples in [COORDINATION.md](COORDINATION.md).
 
